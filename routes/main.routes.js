@@ -6,16 +6,15 @@ router.get('/', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-
+    console.log(req.query);
     if (req.query.username == 'ian' && req.query.password == '123') {
         let user = {
             username: req.query.username,
             password: req.query.password
         }
-        req.session.usuario = user;
         res.render('sesion', { user });
     } else {
-        res.send('nop entro')
+        res.render('login')
     }
 });
 
