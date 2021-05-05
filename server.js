@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session');
+const chalk = require('chalk');
 const path = require('path');
 const app = express();
 require('dotenv').config();
@@ -23,7 +24,7 @@ app.use(require('./routes/main.routes'));
 
 //Crear el servidor
 const server = app.listen( app.get('port'), ()=>{
-    console.log('[OK] Server en', app.get('port'));
+    console.log('Server running in', chalk.yellowBright('http://localhost:80'));
 });
 
 // WebSocket
