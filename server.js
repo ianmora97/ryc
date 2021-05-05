@@ -19,6 +19,8 @@ app.use(session({ // se configura el manejo de sesiones
     saveUninitialized:false
 }));
 
+app.use(express.static(__dirname));
+
 //Rutas
 app.use(require('./routes/main.routes'));
 
