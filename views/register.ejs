@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+<head>
+  <title>Register</title>
+  <%- include("headers") %>
+</head>
+
+<body class="u-body">
+  <section class="u-align-center u-clearfix u-valign-top-lg u-valign-top-xl u-section-1" id="sec-bda9">
+    <img src="../images/yellowBlob.png" alt="" class="u-image u-image-default u-preserve-proportions u-image-1"
+      data-image-width="125" data-image-height="176">
+    <h2 class="u-align-left u-text u-text-1"> Crear Cuenta</h2>
+    <div class="u-form u-form-1">
+      <form action="/register/insert" method="POST" class="u-clearfix u-form-spacing-47 u-form-vertical u-inner-form"
+        style="padding: 10px" source="custom" name="form">
+        <div class="u-form-group u-form-name">
+          <label for="name-3b9a" class="u-form-control-hidden u-label">Name</label>
+          <input type="text" placeholder="Nombre Completo" id="name-3b9a" name="name"
+            class="u-border-1 u-border-custom-color-1 u-input u-input-rectangle u-radius-20 u-white" required=""
+            autofocus="autofocus">
+        </div>
+        <div class="u-form-email u-form-group">
+          <label for="email-3b9a" class="u-form-control-hidden u-label">Email</label>
+          <input type="email" placeholder="Correo" id="email-3b9a" name="email"
+            class="u-border-1 u-border-custom-color-1 u-input u-input-rectangle u-radius-20 u-white" required="">
+        </div>
+        <div class="u-form-group u-form-group-3">
+          <label for="password" class="u-form-control-hidden u-label"></label>
+          <input type="password" placeholder="Contraseña" id="password" name="password"
+            class="u-border-1 u-border-custom-color-1 u-input u-input-rectangle u-radius-20 u-white"
+            required="required">
+        </div>
+        <div class="u-form-group u-form-group-4">
+          <label for="passwordConfirm" class="u-form-control-hidden u-label"></label>
+          <input type="password" placeholder="Confirmar Contraseña" id="passwordConfirm" name="passwordConfirm"
+            class="u-border-1 u-border-custom-color-1 u-input u-input-rectangle u-radius-20 u-white"
+            required="required">
+        </div>
+        <div class="u-align-right u-form-group u-form-submit">
+          <a href="#" id="submitRegister"
+            class="u-border-0 u-btn u-btn-round u-btn-submit u-button-style u-gradient u-none u-radius-20 u-text-hover-white u-text-white u-btn-1">
+            <svg class="u-svg-content" viewBox="0 0 64 64" style="width: 1em; height: 1em;">
+              <path
+                d="m37.379 12.552c-.799-.761-2.066-.731-2.827.069-.762.8-.73 2.066.069 2.828l15.342 14.551h-39.963c-1.104 0-2 .896-2 2s.896 2 2 2h39.899l-15.278 14.552c-.8.762-.831 2.028-.069 2.828.393.412.92.62 1.448.62.496 0 .992-.183 1.379-.552l17.449-16.62c.756-.755 1.172-1.759 1.172-2.828s-.416-2.073-1.207-2.862z">
+              </path>
+            </svg>
+            <img>
+          </a>
+          <input type="submit" value="submit" class="u-form-control-hidden">
+        </div>
+
+        <!-- <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
+          <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
+          <input type="hidden" value="" name="recaptchaResponse"> -->
+      </form>
+    </div>
+  </section>
+  <script defer="">
+    $('#submitRegister').on('click', function () {
+      let data = {
+        name: $('#name').val(),
+        email: $('#email').val(),
+        password: $('#password').val()
+      }
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify(data),
+        url: "/register/insert",
+        contentType: "application/json"
+      }).done(response => {
+        window.location.href = "/home/show"
+      })
+    });
+  </script>
+</body>
+
+</html>
