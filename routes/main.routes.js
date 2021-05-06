@@ -25,7 +25,7 @@ router.get('/login', (req, res) => {
         if (!error) {
             let user = rows[0];
             jwt.sign({ user }, 'secretKeyToken', (err, token) => {
-                res.render('sesion', { user, token });
+                res.render('landing', { user, token });
             });
         } else {
             res.send({ status: 500 })
