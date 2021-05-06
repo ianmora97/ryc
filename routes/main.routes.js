@@ -1,21 +1,21 @@
 const express = require('express');
 const router = express.Router();
+const db = require('../database')
 
 router.get('/', (req, res) => {
     res.render('index');
 });
 
 router.get('/login', (req, res) => {
-    console.log(req.query);
-    if (req.query.username == 'ian' && req.query.password == '123') {
-        let user = {
-            username: req.query.username,
-            password: req.query.password
+    db.query("call obtener_usuario(?,?)", [req.query.username,req.query.password], (error,rows,fields)=>{
+        if(!error){
+            req.session.user = rows[0];
+            let user = req.session.user;
+            res.render('sesion', { user });
+        }else{
+            res.send({status: 500})
         }
-        res.render('sesion', { user });
-    } else {
-        res.render('login')
-    }
+    })
 });
 
 router.get('/sesion', (req, res) => {
