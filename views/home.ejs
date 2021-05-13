@@ -8,7 +8,7 @@
 </head>
 
 <body class="u-body">
-    <%- include("menu") %>
+    
 
         <section class="u-clearfix u-palette-5-light-3 u-section-1" id="sec-aa93">
             <div class="u-clearfix u-sheet u-sheet-1 justiy-content-between">
@@ -33,7 +33,8 @@
                                         </p>
                                         <p class="u-text u-text-palette-5-light-1 u-text-9">
                                             <%= opinion.fecha.split(" ")[1].substring(0,5) %></p>
-                                        <p class=" u-text u-text-palette-5-dark-2 u-text-10">David Aguilar Rojas
+                                        <p class=" u-text u-text-palette-5-dark-2 u-text-10"><% if(opinion.id_usuario==null){ %>
+                                            <i>Anonimo</i> <% }else{%> <%=opinion.nombre_opinador%> <%}%> 
                                         </p>
                                     </div>
                                 </div>
@@ -44,38 +45,20 @@
                                             data-image-width="2000" data-image-height="1333">
                                             <div class="u-container-layout u-container-layout-8"></div>
                                         </div>
-                                        <p class="u-text u-text-palette-5-dark-2 u-text-11">Estructuras de datos</p>
-                                        <p
-                                            class="u-hidden-md u-hidden-sm u-hidden-xs u-text u-text-palette-5-light-1 u-text-12">
-                                            4 créditos</p>
-                                        <p class="u-text u-text-palette-5-light-1 u-text-13">EIF-404</p>
-                                        <p class="u-text u-text-palette-5-light-1 u-text-14">UNIVERSIDAD NACIONAL</p>
+                                        <p class="u-text u-text-palette-5-dark-2 u-text-11"><%=opinion.curso_nombre%></p>
+                                        <p class="u-hidden-md u-hidden-sm u-hidden-xs u-text u-text-palette-5-light-1 u-text-12">
+                                            <%=opinion.creditos%> créditos    
+                                        </p>
+                                        <p class="u-text u-text-palette-5-light-1 u-text-13"><%=opinion.codigo_curso%></p>
+                                        <p class="u-text u-text-palette-5-light-1 u-text-14"><%=opinion.universidad%></p>
                                     </div>
                                 </div>
                                 <div style="border-top: 1px solid #e1e1e1"
                                     class=" u-container-style u-expanded-width u-group u-shape-rectangle u-white u-group-9">
                                     <div class="u-container-layout u-valign-top-lg u-container-layout-9">
-                                        <p class="u-text u-text-15">Lorem Ipsum&nbsp;is simply dummy text of the
-                                            printing
-                                            and
-                                            typesetting
-                                            industry. Lorem Ipsum has been the industry's standard dummy text ever since
-                                            the
-                                            1500s, when an unknown
-                                            printer took a galley of type and scrambled it to make a type specimen book.
-                                            It
-                                            has
-                                            survived not only
-                                            five centuries, but also the leap into electronic typesetting, remaining
-                                            essentially
-                                            unchanged. It was
-                                            popularised in the 1960s with the release of Letraset sheets containing
-                                            Lorem
-                                            Ipsum
-                                            passages, and more
-                                            recently with desktop publishing software like Aldus PageMaker including
-                                            versions of
-                                            Lorem Ipsum.</p>
+                                        <p class="u-text u-text-15">
+                                            <%= opinion.comentario %>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
