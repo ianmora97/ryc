@@ -25,7 +25,7 @@ router.get('/login', (req, res) => {
         if (!error) {
             let user = rows[0];
             jwt.sign({ user }, 'secretKeyToken', (err, token) => {
-                res.render('landing', { user, token });
+                res.redirect('/home/show/');
             });
         } else {
             res.send({ status: 500 })
@@ -65,10 +65,16 @@ router.post('/register/insert', (req, res) => {
 });
 
 router.get('/home/show', (req, res) => {
-    let user = req.session.usuario;
-    console.log(user)
-    res.render('home', { user });
+    db.query("call obtener_opiniones_cursos_seguidos(?);", [16], (error, rows, fields) => {
+        if (!error) {
+            console.log(rows)
+            let opiniones = rows[0];
+            res.render('home', { opiniones });
+        } else {
+            console.log(error)
+            res.send({ status: 200 })
+        }
 
+    })
 });
-
 module.exports = router;
