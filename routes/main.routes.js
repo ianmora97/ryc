@@ -91,5 +91,32 @@ router.get('/buscar/show', (req, res) => {
 
     })
 });
+router.get('/home', (req, res) => {
+    let user = req.session.usuario;
+    console.log(user)
+    res.render('estudiante/feed', { user });
+
+});
+
+router.get('/cursos', (req, res) => {
+    let user = req.session.usuario;
+    console.log(user)
+    res.render('cursos', { user });
+
+});
+
+router.get('/perfil', (req, res) => {
+    let user = req.session.usuario;
+    console.log(user)
+    res.render('Perfil', { user });
+
+});
+
+router.get('/buscar', (req, res) => {
+    let user = req.session.usuario;
+    console.log(user)
+    res.render('Buscar', { user });
+
+});
 
 module.exports = router;
