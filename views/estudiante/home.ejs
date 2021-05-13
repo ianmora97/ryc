@@ -3,13 +3,12 @@
 
 <head>
     <title>Home</title>
-    <%- include("headers") %>
+    <%- include("../Global/headers") %>
         <link rel="stylesheet" href="/css/Landing.css" media="screen">
 </head>
 
 <body class="u-body">
-    
-
+    <%- include('../Global/menu')%>
         <section class="u-clearfix u-palette-5-light-3 u-section-1" id="sec-aa93">
             <div class="u-clearfix u-sheet u-sheet-1 justiy-content-between">
                 <div class="container-opions">
@@ -20,21 +19,27 @@
                                 <div
                                     class="u-align-left u-border-1 u-border-palette-5-light-3 u-container-style u-expanded-width-md u-expanded-width-xs u-group u-shape-rectangle u-white u-group-5">
                                     <div class="u-container-layout u-container-layout-5">
-                                        <div class="u-container-style u-group u-image u-shape-circle u-image-3"
-                                            data-image-width="2000" data-image-height="1333">
+
+                                        <div class="u-container-style u-group ">
+                                            
+                                            <img class="u-image u-shape-circle u-image-3" src="/images/Perfil/anonimo.png" alt="">
                                             <div class="u-container-layout u-container-layout-6"></div>
                                         </div>
                                         <p class="u-text u-text-palette-5-base u-text-7">
                                             <%= opinion.fecha.split(" ")[0] %>  &nbsp;</p>
-                                        <p class=" u-text u-text-palette-5-base u-text-8"> 
+                                        <p class=" u-text u-text-palette-5-base u-text-8">
                                                 <% if(opinion.ciclo==1){ %>
                                                     I <% }else{ %> II <% } %>
-                                                    CICLO
+                                                            CICLO
                                         </p>
                                         <p class="u-text u-text-palette-5-light-1 u-text-9">
                                             <%= opinion.fecha.split(" ")[1].substring(0,5) %></p>
-                                        <p class=" u-text u-text-palette-5-dark-2 u-text-10"><% if(opinion.id_usuario==null){ %>
-                                            <i>Anonimo</i> <% }else{%> <%=opinion.nombre_opinador%> <%}%> 
+                                        <p class=" u-text u-text-palette-5-dark-2 u-text-10">
+                                                <% if(opinion.id_usuario==null){ %>
+                                                    <i>Anonimo</i>
+                                                    <% }else{%>
+                                                        <%=opinion.nombre_opinador%>
+                                                            <%}%>
                                         </p>
                                     </div>
                                 </div>
@@ -45,12 +50,19 @@
                                             data-image-width="2000" data-image-height="1333">
                                             <div class="u-container-layout u-container-layout-8"></div>
                                         </div>
-                                        <p class="u-text u-text-palette-5-dark-2 u-text-11"><%=opinion.curso_nombre%></p>
-                                        <p class="u-hidden-md u-hidden-sm u-hidden-xs u-text u-text-palette-5-light-1 u-text-12">
-                                            <%=opinion.creditos%> créditos    
+                                        <p class="u-text u-text-palette-5-dark-2 u-text-11">
+                                            <%=opinion.curso_nombre%>
                                         </p>
-                                        <p class="u-text u-text-palette-5-light-1 u-text-13"><%=opinion.codigo_curso%></p>
-                                        <p class="u-text u-text-palette-5-light-1 u-text-14"><%=opinion.universidad%></p>
+                                        <p
+                                            class="u-hidden-md u-hidden-sm u-hidden-xs u-text u-text-palette-5-light-1 u-text-12">
+                                            <%=opinion.creditos%> créditos
+                                        </p>
+                                        <p class="u-text u-text-palette-5-light-1 u-text-13">
+                                            <%=opinion.codigo_curso%>
+                                        </p>
+                                        <p class="u-text u-text-palette-5-light-1 u-text-14">
+                                            <%=opinion.universidad%>
+                                        </p>
                                     </div>
                                 </div>
                                 <div style="border-top: 1px solid #e1e1e1"
@@ -89,4 +101,5 @@
             </div>
         </section>
 
+        <%- include('../Global/menuBottom')%>
 </html>

@@ -3,9 +3,9 @@
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2020 Froala Labs
  */
+/views/Global/
 
 
- 
 
 .fr-clearfix::after {
   clear: both;
@@ -100,7 +100,7 @@
   border-left: none;
   border-right: solid 2px #5E35B1;
   margin-right: 0;
-  padding-right: 5px;
+g-right: 5px;
   padding-left: 0; }
   .fr-view[dir="rtl"] blockquote blockquote {
     border-color: #00BCD4; }

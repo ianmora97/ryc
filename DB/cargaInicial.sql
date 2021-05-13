@@ -4,15 +4,15 @@ select * from Usuario;
 
 insert into Estudiante(id_usuario,carrera) values (16,"Ingeniería en Sistemas");
 
+call insertar_usuario("1234@gmail.com", "Usuario con imagen de perfil", 1234, "default.jpg");
+select * from Usuario;
+
 insert into Profesor(id_usuario, titulo, annio_ingreso) values (17, "Bachillerato en ciencias de computación", CURDATE() );
 select * from Profesor;
 
 
 insert into Carrera(codigo,nombre) values('EIF404','Ingeniería en Sistemas'); 
 select * from Carrera;
-
-call insertar_usuario("profesor@gmail.com", "Juan de Dios", 1234);
-
 
 
 insert into Cursos (codigo_curso,carrera, nombre, carta, creditos,descripcion,universidad) values 
@@ -32,5 +32,6 @@ values(16, 1,1);
 
 
 insert into Opinion (id_usuario, id_grupo,calificacion,comentario,fecha,semana,anonimo)
-VALUES(null,1,5, "Hasta el momento, el curso parece ser bastante bueno, el profe se ve que es bueno dando clases y creo que puede ser de mucho provecho para un futuro",sysdate(),3,1)
+VALUES(16,1,5, "Creo que este curso no era nada parecido a lo que tenía en mente. Va a consumirme muchas horas de estudio y dedicación para poder pasarlo.",sysdate(),3,1);
 
+call ryc2.obtener_opiniones_cursos_seguidos(16);

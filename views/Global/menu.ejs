@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary" id="menu-cus">
+    <div class="container-fluid">
+        <div class="row w-100 mx-0">
+            <div class="col-2">
+                <a class="navbar-brand" href="#">LOGO</a>
+            </div>
+            <div class="col-4">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" data-bs-toggle="modal" data-bs-target="#buscarModal">
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <h3 class="me-4 text-white active" aria-current="page" href="#"><i class="fas fa-home"></i>Home</h3>
+                <h3 class="me-4 text-white" href="/cursos"><i class="fas fa-book"></i> Cursos</h3>
+                <h3 class="me-4 text-white" href="/perfil"><i class="fas fa-user"></i> Perfil</h3>
+            </div>
+        </div>
+    </div>
+</nav>
+<div id="custom-menu">
+    <div class="row w-100 mx-0 d-flex pt-3">
+        <div class="col-4"></div>
+        <div class="col-4 d-flex justify-content-center">
+            <h2 class="text-primary my-0">Feed</h2>
+        </div>
+        <div class="col-4">
+            <div data-bs-toggle="modal" data-bs-target="#buscarModal">
+                <i class="fas fa-search text-primary fa-2x"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="buscarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <div></div>
+                <div>
+                    <input type="text" class="form-control" id="buscarInputModal" placeholder="Buscar...">
+                </div>
+                <button type="button" class="btn-cerrar" data-bs-dismiss="modal">x</button>
+            </div>
+            <div class="modal-body">
+                <!-- aqui el como se muestre -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

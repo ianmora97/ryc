@@ -17,7 +17,7 @@ function ensureToken(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    res.render('index');
+    res.render('Global/login');
 });
 
 router.get('/login', (req, res) => {
@@ -69,7 +69,7 @@ router.get('/home/show', (req, res) => {
         if (!error) {
             console.log(rows)
             let opiniones = rows[0];
-            res.render('home', { opiniones });
+            res.render('estudiante/home', { opiniones });
         } else {
             console.log(error)
             res.send({ status: 200 })
@@ -83,7 +83,7 @@ router.get('/buscar/show', (req, res) => {
         if (!error) {
             console.log(rows)
             let cursos = rows[0];
-            res.render('buscar', { cursos });
+            res.render('Global/buscar', { cursos });
         } else {
             console.log(error)
             res.send({ status: 200 })
@@ -101,7 +101,7 @@ router.get('/home', (req, res) => {
 router.get('/cursos', (req, res) => {
     let user = req.session.usuario;
     console.log(user)
-    res.render('cursos', { user });
+    res.render('/Global/cursos', { user });
 
 });
 
@@ -115,7 +115,7 @@ router.get('/perfil', (req, res) => {
 router.get('/buscar', (req, res) => {
     let user = req.session.usuario;
     console.log(user)
-    res.render('Buscar', { user });
+    res.render('Global/buscar', { user });
 
 });
 
