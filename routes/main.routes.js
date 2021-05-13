@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require('../database')
 const jwt = require('jsonwebtoken');
 
+
 // Authorization: Bearer <token>
 function ensureToken(req, res, next) {
     const bearerHeader = req.headers['authorization'];
@@ -20,18 +21,26 @@ router.get('/', (req, res) => {
     res.render('Global/login');
 });
 
-router.get('/login', (req, res) => {
-    db.query("call obtener_usuario(?,?)", [req.query.username, req.query.password], (error, rows, fields) => {
+router.post('/login', (req, res) => {
+    db.query("call obtener_usuario(?,?)", 
+    [req.body.username, req.body.password], 
+    (error, rows, fields) => {
         if (!error) {
-            let user = rows[0];
-            jwt.sign({ user }, 'secretKeyToken', (err, token) => {
-                res.redirect('/home/show/');
-            });
+            if (rows[0].length !== 0) {
+                let user = createUser(rows[0]) 
+                req.session.usuario = user
+                res.redirect('/home/show');
+            } else {
+                let error = { status: 404 }
+                res.render('Global/login', { error });
+            }
         } else {
-            res.send({ status: 500 })
+            let error = { status: 404 }
+            res.render('Global/login', { error });
         }
     })
 });
+
 
 router.get('/sesion', ensureToken, (req, res) => {
     let user = req.session.usuario;
@@ -56,7 +65,6 @@ router.post('/register/insert', (req, res) => {
             }
             console.log(user)
             req.session.usuario = user;
-            console.log(req.session.usuario)
             res.send({ status: 200 })
         } else {
             res.send({ status: 500 })
@@ -65,50 +73,48 @@ router.post('/register/insert', (req, res) => {
 });
 
 router.get('/home/show', (req, res) => {
-    db.query("call obtener_opiniones_cursos_seguidos(?);", [16], (error, rows, fields) => {
-        if (!error) {
-            console.log(rows)
-            let opiniones = rows[0];
-            res.render('estudiante/home', { opiniones });
-        } else {
-            console.log(error)
-            res.send({ status: 200 })
-        }
+    if(req.session.usuario){
+        let currentDate = new Date();
+        var ciclo = (currentDate.getMonth() <= 5) ? 1 : 2;
+        var opiniones = [];
+        var cursos = [];
+        let user = req.session.usuario;
 
-    })
+        db.query("call obtener_opiniones_cursos_seguidos_actual(?,?)", [user.id_usuario, ciclo], (errorOpiniones, opinionRows, fields) => {
+            if (!errorOpiniones) {
+                opiniones = opinionRows[0];
+                db.query("call obtener_cursos_estudiante_actual(?,?)", [user.id_usuario, ciclo],  (errorCursos, cursosRows, fields) => {
+                    if (!errorCursos) {
+                        cursos = cursosRows[0];
+                        console.log(cursos)
+                        res.render('estudiante/home', { opiniones, cursos, user });
+                    } else {
+                        console.log(errorCursos)
+                        res.send({ status: 500 })
+                    }
+                })            
+            } else {
+                console.log(errorOpiniones)
+                res.send({ status: 500 })
+            }
+        })
+    }else{
+        res.render('Global/login');
+    }
+    
 });
 
-router.get('/buscar/show', (req, res) => {
-    db.query("call obtener_cursos();", (error, rows, fields) => {
-        if (!error) {
-            console.log(rows)
-            let cursos = rows[0];
-            res.render('Global/buscar', { cursos });
-        } else {
-            console.log(error)
-            res.send({ status: 200 })
-        }
-
-    })
-});
-router.get('/home', (req, res) => {
-    let user = req.session.usuario;
-    console.log(user)
-    res.render('estudiante/feed', { user });
-
-});
 
 router.get('/cursos', (req, res) => {
     let user = req.session.usuario;
     console.log(user)
     res.render('/Global/cursos', { user });
-
 });
 
 router.get('/perfil', (req, res) => {
     let user = req.session.usuario;
     console.log(user)
-    res.render('Perfil', { user });
+    res.render('estudiante/Perfil', { user });
 
 });
 
@@ -117,6 +123,28 @@ router.get('/buscar', (req, res) => {
     console.log(user)
     res.render('Global/buscar', { user });
 
+});
+
+router.get('/traerCursos', (req, res) => {
+    db.query("call obtener_cursos();", (error, rows, fields) => {
+        if (!error) {
+            let cursos = rows[0];
+            res.send(cursos);
+        } else {
+            console.log(error)
+            res.send({ status: 500 })
+        }
+    })
+});
+
+function createUser(rows){
+    let jsonRows = JSON.stringify(rows[0])
+    let user = JSON.parse(jsonRows)
+    return user;
+}
+
+router.get('/profe/show', (req, res) => {
+    res.render('profesor/perfilProfesor');
 });
 
 module.exports = router;

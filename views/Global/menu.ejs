@@ -2,15 +2,19 @@
     <div class="container-fluid">
         <div class="row w-100 mx-0">
             <div class="col-2">
-                <a class="navbar-brand" href="#">LOGO</a>
+                <a class="navbar-brand" href="#">
+                    <img src="/images/logo.png" style="width:50px; height:50px;">
+                </a>
             </div>
             <div class="col-4">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" data-bs-toggle="modal" data-bs-target="#buscarModal">
+                <div class="bg-white rounded-cus shadow-lg h-75 p-2 mt-2" data-bs-toggle="modal" data-bs-target="#buscarModal" role="button">
+                    <span class="text-muted">Buscar...</span>
+                </div>
             </div>
             <div class="col-6 d-flex justify-content-end">
-                <h3 class="me-4 text-white active" aria-current="page" href="#"><i class="fas fa-home"></i>Home</h3>
-                <h3 class="me-4 text-white" href="/cursos"><i class="fas fa-book"></i> Cursos</h3>
-                <h3 class="me-4 text-white" href="/perfil"><i class="fas fa-user"></i> Perfil</h3>
+                <h3 class="me-4 my-0 text-white lh-lg" href="#"><i class="fas fa-home"></i> Home</h3>
+                <h3 class="me-4 my-0 text-white lh-lg" href="/cursos"><i class="fas fa-book"></i> Cursos</h3>
+                <h3 class="me-4 my-0 text-white lh-lg" href="/perfil"><i class="fas fa-user"></i> Perfil</h3>
             </div>
         </div>
     </div>
@@ -33,18 +37,36 @@
         <div class="modal-content">
             <div class="modal-header border-bottom-0">
                 <div></div>
-                <div>
-                    <input type="text" class="form-control" id="buscarInputModal" placeholder="Buscar...">
+                <div class="w-50">
+                    <input type="text" class="form-control" id="buscarInputModal" 
+                    placeholder="Buscar..." onkeyup="buscarCursos()">
                 </div>
                 <button type="button" class="btn-cerrar" data-bs-dismiss="modal">x</button>
             </div>
             <div class="modal-body">
-                <!-- aqui el como se muestre -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <div class="u-clearfix u-sheet u-sheet-1" id="cursosFiltrados">
+                    
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    const animateCSS = (element, animation, prefix = 'animate__') =>
+    // We create a Promise and return it
+    new Promise((resolve, reject) => {
+        const animationName = `${prefix}${animation}`;
+        const node = document.querySelector(element);
+
+        node.classList.add(`${prefix}animated`, animationName);
+
+        // When the animation ends, we clean the classes and resolve the Promise
+        function handleAnimationEnd(event) {
+        event.stopPropagation();
+        node.classList.remove(`${prefix}animated`, animationName);
+        resolve('Animation ended');
+        }
+
+        node.addEventListener('animationend', handleAnimationEnd, {once: true});
+    });
+</script>

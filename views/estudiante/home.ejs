@@ -21,9 +21,14 @@
                                     <div class="u-container-layout u-container-layout-5">
 
                                         <div class="u-container-style u-group ">
-                                            
-                                            <img class="u-image u-shape-circle u-image-3" src="/images/Perfil/anonimo.png" alt="">
-                                            <div class="u-container-layout u-container-layout-6"></div>
+                                            <% if(opinion.img_perfilOp==null){ %>
+                                                <img class="u-image u-shape-circle u-image-3"
+                                                    src="/images/Perfil/anonimo.png" alt="">
+                                                <% } else { %>
+                                                    <img class="u-image u-shape-circle u-image-3"
+                                                        src="/images/Perfil/<%= opinion.img_perfilOp %>" alt="">
+                                                    <% } %>
+                                                        <div class="u-container-layout u-container-layout-6"></div>
                                         </div>
                                         <p class="u-text u-text-palette-5-base u-text-7">
                                             <%= opinion.fecha.split(" ")[0] %>  &nbsp;</p>
@@ -82,24 +87,40 @@
                     <div class="u-container-layout u-container-layout-1">
                         <div alt="" class="u-image u-image-circle u-image-1" data-image-width="1280"
                             data-image-height="851"></div>
-                        <p class="u-text u-text-1">Nicole Canet Porras</p>
-                        <p class="u-text u-text-2">ncanet16@gmail.com</p>
+                        <p class="u-text u-text-1"><%=user.id_usuario%></p>
+                        <p class="u-text u-text-2"><%=user.correo%></p>
                         <p class="u-text u-text-palette-5-dark-1 u-text-3">Tus cursos</p>
-                        <div class="u-align-left u-container-style u-group u-radius-1 u-shape-round u-white u-group-2">
-                            <div class="u-container-layout u-container-layout-2">
-                                <div class="u-container-style u-group u-image u-shape-circle u-image-2"
-                                    data-image-width="2000" data-image-height="1333">
-                                    <div class="u-container-layout u-container-layout-3"></div>
+                        <% cursos.forEach(function(curso){%>
+                            <div
+                                class="u-align-left u-container-style u-group u-radius-1 u-shape-round u-white u-group-2">
+                                <div class="u-container-layout u-container-layout-2">
+                                    <div class="u-container-style u-group u-image u-shape-circle u-image-2"
+                                        data-image-width="2000" data-image-height="1333">
+                                        <div class="u-container-layout u-container-layout-3"></div>
+                                    </div>
+                                    <p class="u-text u-text-palette-5-dark-2 u-text-4">
+                                        <%=curso.curso_nombre%>
+                                    </p>
+                                    <p class="u-text u-text-palette-5-base u-text-5">
+                                        <%=curso.creditos%>CRÉDITOS
+                                    </p>
+                                    <p class="u-text u-text-palette-5-base u-text-6">
+                                        <% if(curso.ciclo==1){ %>
+                                            I
+                                            <% }else{ %>
+                                                II
+                                                <% } %>
+                                                    CICLO 
+                                    </p>
                                 </div>
-                                <p class="u-text u-text-palette-5-dark-2 u-text-4">Estructuras de datos</p>
-                                <p class="u-text u-text-palette-5-base u-text-5">4 CRÉDITOS</p>
-                                <p class="u-text u-text-palette-5-base u-text-6">II CICLO</p>
                             </div>
-                        </div>
+                            <% }); %>
+
                     </div>
                 </div>
             </div>
         </section>
 
         <%- include('../Global/menuBottom')%>
+
 </html>

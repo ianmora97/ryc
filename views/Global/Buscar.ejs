@@ -12,22 +12,7 @@
   
     <section class="u-align-left u-clearfix u-custom-color-1 u-section-1" id="sec-31be">
       
-        <div class="u-clearfix u-sheet u-sheet-1">
-        <% cursos.forEach(function(curso){ %>
-          <div class="u-border-2 u-border-white u-container-style u-group u-radius-16 u-shape-round u-group-1">
-            <div class="u-container-layout u-container-layout-1">
-              <div class="u-container-style u-custom-color-4 u-group u-group-2 bg-primary">
-                <img src="/images/Icons/computer.png" style="width: 80px; height: 80px; margin: 20px 10px;">
-              </div>
-              <h1 class="u-text u-text-default u-text-1"><%= curso.nombre%></h1>
-                <p class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-2"><%= curso.carrera%> - <%= curso.codigo_curso%></p>
-                <p class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-3"><%= curso.universidad%></p>
-                <p class="u-small-text u-text u-text-default u-text-font u-text-variant u-text-4"><%= curso.creditos%></p>
-                
-            </div>
-          </div>
-        <% }); %>
-      </div>
+        
     </section>
     <%- include('menuBottom')%>
 </body>
