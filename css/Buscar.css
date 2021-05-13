@@ -1,0 +1,268 @@
+.u-section-1 {
+  background-image: none;
+}
+
+.u-section-1 .u-sheet-1 {
+  min-height: 658px;
+}
+
+.u-section-1 .u-group-1 {
+  width: 828px;
+  min-height: 128px;
+  height: auto;
+  box-shadow: 0 2px 8px 0 rgba(128,128,128,1);
+  margin: 50px auto 0;
+}
+
+.u-section-1 .u-container-layout-1 {
+  padding: 0 30px 0 0;
+}
+
+.u-section-1 .u-group-2 {
+  width: 99px;
+  min-height: 128px;
+  height: auto;
+  margin: -2px auto 0 -3px;
+}
+
+.u-section-1 .u-container-layout-2 {
+  padding: 0;
+}
+
+.u-section-1 .u-icon-1 {
+  height: 64px;
+  width: 64px;
+  margin: 0 auto;
+}
+
+.u-section-1 .u-text-1 {
+  font-size: 1.875rem;
+  margin: -116px auto 0 129px;
+}
+
+.u-section-1 .u-text-2 {
+  font-size: 1rem;
+  margin: 10px auto 0 129px;
+}
+
+.u-section-1 .u-text-3 {
+  font-size: 1rem;
+  margin: 0 auto 0 129px;
+}
+
+.u-section-1 .u-text-4 {
+  margin: -24px 0 0 auto;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-group-1 {
+    height: auto;
+  }
+
+  .u-section-1 .u-group-2 {
+    height: auto;
+  }
+
+  .u-section-1 .u-container-layout-2 {
+    padding-top: 22px;
+  }
+
+  .u-section-1 .u-icon-1 {
+    margin-top: 10px;
+  }
+
+  .u-section-1 .u-text-3 {
+    width: auto;
+  }
+
+  .u-section-1 .u-text-4 {
+    width: auto;
+    margin-top: -26px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 567px;
+  }
+
+  .u-section-1 .u-group-1 {
+    width: 720px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-group-1 {
+    width: 540px;
+  }
+
+  .u-section-1 .u-container-layout-1 {
+    padding-right: 10px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-group-1 {
+    width: 340px;
+  }
+
+  .u-section-1 .u-text-1 {
+    font-size: 1.5rem;
+    width: auto;
+    margin-top: -121px;
+    margin-left: 114px;
+  }
+
+  .u-section-1 .u-text-2 {
+    font-size: 0.75rem;
+    width: auto;
+    margin-top: 5px;
+    margin-right: 0;
+    margin-left: 114px;
+  }
+
+  .u-section-1 .u-text-3 {
+    font-size: 0.75rem;
+    margin-right: 44px;
+    margin-left: 114px;
+  }
+
+  .u-section-1 .u-text-4 {
+    margin-top: 0;
+  }
+}.u-section-2 {
+  background-image: none;
+}
+
+.u-section-2 .u-sheet-1 {
+  min-height: 62px;
+}
+
+.u-section-2 .u-btn-1 {
+  border-style: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 14px 30px 0 auto;
+  padding: 0;
+}
+
+.u-section-2 .u-btn-2 {
+  border-style: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: -32px auto 0 0;
+  padding: 0;
+}
+
+.u-section-2 .u-icon-1 {
+  color: rgb(255, 255, 255) !important;
+  font-size: 1.25rem;
+}
+
+.u-section-2 .u-btn-3 {
+  border-style: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  align-self: flex-end;
+  margin: -35px auto 0 0;
+  padding: 0;
+}
+
+.u-section-2 .u-icon-2 {
+  color: rgb(255, 255, 255) !important;
+}
+
+.u-section-2 .u-btn-4 {
+  border-style: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  align-self: flex-end;
+  margin: -35px auto 14px 0;
+  padding: 0;
+}
+
+.u-section-2 .u-icon-3 {
+  color: rgb(255, 255, 255) !important;
+}
+
+@media (max-width: 991px) {
+  .u-section-2 .u-sheet-1 {
+    min-height: 91px;
+  }
+
+  .u-section-2 .u-btn-1 {
+    margin-top: 0;
+    margin-right: 0;
+  }
+
+  .u-section-2 .u-btn-2 {
+    font-size: 2.25rem;
+    margin-top: -18px;
+    margin-right: 96px;
+    margin-left: auto;
+  }
+
+  .u-section-2 .u-icon-1 {
+    font-size: 2.25rem;
+  }
+
+  .u-section-2 .u-btn-3 {
+    font-size: 2.25rem;
+    margin-top: -62px;
+    margin-left: 91px;
+  }
+
+  .u-section-2 .u-btn-4 {
+    font-size: 2.25rem;
+    margin-top: -62px;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-2 .u-btn-1 {
+    align-self: flex-end;
+  }
+
+  .u-section-2 .u-btn-2 {
+    align-self: flex-end;
+    margin-right: 83px;
+  }
+
+  .u-section-2 .u-icon-1 {
+    width: 36px;
+    height: 43px;
+  }
+
+  .u-section-2 .u-btn-3 {
+    margin-left: 90px;
+  }
+
+  .u-section-2 .u-btn-4 {
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-2 .u-btn-1 {
+    align-self: center;
+  }
+
+  .u-section-2 .u-btn-2 {
+    align-self: center;
+    margin-right: 0;
+  }
+
+  .u-section-2 .u-btn-3 {
+    align-self: center;
+    margin-left: 0;
+  }
+
+  .u-section-2 .u-btn-4 {
+    margin-top: -63px;
+  }
+
+  .u-section-2 .u-icon-3 {
+    animation-duration: 1000ms;
+  }
+}
