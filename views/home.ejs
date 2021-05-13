@@ -1,20 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html style="font-size: 16px;">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <%- include("headers") %>
+        <link rel="stylesheet" href="/css/Landing.css" media="screen">
 </head>
-<body>
-    <div>
-        <h2>Home</h2>
-        <div class="div">
-            
-            <%= user.name %>
-            <%= user.email %>
-            
-        </div>
-    </div>
-</body>
+
+<body class="u-body">
+    
+
+        <section class="u-clearfix u-palette-5-light-3 u-section-1" id="sec-aa93">
+            <div class="u-clearfix u-sheet u-sheet-1 justiy-content-between">
+                <div class="container-opions">
+                    <% opiniones.forEach(function(opinion){ %>
+                        <div id="opinion-card"
+                            class="opinion u-container-style u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-radius-4 u-shape-round u-white u-group-4">
+                            <div class="u-container-layout u-container-layout-4">
+                                <div
+                                    class="u-align-left u-border-1 u-border-palette-5-light-3 u-container-style u-expanded-width-md u-expanded-width-xs u-group u-shape-rectangle u-white u-group-5">
+                                    <div class="u-container-layout u-container-layout-5">
+                                        <div class="u-container-style u-group u-image u-shape-circle u-image-3"
+                                            data-image-width="2000" data-image-height="1333">
+                                            <div class="u-container-layout u-container-layout-6"></div>
+                                        </div>
+                                        <p class="u-text u-text-palette-5-base u-text-7">
+                                            <%= opinion.fecha.split(" ")[0] %>  &nbsp;</p>
+                                        <p class=" u-text u-text-palette-5-base u-text-8"> 
+                                                <% if(opinion.ciclo==1){ %>
+                                                    I <% }else{ %> II <% } %>
+                                                    CICLO
+                                        </p>
+                                        <p class="u-text u-text-palette-5-light-1 u-text-9">
+                                            <%= opinion.fecha.split(" ")[1].substring(0,5) %></p>
+                                        <p class=" u-text u-text-palette-5-dark-2 u-text-10"><% if(opinion.id_usuario==null){ %>
+                                            <i>Anonimo</i> <% }else{%> <%=opinion.nombre_opinador%> <%}%> 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="u-container-style u-expanded-width-md u-expanded-width-xs u-group u-shape-rectangle u-white u-group-7">
+                                    <div class="u-container-layout u-container-layout-7">
+                                        <div class="u-container-style u-group u-image u-radius-4 u-shape-round u-image-4"
+                                            data-image-width="2000" data-image-height="1333">
+                                            <div class="u-container-layout u-container-layout-8"></div>
+                                        </div>
+                                        <p class="u-text u-text-palette-5-dark-2 u-text-11"><%=opinion.curso_nombre%></p>
+                                        <p class="u-hidden-md u-hidden-sm u-hidden-xs u-text u-text-palette-5-light-1 u-text-12">
+                                            <%=opinion.creditos%> créditos    
+                                        </p>
+                                        <p class="u-text u-text-palette-5-light-1 u-text-13"><%=opinion.codigo_curso%></p>
+                                        <p class="u-text u-text-palette-5-light-1 u-text-14"><%=opinion.universidad%></p>
+                                    </div>
+                                </div>
+                                <div style="border-top: 1px solid #e1e1e1"
+                                    class=" u-container-style u-expanded-width u-group u-shape-rectangle u-white u-group-9">
+                                    <div class="u-container-layout u-valign-top-lg u-container-layout-9">
+                                        <p class="u-text u-text-15">
+                                            <%= opinion.comentario %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                </div>
+                <div
+                    class="container-info u-container-style u-group u-hidden-md u-hidden-sm u-hidden-xs u-radius-4 u-shape-round u-white ">
+                    <div class="u-container-layout u-container-layout-1">
+                        <div alt="" class="u-image u-image-circle u-image-1" data-image-width="1280"
+                            data-image-height="851"></div>
+                        <p class="u-text u-text-1">Nicole Canet Porras</p>
+                        <p class="u-text u-text-2">ncanet16@gmail.com</p>
+                        <p class="u-text u-text-palette-5-dark-1 u-text-3">Tus cursos</p>
+                        <div class="u-align-left u-container-style u-group u-radius-1 u-shape-round u-white u-group-2">
+                            <div class="u-container-layout u-container-layout-2">
+                                <div class="u-container-style u-group u-image u-shape-circle u-image-2"
+                                    data-image-width="2000" data-image-height="1333">
+                                    <div class="u-container-layout u-container-layout-3"></div>
+                                </div>
+                                <p class="u-text u-text-palette-5-dark-2 u-text-4">Estructuras de datos</p>
+                                <p class="u-text u-text-palette-5-base u-text-5">4 CRÉDITOS</p>
+                                <p class="u-text u-text-palette-5-base u-text-6">II CICLO</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 </html>
