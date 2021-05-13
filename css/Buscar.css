@@ -16,6 +16,11 @@
 
 .u-section-1 .u-container-layout-1 {
   padding: 0 30px 0 0;
+  background-color: white !important;
+}
+
+.u-custom-color-1, .u-body.u-custom-color-1, .u-container-style.u-custom-color-1:before, .u-table-alt-custom-color-1 tr:nth-child(even) {
+  background-color: #f8f8f8 !important;
 }
 
 .u-section-1 .u-group-2 {
