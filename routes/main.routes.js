@@ -77,4 +77,19 @@ router.get('/home/show', (req, res) => {
 
     })
 });
+
+router.get('/buscar/show', (req, res) => {
+    db.query("call obtener_cursos();", (error, rows, fields) => {
+        if (!error) {
+            console.log(rows)
+            let cursos = rows[0];
+            res.render('buscar', { cursos });
+        } else {
+            console.log(error)
+            res.send({ status: 200 })
+        }
+
+    })
+});
+
 module.exports = router;
