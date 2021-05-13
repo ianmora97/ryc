@@ -1,0 +1,247 @@
+.u-section-1 {
+  background-image: none;
+}
+
+.u-section-1 .u-sheet-1 {
+  min-height: 500px;
+}
+
+.u-section-1 .u-group-1 {
+  width: 310px;
+  min-height: 219px;
+  margin: 38px auto 60px 0;
+}
+
+.u-section-1 .u-container-layout-1 {
+  padding: 30px 0 0;
+}
+
+.u-section-1 .u-group-2 {
+  margin-top: -30px;
+  margin-bottom: 0;
+  min-height: 145px;
+}
+
+.u-section-1 .u-container-layout-2 {
+  padding: 30px 30px 7px;
+}
+
+.u-section-1 .u-text-1 {
+  margin: 0 38px 0 0;
+}
+
+.u-section-1 .u-text-2 {
+  font-size: 1rem;
+  background-image: none;
+  margin: 0 94px 0 0;
+}
+
+.u-section-1 .u-text-3 {
+  margin: 0 94px 0 0;
+}
+
+.u-section-1 .u-icon-1 {
+  height: 39px;
+  width: 39px;
+  margin: 16px auto 0 30px;
+}
+
+.u-section-1 .u-text-4 {
+  font-size: 0.875rem;
+  width: 89px;
+  margin: -31px auto 0;
+}
+
+.u-section-1 .u-text-5 {
+  font-size: 0.875rem;
+  margin: -24px 16px 0 262px;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-icon-1 {
+    color: rgb(71, 138, 201) !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-group-1 {
+    margin-right: initial;
+    margin-left: initial;
+    width: auto;
+  }
+
+  .u-section-1 .u-text-1 {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-container-layout-2 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .u-section-1 .u-text-5 {
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-group-2 {
+    min-height: 146px;
+  }
+
+  .u-section-1 .u-text-2 {
+    width: auto;
+    margin-top: 16px;
+  }
+
+  .u-section-1 .u-text-3 {
+    margin-top: 4px;
+  }
+
+  .u-section-1 .u-text-5 {
+    margin-top: -24px;
+    margin-right: 16px;
+    margin-left: 262px;
+  }
+}.u-section-2 {
+  background-image: none;
+}
+
+.u-section-2 .u-sheet-1 {
+  min-height: 62px;
+}
+
+.u-section-2 .u-btn-1 {
+  border-style: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 14px 30px 0 auto;
+  padding: 0;
+}
+
+.u-section-2 .u-btn-2 {
+  border-style: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: -32px auto 0 0;
+  padding: 0;
+}
+
+.u-section-2 .u-icon-1 {
+  color: rgb(255, 255, 255) !important;
+  font-size: 1.25rem;
+}
+
+.u-section-2 .u-btn-3 {
+  border-style: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  align-self: flex-end;
+  margin: -35px auto 0 0;
+  padding: 0;
+}
+
+.u-section-2 .u-icon-2 {
+  color: rgb(255, 255, 255) !important;
+}
+
+.u-section-2 .u-btn-4 {
+  border-style: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  align-self: flex-end;
+  margin: -35px auto 14px 0;
+  padding: 0;
+}
+
+.u-section-2 .u-icon-3 {
+  color: rgb(255, 255, 255) !important;
+}
+
+@media (max-width: 991px) {
+  .u-section-2 .u-sheet-1 {
+    min-height: 91px;
+  }
+
+  .u-section-2 .u-btn-1 {
+    margin-top: 0;
+    margin-right: 0;
+  }
+
+  .u-section-2 .u-btn-2 {
+    font-size: 2.25rem;
+    margin-top: -18px;
+    margin-right: 96px;
+    margin-left: auto;
+  }
+
+  .u-section-2 .u-icon-1 {
+    font-size: 2.25rem;
+  }
+
+  .u-section-2 .u-btn-3 {
+    font-size: 2.25rem;
+    margin-top: -62px;
+    margin-left: 91px;
+  }
+
+  .u-section-2 .u-btn-4 {
+    font-size: 2.25rem;
+    margin-top: -62px;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-2 .u-btn-1 {
+    align-self: flex-end;
+  }
+
+  .u-section-2 .u-btn-2 {
+    align-self: flex-end;
+    margin-right: 83px;
+  }
+
+  .u-section-2 .u-icon-1 {
+    width: 36px;
+    height: 43px;
+  }
+
+  .u-section-2 .u-btn-3 {
+    margin-left: 90px;
+  }
+
+  .u-section-2 .u-btn-4 {
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-2 .u-btn-1 {
+    align-self: center;
+  }
+
+  .u-section-2 .u-btn-2 {
+    align-self: center;
+    margin-right: 0;
+  }
+
+  .u-section-2 .u-btn-3 {
+    align-self: center;
+    margin-left: 0;
+  }
+
+  .u-section-2 .u-btn-4 {
+    margin-top: -63px;
+  }
+
+  .u-section-2 .u-icon-3 {
+    animation-duration: 1000ms;
+  }
+}

@@ -19429,7 +19429,7 @@ a.u-button-style.u-border-20 {
 .u-radius-25:before,
 .u-radius-25 .u-background-effect,
 .u-radius-25 > .u-container-layout {
-  border-radius: 25px !important;
+  border-radius: 10px 10px 25px 25px !important;
 }
 .u-radius-26,
 .u-radius-26:before,
