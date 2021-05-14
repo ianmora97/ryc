@@ -21,7 +21,7 @@
 .u-section-1 .u-image-1 {
   width: 73px;
   height: 73px;
-  background-image: url("../images/Perfil/michi.jpg");
+  /* background-image: url("../images/Perfil/michi.jpg"); */
   background-position: 50% 50%;
   margin: 7px auto 0 -12px;
 }
@@ -34,7 +34,7 @@
 
 .u-section-1 .u-text-2 {
   font-size: 0.875rem;
-  margin: 0 62px 0 76px;
+  margin: 0 62px 0 72px;
 }
 
 .u-section-1 .u-text-3 {
