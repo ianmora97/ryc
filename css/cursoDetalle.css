@@ -10,7 +10,7 @@
 }
 
 .image-comentario {
-  width: 150%;
+  width: 100%;
 }
 .fecha-comentario{
   font-weight: 600;
@@ -536,6 +536,7 @@
     margin-left: auto;
   }
 }
+
 
 @media (max-width: 767px) {
   .ciclo-comentario{

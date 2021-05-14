@@ -60,15 +60,15 @@ router.get('/curso/show', (req, res) => {
     console.log(req.query.id_curso)
     db.query("call obtener_curso_id(?)", [req.query.id_curso],
         (errorCurso, cursoRow, fields) => {
-            console.log("Curso detalle:" + cursoRow[0])
-            let curso = cursoRow[0]
+            let curso = JSON.parse(JSON.stringify(cursoRow[0][0]))
+            
             if (!errorCurso) {
                 db.query("call obtener_opiniones_curso(?)", [req.query.id_curso],
                     (errorOpiniones, opinionesRows, fields) => {
                         console.log("opiniones del curso:" + opinionesRows[0])
                         if (!errorOpiniones) {
                             let opiniones = opinionesRows[0]
-                            res.render('/Global/detalle', { curso, opiniones, user });
+                            res.render('Global/detalle', { curso, opiniones, user });
                         } else {
                             console.log(errorCurso)
                             res.send({ status: 500 })

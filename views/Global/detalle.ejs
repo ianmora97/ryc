@@ -62,17 +62,24 @@
                         </g>
                       </g>
                     </svg></span>
-                  <h1 class="u-text u-text-custom-color-4 u-text-1">Programación II</h1>
-                  <p class="u-text u-text-default-lg u-text-default-xl u-text-2">Universidad Nacional&nbsp;</p>
-                  <p class="u-text u-text-3">4 creditos&nbsp; &nbsp;-&nbsp; EIF 202</p>
+
+                  <h1 class="u-text u-text-custom-color-4 u-text-1">
+                    <%=curso.nombre_curso%>
+                  </h1>
+                  <p class="u-text u-text-default-lg u-text-default-xl u-text-2">
+                    <%=curso.nombre_carrera%>&nbsp;
+                  </p>
+                  <p class="u-text u-text-3">
+                    <%=curso.creditos%> créditos&nbsp; &nbsp;-&nbsp; <%=curso.codigo_curso%>
+                  </p>
                   <a href="https://nicepage.com/k/card-html-templates"
-                    class="u-btn u-btn-round u-button-style u-hover-custom-color-3 u-palette-3-base u-radius-10 u-text-body-alt-color u-text-hover-white u-btn-1">Carta
-                    al estudiante</a>
+                    class="u-btn u-btn-round u-button-style u-hover-custom-color-3 u-palette-3-base u-radius-10 u-text-body-alt-color u-text-hover-white u-btn-1">
+                    Carta al estudiante</a>
                   <a href="https://nicepage.com/k/card-html-templates"
                     class="u-btn u-btn-round u-button-style u-hover-custom-color-3 u-palette-3-base u-radius-10 u-text-body-alt-color u-text-hover-white u-btn-2">Seguir</a>
-                  <p class="u-text u-text-4">Sample text. Click to select the text box. Click again or double click to
-                    start editing the text. Dictum non consectetur a erat nam at. Aliquam malesuada bibendum arcu vitae
-                    elementum curabitur vitae. Tellus mauris a diam maecenas sed enim ut sem.&nbsp;</p>
+                  <p class="u-text u-text-4">
+                    <%=curso.descripcion%>
+                  </p>
                 </div>
               </div>
             </div>
@@ -80,31 +87,51 @@
         </div>
         <div class="container">
           <div class="row d-flex justify-content-center">
-            <div class="col-8 col-mds-12 mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <div class="row border-bottom pb-3 mx-1">
-                    <div class="col-2 d-flex justify-content-end px-0">
-                      <div class="image-comentario-container">
-                        <img class="image-comentario" src="/images/Perfil/michi.jpg" alt="">
+            <% opiniones.forEach(function(opinion){%>
+              <div class="col-8 col-mds-12 mb-3">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row border-bottom pb-3 mx-1">
+                      <div class="col-2 d-flex justify-content-end px-0">
+                        <div class="image-comentario-container">
+                          <% if(opinion.imagen_perfil==null){ %>
+                            <img class="image-comentario" src="/images/Perfil/anonimo.png" alt="">
+                            <% } else { %>
+                              <img class="image-comentario" src="/images/Perfil/<%= opinion.imagen_perfil %>" alt="">
+                              <% } %>
+                        </div>
+                      </div>
+                      <div class="col-7 d-flex flex-column justiy-content-around">
+                        <span class="nombre-comentario">
+                          <%if(opinion.nombre_opinador !==null){ %>
+                            <%=opinion.nombre_opinador%>
+                              <%}else{%>
+                                <i>Anonimo</i>
+                                <%}%>
+                        </span>
+                        <span class="fecha-comentario">
+                          <%=opinion.fecha.split(" ")[0]%> <i class="fw-normal"> <%=opinion.fecha.split(" ")[1].substring(0,5) %> </i>
+                        </span>
+                      </div>
+                      <div class="col-3 px-0 d-flex flex-column align-items-end">
+                        <span class="ciclo-comentario fw-bold text-muted mt-auto">
+                          <%if(opinion.ciclo !==null){ %>
+                            I
+                            <%}else{%>
+                              II
+                            <%}%>
+                          CICLO <%=opinion.annio%></span>
                       </div>
                     </div>
-                    <div class="col-7 d-flex flex-column justiy-content-around">
-                      <span class="nombre-comentario">Luis Rojas</span>
-                      <span class="fecha-comentario">02/10/2021 <i class="fw-normal">8:40 </i> </span>
-                    </div>
-                    <div class="col-3 px-0 d-flex flex-column align-items-end">
-                      <span class="ciclo-comentario fw-bold text-muted mt-auto">II CICLO 2021</span>
-                    </div>
-                  </div>
-                  <div class="row pb-3 mx-1 mt-3">
-                    <div class="col-12 comentario">
-                      Hasta el momento, el curso parece ser bastante bueno, el profe se ve que es bueno dando clases y creo que puede ser de mucho provecho para un futuro
+                    <div class="row pb-3 mx-1 mt-3">
+                      <div class="col-12 comentario">
+                        <%=opinion.comentario%>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+              <%}); %>
           </div>
         </div>
       </div>
