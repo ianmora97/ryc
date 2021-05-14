@@ -108,7 +108,7 @@ router.get('/home/show', (req, res) => {
 router.get('/cursos', (req, res) => {
     let user = req.session.usuario;
     console.log(user)
-    res.render('/Global/cursos', { user });
+    res.render('estudiante/cursos', { user });
 });
 
 router.get('/perfil', (req, res) => {
@@ -146,5 +146,18 @@ function createUser(rows){
 router.get('/profe/show', (req, res) => {
     res.render('profesor/perfilProfesor');
 });
+
+router.get('/misCursos',(req,res)=>{
+    let user = req.session.usuario;
+    db.query('call obtener_cursos_estudiante(?);',[user.id_usuario],(err,rows,fields)=>{
+        if(!err){
+            let cursos = rows[0];
+            res.render('estudiante/misCursos',{cursos});
+        }
+        else{
+            res.send({status: 500});
+        }
+    })
+})
 
 module.exports = router;
