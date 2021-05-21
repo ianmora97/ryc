@@ -29,14 +29,27 @@ router.post('/login', (req, res) => {
                 if (rows[0].length !== 0) {
                     let user = createUser(rows[0])
                     req.session.usuario = user
-                    res.redirect('/home/show');
+                    if (user.rol == 1) {
+                        res.redirect('/profe/show');
+                    } else {
+                        res.redirect('/home/show');
+                    }
+
                 } else {
-                    let error = { status: 404 }
-                    res.render('Global/login', { error });
+                    let error = {
+                        status: 404
+                    }
+                    res.render('Global/login', {
+                        error
+                    });
                 }
             } else {
-                let error = { status: 404 }
-                res.render('Global/login', { error });
+                let error = {
+                    status: 404
+                }
+                res.render('Global/login', {
+                    error
+                });
             }
         })
 });
@@ -46,9 +59,13 @@ router.get('/sesion', ensureToken, (req, res) => {
     let user = req.session.usuario;
     var decoded = jwt.decode(req.token);
     // get the decoded payload and header
-    var decoded = jwt.decode(req.token, { complete: true });
+    var decoded = jwt.decode(req.token, {
+        complete: true
+    });
     console.log(decoded.payload);
-    res.render('sesion', { user });
+    res.render('sesion', {
+        user
+    });
 });
 
 router.get('/register/show', (req, res) => {
@@ -61,22 +78,30 @@ router.get('/curso/show', (req, res) => {
     db.query("call obtener_curso_id(?)", [req.query.id_curso],
         (errorCurso, cursoRow, fields) => {
             let curso = JSON.parse(JSON.stringify(cursoRow[0][0]))
-            
+
             if (!errorCurso) {
                 db.query("call obtener_opiniones_curso(?)", [req.query.id_curso],
                     (errorOpiniones, opinionesRows, fields) => {
                         console.log("opiniones del curso:" + opinionesRows[0])
                         if (!errorOpiniones) {
                             let opiniones = opinionesRows[0]
-                            res.render('Global/detalle', { curso, opiniones, user });
+                            res.render('Global/detalle', {
+                                curso,
+                                opiniones,
+                                user
+                            });
                         } else {
                             console.log(errorCurso)
-                            res.send({ status: 500 })
+                            res.send({
+                                status: 500
+                            })
                         }
                     });
             } else {
                 console.log(errorCurso)
-                res.send({ status: 500 })
+                res.send({
+                    status: 500
+                })
             }
         });
 });
@@ -91,9 +116,13 @@ router.post('/register/insert', (req, res) => {
             }
             console.log(user)
             req.session.usuario = user;
-            res.send({ status: 200 })
+            res.send({
+                status: 200
+            })
         } else {
-            res.send({ status: 500 })
+            res.send({
+                status: 500
+            })
         }
     })
 });
@@ -112,15 +141,23 @@ router.get('/home/show', (req, res) => {
                 db.query("call obtener_cursos_estudiante_actual(?,?)", [user.id_usuario, ciclo], (errorCursos, cursosRows, fields) => {
                     if (!errorCursos) {
                         cursos = cursosRows[0];
-                        res.render('estudiante/home', { opiniones, cursos, user });
+                        res.render('estudiante/home', {
+                            opiniones,
+                            cursos,
+                            user
+                        });
                     } else {
                         console.log(errorCursos)
-                        res.send({ status: 500 })
+                        res.send({
+                            status: 500
+                        })
                     }
                 })
             } else {
                 console.log(errorOpiniones)
-                res.send({ status: 500 })
+                res.send({
+                    status: 500
+                })
             }
         })
     } else {
@@ -133,7 +170,9 @@ router.get('/home/show', (req, res) => {
 router.get('/cursos', (req, res) => {
     let user = req.session.usuario;
     console.log(user)
-    res.render('estudiante/cursos', { user });
+    res.render('estudiante/cursos', {
+        user
+    });
 });
 
 router.get('/perfil', (req, res) => {
@@ -144,9 +183,14 @@ router.get('/perfil', (req, res) => {
                 if (!error) {
                     let perfil = rows[0][0];
                     console.log(perfil)
-                    res.render('estudiante/Perfil', { perfil, user });
+                    res.render('estudiante/Perfil', {
+                        perfil,
+                        user
+                    });
                 } else {
-                    res.send({ status: 500 })
+                    res.send({
+                        status: 500
+                    })
                 }
             })
     } else {
@@ -157,7 +201,9 @@ router.get('/perfil', (req, res) => {
 router.get('/buscar', (req, res) => {
     let user = req.session.usuario;
     console.log(user)
-    res.render('Global/buscar', { user });
+    res.render('Global/buscar', {
+        user
+    });
 
 });
 
@@ -168,7 +214,9 @@ router.get('/traerCursos', (req, res) => {
             res.send(cursos);
         } else {
             console.log(error)
-            res.send({ status: 500 })
+            res.send({
+                status: 500
+            })
         }
     })
 });
@@ -182,18 +230,40 @@ function createUser(rows) {
 }
 
 router.get('/profe/show', (req, res) => {
-    res.render('profesor/perfilProfesor');
-});
+    if (req.session.usuario) {
+        let user = req.session.usuario;
 
-router.get('/misCursos',(req,res)=>{
+        db.query("call obtener_profesor_id(?)", [user.id_usuario], (error, rows, fields) => {
+            if (!error) {
+                perfil = rows[0][0];
+                res.render('profesor/perfilProfesor', {
+                    perfil,
+                    user
+                });
+            } else {
+                console.log(error)
+                res.send({
+                    status: 500
+                })
+            }
+        })
+    } else {
+        res.render('Global/login');
+    }
+})
+
+router.get('/misCursos', (req, res) => {
     let user = req.session.usuario;
-    db.query('call obtener_cursos_estudiante(?);',[user.id_usuario],(err,rows,fields)=>{
-        if(!err){
+    db.query('call obtener_cursos_estudiante(?);', [user.id_usuario], (err, rows, fields) => {
+        if (!err) {
             let cursos = rows[0];
-            res.render('estudiante/misCursos',{cursos});
-        }
-        else{
-            res.send({status: 500});
+            res.render('estudiante/misCursos', {
+                cursos
+            });
+        } else {
+            res.send({
+                status: 500
+            });
         }
     })
 })

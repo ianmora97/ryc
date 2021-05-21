@@ -24,6 +24,7 @@ app.use(express.static(__dirname));
 
 //Rutas
 app.use(require('./routes/main.routes'));
+app.use(require('./routes/perfil.routes'));
 
 const server = app.listen( app.get('port'), ()=>{
     console.log('Server running in', chalk.yellowBright('http://localhost:80'));

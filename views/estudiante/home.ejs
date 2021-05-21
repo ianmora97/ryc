@@ -8,9 +8,57 @@
 </head>
 
 <body class="u-body">
+
     <%- include('../Global/menu')%>
+
+        <!-- Modal -->
+        <div class="modal fade" id="comentarioModal" tabindex="-1" aria-labelledby="comentarioModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content" style="background-color: #fafafa;">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="comentarioModalLabel" style="font-size: 25px;">Comentarios
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="cometarios">
+                            <div class="container-comentario">
+                                <div class="punto"></div>
+                                <div class="linea primero"></div>
+                                <div class="comentario">
+                                    <div class="card mt-2">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-1 p-0">
+                                                    <div class="container-img-coment">
+                                                        <img class="img-comentario" src="/images/Perfil/michi.jpg" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="row fw-bold text-dark">
+                                                        David Agular Rojas
+                                                    </div>
+                                                    <div class="row">
+                                                        prueba <br>
+                                                        algo mas <br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <section class="u-clearfix u-palette-5-light-3 u-section-1" id="sec-aa93">
-            <div class="u-clearfix u-sheet u-sheet-1 justiy-content-between">
+            <div class="u-clearfix u-sheet u-sheet-1 justiy-content-between full-xs">
                 <div class="container-opions">
                     <% opiniones.forEach(function(opinion){ %>
                         <div id="opinion-card"
@@ -78,6 +126,26 @@
                                         </p>
                                     </div>
                                 </div>
+                                <div class="row  h-25 acciones-opinion">
+                                    <div class="col-9 d-flex h-25">
+
+                                        <button type="button" class="btn btn-sm btn-secondary likes">
+                                            <i class="far fa-thumbs-up"></i> <span>3</span>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-secondary dislikes">
+                                            <i class="far fa-thumbs-down"></i><span>3</span>
+                                        </button>
+                                    </div>
+                                    <div class="col d-flex justify-content-center align-items-center h-25">
+                                        <button type="button" class="btn btn-sm btn-secondary reacciones">
+                                            <i class="fas fa-hand-holding-heart"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-sm comments-trigger "
+                                            data-bs-toggle="modal" data-bs-target="#comentarioModal">
+                                            <i class="fas fa-comment-dots"></i> <span>1</span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <% }); %>
@@ -85,12 +153,15 @@
                 <div
                     class="container-info u-container-style u-group u-hidden-md u-hidden-sm u-hidden-xs u-radius-4 u-shape-round u-white ">
                     <div class="u-container-layout u-container-layout-1">
-                        <div alt="" class="u-image " data-image-width="1280"
-                            data-image-height="851">
-                        <img class="u-image-circle u-image-1" src="/images/Perfil/<%=user.imagen_perfil%>" alt="">
+                        <div alt="" class="u-image " data-image-width="1280" data-image-height="851">
+                            <img class="u-image-circle u-image-1" src="/images/Perfil/<%=user.imagen_perfil%>" alt="">
                         </div>
-                        <p class="u-text u-text-1"><%=user.id_usuario%></p>
-                        <p class="u-text u-text-2"><%=user.correo%></p>
+                        <p class="u-text u-text-1">
+                            <%=user.nombre%>
+                        </p>
+                        <p class="u-text u-text-2">
+                            <%=user.correo%>
+                        </p>
                         <p class="u-text u-text-palette-5-dark-1 u-text-3">Tus cursos</p>
                         <% cursos.forEach(function(curso){%>
                             <div
@@ -112,7 +183,7 @@
                                             <% }else{ %>
                                                 II
                                                 <% } %>
-                                                    CICLO 
+                                                    CICLO
                                     </p>
                                 </div>
                             </div>
@@ -122,7 +193,16 @@
                 </div>
             </div>
         </section>
+        <script>
+            $("#comentarioModal").on("show", function () {
+                $("body").addClass("modal-open");
+            }).on("hidden", function () {
+                $("body").removeClass("modal-open")
+            });
+        </script>
 
-        <%- include('../Global/menuBottom')%>
+        <body>
+
+            <%- include('../Global/menuBottom')%>
 
 </html>

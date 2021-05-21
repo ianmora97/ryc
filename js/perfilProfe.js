@@ -1,4 +1,4 @@
-var g_MapCursosEstudiante = new Map();
+var g_MapCursosProfe = new Map();
 
 function loaded(event){
     events(event);
@@ -13,7 +13,7 @@ function loadFromDB(){
     let id = $('#idUsuario').html();
     $.ajax({
         type: "GET",
-        url: "/api/perfil/cursos",
+        url: "/api/perfilProfe/cursos",
         data: {id},
         contentType: "application/json"
     }).then((cursos) => {
@@ -21,27 +21,51 @@ function loadFromDB(){
     }, (error) => {
     });
 }
+
 function onOpenModal(){
     $('#detalleCurso').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget)
-        var recipient = button.data('id')
-        let curso = g_MapCursosEstudiante.get(parseInt(recipient))
+        var recipient = button.data('codigo')
+        let curso = g_MapCursosProfe.get(parseInt(recipient))
         
-        $('#nombreCursoModal').html(curso.curso_nombre);
+        $('#nombreCursoModal').html(curso.nombre);
 
         $('#carreraCursoModal').html(curso.universidad);
-        $('#creditosCursoModal').html(curso.creditos + " " + curso.codigo_area + " " + curso.codigo_curso);
+        $('#creditosCursoModal').html(curso.creditos + " " + curso.codigo + " " + curso.codigo_curso);
        
         $('#carreraCursoModal1').html(curso.universidad);
-        $('#creditosCursoModal1').html(curso.creditos + " " + curso.codigo_area + " " + curso.codigo_curso);
+        $('#creditosCursoModal1').html("Creditos: " + curso.creditos + " Código:" + curso.codigo + "-" + curso.codigo_curso);
         
-        $('#descripcionCursoModal').html(curso.curso_descripcion);
+        $('#descripcionCursoModal').html(curso.descripcion);
     })
 }
+
+function llenarCursosStand(data) {
+    $('#cursos').html('');
+    data.forEach(e => {
+        g_MapCursosProfe.set(e.codigo_curso,e);
+        printCursos(e);
+    });
+}
+
+function printCursos(curso) {
+    console.log(curso)
+    $('#cursos').append(`
+    <div class="col-lg animate__animated animate__fadeIn">
+        <h6 class="text-center">${curso.nombre}</h6>
+        <div class="mx-auto d-block" style="width="200px" role="button" data-codigo="${curso.codigo_curso}" data-bs-toggle="modal" data-bs-target="#detalleCurso">
+            <img src="/images/Icons/clipboard.png" width="150px" style="display:block; margin:0 auto;">
+        </div>
+    </div>
+
+    `);
+}
+
 var g_cambioEditar = {
     correo:0,
     user:0
-};
+}
+
 function cerrarEdicion(button){
     $('#botonEditarPerfil').html('');
     $('#botonEditarPerfil').html(`<button type="button" class="btn btn-secondary btn-sm mt-1" 
@@ -66,6 +90,7 @@ function cerrarEdicion(button){
         $('#userCorreoE').html(`${correo}`);
     }
 }
+
 function editarPerfilPrompt() {
     let usuario = $('#perfilUsernameE').html().split('@')[1];
     let correo = $('#userCorreoE').html();
@@ -124,23 +149,5 @@ function cambiarCorreoUsuario(input) {
     }, (error) => {
     });
 }
-function llenarCursosStand(data) {
-    $('#cursosRestantes').html('');
-    data.forEach(e => {
-        g_MapCursosEstudiante.set(e.id,e);
-        printCursos(e);
-    });
-}
-function printCursos(curso) {
-    
-    $('#cursosRestantes').append(`
-    <div class="col-lg animate__animated animate__fadeIn">
-        <h6 class="text-center">${curso.curso_nombre}</h6>
-        <div class="libroCus mx-auto d-block" role="button" data-id="${curso.id}" data-bs-toggle="modal" data-bs-target="#detalleCurso">
-            <div class="lineBookO1"></div>
-            <div class="lineBookO2"></div>
-        </div>
-    </div>
-    `);
-}
+
 document.addEventListener("DOMContentLoaded", loaded);
