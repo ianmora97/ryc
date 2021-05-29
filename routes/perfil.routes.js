@@ -6,64 +6,66 @@ const jwt = require('jsonwebtoken');
 
 router.get('/api/perfil/cursos', (req, res) => {
     db.query("call obtener_cursos_estudiante(?)",
-    [req.query.id],
-    (error, rows, fields) => {
-        if (!error) {
-            if (rows[0].length !== 0) {
-                res.send(rows[0]);
+        [req.query.id],
+        (error, rows, fields) => {
+            if (!error) {
+                if (rows[0].length !== 0) {
+                    res.send(rows[0]);
+                } else {
+                    let error = { status: 404 }
+                    res.send({ error });
+                }
             } else {
                 let error = { status: 404 }
                 res.send({ error });
             }
-        } else {
-            let error = { status: 404 }
-            res.send({ error });
-        }
-    })
+        })
 });
 
 router.get('/api/perfilProfe/cursos', (req, res) => {
     db.query("call obtener_cursos_profesor(?)",
-    [req.query.id],
-    (error, rows, fields) => {
-        if (!error) {
-            if (rows[0].length !== 0) {
-                res.send(rows[0]);
+        [req.query.id],
+        (error, rows, fields) => {
+            if (!error) {
+                if (rows[0].length !== 0) {
+                    res.send(rows[0]);
+                } else {
+                    let error = { status: 404 }
+                    res.send({ error });
+                }
             } else {
                 let error = { status: 404 }
                 res.send({ error });
             }
-        } else {
-            let error = { status: 404 }
-            res.send({ error });
-        }
-    })
+        })
 });
 
 router.get('/perfil/cambiarNombreUsuario', (req, res) => {
     db.query("call update_usuario_username(?,?)",
-    [req.query.id,req.query.val],
-    (error, rows, fields) => {
-        if (!error) {
-            res.send(rows);
-        } else {
-            let error = { status: 404 }
-            res.send({ error });
-        }
-    })
+        [req.query.id, req.query.val],
+        (error, rows, fields) => {
+            if (!error) {
+                req.session.usuario.username = req.query.val;
+                res.send(rows);
+            } else {
+                let error = { status: 404 }
+                res.send({ error });
+            }
+        })
 });
 
 router.get('/perfil/cambiarCorreo', (req, res) => {
     db.query("call update_usuario_correo(?,?)",
-    [req.query.id,req.query.val],
-    (error, rows, fields) => {
-        if (!error) {
-            res.send(rows);
-        } else {
-            let error = { status: 404 }
-            res.send({ error });
-        }
-    })
+        [req.query.id, req.query.val],
+        (error, rows, fields) => {
+            if (!error) {
+                req.session.usuario.correo = req.query.val;
+                res.send(rows);
+            } else {
+                let error = { status: 404 }
+                res.send({ error });
+            }
+        })
 });
 
 // Authorization: Bearer <token>
@@ -79,5 +81,22 @@ function ensureToken(req, res, next) {
     }
 }
 
+router.get('/api/cursos', (req, res) => {
+    db.query("call obtener_cursos_estudiante_actual(?,?)",
+        [req.query.id, 1],
+        (error, rows, fields) => {
+            if (!error) {
+                if (rows[0].length !== 0) {
+                    res.send(rows[0]);
+                } else {
+                    let error = { status: 404 }
+                    res.send({ error });
+                }
+            } else {
+                let error = { status: 404 }
+                res.send({ error });
+            }
+        })
+});
 
 module.exports = router;
