@@ -43,29 +43,9 @@ var g_cambioEditar = {
     user:0
 };
 function cerrarEdicion(button){
-    $('#botonEditarPerfil').html('');
-    $('#botonEditarPerfil').html(`<button type="button" class="btn btn-secondary btn-sm mt-1" 
-    id="botonEditarPerfil" onclick="editarPerfilPrompt()">Editar Perfil</button>`);
-
-    if(g_cambioEditar.correo){
-        let usuario = "@"+$('#cambioUsuarioID').val();
-        $('#perfilUsernameE').html('');
-        $('#perfilUsernameE').html(`${usuario}`);
-    }
-    if(g_cambioEditar.user){
-        let correo = $('#cambioCorreoID').val();
-        $('#userCorreoE').html('');
-        $('#userCorreoE').html(`${correo}`);
-    }
-    if(!g_cambioEditar.correo && !g_cambioEditar.user){
-        let usuario = "@"+$('#cambioUsuarioID').val();
-        $('#perfilUsernameE').html('');
-        $('#perfilUsernameE').html(`${usuario}`);
-        let correo = $('#cambioCorreoID').val();
-        $('#userCorreoE').html('');
-        $('#userCorreoE').html(`${correo}`);
-    }
+    location.href = "/perfil"
 }
+
 function editarPerfilPrompt() {
     let usuario = $('#perfilUsernameE').html().split('@')[1];
     let correo = $('#userCorreoE').html();

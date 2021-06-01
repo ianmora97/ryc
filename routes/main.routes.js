@@ -169,7 +169,6 @@ router.get('/home/show', (req, res) => {
 
 router.get('/cursos', (req, res) => {
     let user = req.session.usuario;
-    console.log(user)
     res.render('estudiante/cursos', {
         user
     });
@@ -207,6 +206,11 @@ router.get('/buscar', (req, res) => {
 
 });
 
+router.get('/opinion', (req, res) => {
+    let user = req.session.usuario;
+    res.render('Global/buscar', { user });
+});
+
 router.get('/traerCursos', (req, res) => {
     db.query("call obtener_cursos();", (error, rows, fields) => {
         if (!error) {
@@ -220,8 +224,6 @@ router.get('/traerCursos', (req, res) => {
         }
     })
 });
-
-
 
 function createUser(rows) {
     let jsonRows = JSON.stringify(rows[0])
@@ -253,19 +255,50 @@ router.get('/profe/show', (req, res) => {
 })
 
 router.get('/misCursos', (req, res) => {
-    let user = req.session.usuario;
-    db.query('call obtener_cursos_estudiante(?);', [user.id_usuario], (err, rows, fields) => {
-        if (!err) {
-            let cursos = rows[0];
-            res.render('estudiante/misCursos', {
-                cursos
-            });
-        } else {
-            res.send({
-                status: 500
-            });
-        }
-    })
+    if (req.session.usuario) {
+        let user = req.session.usuario;
+        db.query('call obtener_cursos_estudiante(?);', [user.id_usuario], (err, rows, fields) => {
+            if (!err) {
+                let cursos = rows[0];
+                res.render('estudiante/cursos', {
+                    cursos
+                });
+            } else {
+                res.send({
+                    status: 500
+                });
+            }
+        })
+    } else {
+        res.render('Global/login');
+    }
 })
 
-module.exports = router;
+router.get('/cursos/show', (req, res) => {
+    if (req.session.usuario) {
+        let user = req.session.usuario;
+        console.log(user)
+        res.render('estudiante/cursos', { user });
+    } else {
+        res.render('Global/login');
+    }
+});
+
+router.get('/cursos/guardarOpinion', (req, res) => {
+    db.query("call insert_opinion(?,?,?,?,?,?)", [req.query.id, req.query.grupo, 0, req.query.opinion, 0, 1], (error, rows, fields) => {
+        if (!error) {
+            console.log("SE GUARDO LA OPINION ==================================================")
+            res.send({
+                status: 200
+            })
+        }else{
+            console.log(error);
+            console.log("NOOOOOOOOOOOO SE GUARDO LA OPINION ==================================================")
+            res.send({
+                status: 500
+            })
+        }
+    });
+});
+
+module.exports = router;    

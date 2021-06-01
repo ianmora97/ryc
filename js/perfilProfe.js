@@ -67,28 +67,7 @@ var g_cambioEditar = {
 }
 
 function cerrarEdicion(button){
-    $('#botonEditarPerfil').html('');
-    $('#botonEditarPerfil').html(`<button type="button" class="btn btn-secondary btn-sm mt-1" 
-    id="botonEditarPerfil" onclick="editarPerfilPrompt()">Editar Perfil</button>`);
-
-    if(g_cambioEditar.correo){
-        let usuario = "@"+$('#cambioUsuarioID').val();
-        $('#perfilUsernameE').html('');
-        $('#perfilUsernameE').html(`${usuario}`);
-    }
-    if(g_cambioEditar.user){
-        let correo = $('#cambioCorreoID').val();
-        $('#userCorreoE').html('');
-        $('#userCorreoE').html(`${correo}`);
-    }
-    if(!g_cambioEditar.correo && !g_cambioEditar.user){
-        let usuario = "@"+$('#cambioUsuarioID').val();
-        $('#perfilUsernameE').html('');
-        $('#perfilUsernameE').html(`${usuario}`);
-        let correo = $('#cambioCorreoID').val();
-        $('#userCorreoE').html('');
-        $('#userCorreoE').html(`${correo}`);
-    }
+    location.href = "/profe/show"
 }
 
 function editarPerfilPrompt() {
@@ -136,7 +115,7 @@ function cambiarNombreUsuario(input) {
 function cambiarCorreoUsuario(input) {
     let id = $('#idUsuario').html();
     let val = $('#cambioCorreoID').val();
-    
+    console.log(id, val);
     $.ajax({
         type: "GET",
         url: "/perfil/cambiarCorreo",
