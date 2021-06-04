@@ -8,21 +8,61 @@
   <body class="u-body">
     <%- include('../Global/menu')%>
     <div class="container mt-3 py-2 border-bottom">
+		<div class="modal fade" id="detalleCurso" tabindex="-1" aria-labelledby="detalleCursoLabel" aria-hidden="true">
+			<div class="modal-dialog modal-fullscreen">
+				<div class="modal-content bg-light">
+					<div class="modal-header border-bottom-0">
+						<h5 class="modal-title" id="detalleCursoLabel"></h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body ">
+						<div class="container bg-white mt-3 py-5">
+							<div class="row mx-0 ">
+								<div class="col-3 d-flex justify-content-lg-end justify-content-md-start ps-0">
+									<img class="imagenPerfil" src="/images/Icons/circleYellow.png">
+								</div>
+								<div class="col-9 row mx-0 d-flex justify-content-start">
+									<div class="col-sm-6">
+										<h2 class="my-0" id="nombreCursoModal"></h2>
+									</div>
+									<div class="col-sm-6 flex-column">
+										<button type="button" class="btn btn-primary btn-sm mt-1">Carta al Estudiante</button>
+									</div>
+									<div id="infoDescUp">
+										<span class="text-muted" id="carreraCursoModal"></span><br>
+										<span class="text-muted" id="creditosCursoModal"></span>
+									</div>
+								</div>
+							</div>
+							<div class="row mx-0 mt-3" id="infoDescBottom">
+								<span class="text-muted" id="carreraCursoModal1"></span><br>
+								<span class="text-muted" id="creditosCursoModal1"></span>
+							</div>
+							<div class="row pb-2 border-bottom ">
+								<span class="" id="descripcionCursoModal"></span><br>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<span class="sr-only" id="idUsuario"><%= user.id_usuario%></span>
         <div class="row mx-0 ">
             <div class="col-3 d-flex justify-content-lg-end justify-content-md-start ps-0">
               	<img class="imagenPerfil" src="/images/Perfil/<%=user.imagen_perfil%>">
             </div>
             <div class="col-9 row mx-0 d-flex justify-content-start">
 				<div class="col-sm-6">
-					<h2 class="display-1 my-0">@<%= perfil.username%></h2>
+					<h2 class="display-1 my-0" id="perfilUsernameE">@<%= perfil.username%></h2>
 				</div>
-				<div class="col-sm-6 flex-column">
-					<button type="button" class="btn btn-secondary btn-sm mt-1">Editar Perfil</button>
+				<div class="col-sm-6 flex-column" id="botonEditarPerfil">
+					<button type="button" class="btn btn-secondary btn-sm mt-1" 
+					id="botonEditarPerfil" onclick="editarPerfilPrompt()">Editar Perfil</button>
 				</div>
 				<div id="infoDescUp">
 					<strong><%= user.nombre%></strong><br>
 					<span class="text-muted"><%= perfil.carrera%></span><br>
-					<span class="text-primary"><%= user.correo%></span>
+					<span class="text-primary" id="userCorreoE"><%= user.correo%></span>
 				</div>
             </div>
         </div>
@@ -32,333 +72,12 @@
 			<span class="text-primary"><%= user.correo%></span>
 		</div>  
     </div>
-    <div class="container border border-5 rounded-3 border-primary bg-primary p-0 mt-4">
-		<div class="mx-0 bg-white stand" id="cursosRestantes" style="overflow-x: auto; min-width: 100%;">
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-			<div class="libroCus">
-				<div class="lineBookO mt-3"></div>
-				<div class="lineFlipText">prueba</div>
-				<div class="lineBookO mt-5"></div>
-			</div>
-		</div>
-		<div class="row mx-0 bg-white stand mt-2" id="cursosCursados">
-			
+    <div class="container p-0 mt-4" >
+		<div class="row w-100 mx-0" id="cursosRestantes">
+
 		</div>
 	</div>
     <%- include('../Global/menuBottom')%>
+	<script src="/js/perfil.js"></script>
   </body>
 </html>

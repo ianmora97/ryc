@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;">
+<html id="html">
 
 <head>
     <title>Home</title>
@@ -8,9 +8,139 @@
 </head>
 
 <body class="u-body">
+
     <%- include('../Global/menu')%>
+
+        <!-- Modal -->
+        <div class="modal fade" id="comentarioModal" tabindex="-1" aria-labelledby="comentarioModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content" style=" background-color: #f5f7fa;">
+                    <div class="modal-header d-flex bg-white">
+                        <i class="far fa-comment-dots fa-2x"></i>
+                        <h5 class="modal-title mx-3 fw-bold" id="comentarioModalLabel" style="font-size: 25px;">
+                            Comentarios
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick='closeModal()'></button>
+                    </div>
+                    <div class="modal-body ">
+                        <div class="container">
+                            <div class="row p-4 rounded">
+                                <div class="col-5 p-3 bg-white   ">
+                                    <div class="row border-bottom pb-2">
+                                        <div class="col-2 p-0 d-flex justify-content-end">
+                                            <div class="container-img-coment">
+                                                <img class="img-comentario" id="opinador-imagen-modal"  alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="row fw-bold text-dark" id="opinador-nombre-modal">
+                                                Anonimo
+                                            </div>
+                                            <div class="row d-flex justify-content-between">
+                                                <span class="col text-muted p-0" id="opinador-fecha-modal">sf </span>
+                                                <span class="col text-end text-muted p-0 fst-italic" id="opinador-hora-modal"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <p id="opinador-opinion-modal">
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                            Lorem Ipsum has been the industry's standard dummy text ever since the
+                                            1500s, when an unknown printer took a galley of type and scrambled it to
+                                            make a type specimen book. It has survived not only five centuries, but also
+                                            the leap into electronic typesetting, remaining essentially unchanged. It
+                                            was popularised in the 1960s with the release of Letraset sheets containing
+                                            Lorem Ipsum passages, and more recently with desktop publishing software
+                                            like Aldus PageMaker including versions of Lorem Ipsum
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-7 bg-white p-0">
+                                    <div class="comentarios-section">
+                                        <div class="container">
+                                            <div class="row border-bottom p-3 pb-2">
+                                                <div class="col-2 d-flex justify-content-end">
+                                                    <div class="overflow-hidden rounded p-2"
+                                                        style="width: 60px; height: 60px; background-color: #f2cc39;">
+                                                        <img class="w-100" src="/images/Icons/computer.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="row fw-bold text-dark">
+                                                        Estructuras de datos
+                                                    </div>
+                                                    <div class="row d-flex justify-content-between">
+                                                        <span class="text-muted fw-bold p-0 col">Universidad Nacional
+                                                        </span>
+                                                        <span
+                                                            class="text-muted fw-light  p-0 col d-flex justify-content-end">Juan
+                                                            de Dios </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="comentarios-wrapper" class="comentarios-wrapper">
+                                            
+                                        </div>
+
+
+                                        <div class="coemntario-wrapper-modal">
+                                            <div class="comentario-modal-container ">
+                                                <div class="row">
+                                                    <div class="col-2 p-0 d-flex justify-content-end">
+                                                        <div class="container-img-coment">
+                                                            <img class="img-comentario"
+                                                                src="/images/Perfil/<%=user.imagen_perfil%>" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="row w-100  fw-bold text-dark">
+                                                            <div class="d-flex d-flex justify-content-between">
+                                                                <div>
+                                                                    <%=user.nombre%>
+                                                                </div>
+                                                                <div>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                            value="" id="anonimo_check">
+                                                                        <label class="form-check-label"
+                                                                            for="anonimo_check">
+                                                                            Anónimo
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-2">
+                                                            <textarea type="text" class="form-control"
+                                                                placeholder="Comentar..." name="comentario"
+                                                                id="comentario_text"></textarea>
+                                                        </div>
+                                                        <div class="row d-flex justify-content-end w-100">
+                                                            <div class="btn btn-secondary w-25 mt-3"
+                                                                id="btn_enviar_comentario">
+                                                                Comentar
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <section class="u-clearfix u-palette-5-light-3 u-section-1" id="sec-aa93">
-            <div class="u-clearfix u-sheet u-sheet-1 justiy-content-between">
+            <div class="u-clearfix u-sheet u-sheet-1 justiy-content-between full-xs">
                 <div class="container-opions">
                     <% opiniones.forEach(function(opinion){ %>
                         <div id="opinion-card"
@@ -78,6 +208,36 @@
                                         </p>
                                     </div>
                                 </div>
+                                <div class="row  h-25 acciones-opinion">
+                                    <div class="col-9 d-flex h-25">
+                                        <button type="button" class="btn btn-sm btn-secondary likes"
+                                            onclick="like('<%=opinion.id_opinion%>')">
+                                            <i class="far fa-thumbs-up"></i> <span id="likes_<%=opinion.id_opinion%>">
+                                                <%=opinion.likesCount%>
+                                            </span>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-secondary dislikes"
+                                            onclick="dislike('<%=opinion.id_opinion%>')">
+                                            <i class="far fa-thumbs-down"></i><span
+                                                id="dislikes_<%=opinion.id_opinion%>">
+                                                <%=opinion.dislikesCount%>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <div class="col d-flex justify-content-center align-items-center h-25">
+                                        <button type="button" class="btn btn-sm btn-secondary reacciones">
+                                            <i class="fas fa-hand-holding-heart"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-sm comments-trigger"
+                                            onclick="getComentarios('<%=opinion.id_opinion%>')" data-bs-toggle="modal"
+                                            data-bs-target="#comentarioModal">
+                                            <i class="fas fa-comment-dots"></i> <span
+                                                id="cant_comment_<%=opinion.id_opinion%>">
+                                                <%=opinion.cant_comentarios%>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <% }); %>
@@ -85,12 +245,15 @@
                 <div
                     class="container-info u-container-style u-group u-hidden-md u-hidden-sm u-hidden-xs u-radius-4 u-shape-round u-white ">
                     <div class="u-container-layout u-container-layout-1">
-                        <div alt="" class="u-image " data-image-width="1280"
-                            data-image-height="851">
-                        <img class="u-image-circle u-image-1" src="/images/Perfil/<%=user.imagen_perfil%>" alt="">
+                        <div alt="" class="u-image " data-image-width="1280" data-image-height="851">
+                            <img class="u-image-circle u-image-1" src="/images/Perfil/<%=user.imagen_perfil%>" alt="">
                         </div>
-                        <p class="u-text u-text-1"><%=user.id_usuario%></p>
-                        <p class="u-text u-text-2"><%=user.correo%></p>
+                        <p class="u-text u-text-1">
+                            <%=user.nombre%>
+                        </p>
+                        <p class="u-text u-text-2">
+                            <%=user.correo%>
+                        </p>
                         <p class="u-text u-text-palette-5-dark-1 u-text-3">Tus cursos</p>
                         <% cursos.forEach(function(curso){%>
                             <div
@@ -112,7 +275,7 @@
                                             <% }else{ %>
                                                 II
                                                 <% } %>
-                                                    CICLO 
+                                                    CICLO
                                     </p>
                                 </div>
                             </div>
@@ -122,7 +285,23 @@
                 </div>
             </div>
         </section>
+        <input type="hidden" name="user_session" id="user_session" value="<%=user.id_usuario%>" />
+        <input type="hidden" name="comentario_anonimo" id="comentario_anonimo" value="false" />
+        <script>
+            let OPINIONESGLOBALES = '<%-JSON.stringify(opiniones)%>';
+        </script>
+        <script>
+            $("#comentarioModal").on("show", function () {
+                alert($("#html"));
+                $("#html").css("overflow","hidden");
+            }).on("hidden", function () {
+                $("#html").css("overflow","hidden");
+            });
+        </script>
+        <script src="/js/home.js"></script>
 
-        <%- include('../Global/menuBottom')%>
+        <body>
+
+            <%- include('../Global/menuBottom')%>
 
 </html>
