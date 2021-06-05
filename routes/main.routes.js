@@ -23,12 +23,12 @@ router.get('/', (req, res) => {
 
 router.post('/login', (req, res) => {
     db.query("call obtener_usuario(?,?)",
-        [req.body.username, req.body.password],
+        [req.body.username, req.body.clave],
         (error, rows, fields) => {
             if (!error) {
                 if (rows[0].length !== 0) {
                     let user = createUser(rows[0])
-                    req.session.usuario = user
+                    req.session.usuario = user;
                     if (user.rol == 1) {
                         res.redirect('/profe/show');
                     } else {
@@ -44,6 +44,7 @@ router.post('/login', (req, res) => {
                     });
                 }
             } else {
+                
                 let error = {
                     status: 404
                 }
@@ -170,8 +171,68 @@ router.get('/home/show', (req, res) => {
 router.get('/cursos', (req, res) => {
     let user = req.session.usuario;
     res.render('estudiante/cursos', {
+        pag:'Cursos',
         user
     });
+});
+
+router.get('/encuestas', (req, res) => {
+    if(req.session.usuario){
+        if(req.session.usuario.rol == 1){
+            let user = req.session.usuario;
+            res.render('profesor/encuestas', {
+                pag:'Encuestas',
+                user
+            });
+        }else{
+            res.render('Global/login');
+        }
+    }else{
+        res.render('Global/login');
+    }
+});
+
+router.get('/api/encuestas', (req, res) => {
+    if(req.session.usuario){
+        if(req.session.usuario.rol == 1){
+            db.query("call obtener_encuestas(?)", [req.query.id], 
+            (error, rows, fields) => {
+                if (!error) {
+                    res.send(rows[0])
+                } else {
+                    res.send(error)
+                }
+            })
+        }else{
+            res.render('Global/login');
+        }
+    }else{
+        res.render('Global/login');
+    }
+});
+
+router.get('/insertar/encuesta', (req, res) => {
+    console.log('insertar encuesta',req.query)
+    if(req.session.usuario){
+        if(req.session.usuario.rol == 1){
+            db.query("call insert_encuesta(?,?)", [req.query.codigo, req.query.encuesta], 
+            (error, rows, fields) => {
+                if (!error) {
+                    res.send({
+                        status: 200
+                    })
+                } else {
+                    res.send({
+                        status: 500
+                    })
+                }
+            })
+        }else{
+            res.render('Global/login');
+        }
+    }else{
+        res.render('Global/login');
+    }
 });
 
 router.get('/perfil', (req, res) => {
@@ -239,6 +300,7 @@ router.get('/profe/show', (req, res) => {
             if (!error) {
                 perfil = rows[0][0];
                 res.render('profesor/perfilProfesor', {
+                    pag:'Perfil',
                     perfil,
                     user
                 });

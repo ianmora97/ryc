@@ -1,15 +1,27 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-bottom" id="menu-cus-bottom">
     <div class="container-fluid">
         <div class="row w-100 mx-0">
-            <div class="col-4">
-                <a class="nav-link  text-center" href="/cursos"><i class="fas text-white fa-2x fa-book"></i></a>
-            </div>
-            <div class="col-4">
-                <a class="nav-link  text-center" href="/home/show"><i class="fas text-white fa-2x fa-home"></i></a>
-            </div>
-            <div class="col-4">
-                <a class="nav-link  text-center" href="/perfil"><i class="fas text-white fa-2x fa-user"></i></a>
-            </div>
+            <% if(user.rol == 0){%>
+                <div class="col">
+                    <a class="nav-link  text-center" href="/cursos"><i class="fas text-white fa-2x fa-book"></i></a>
+                </div>
+                <div class="col">
+                    <a class="nav-link  text-center" href="/home/show"><i class="fas text-white fa-2x fa-home"></i></a>
+                </div>
+                <div class="col">
+                    <a class="nav-link  text-center" href="/perfil/show"><i class="fas text-white fa-2x fa-user"></i></a>
+                </div>
+            <%}%>
+            <% if(user.rol == 1){%>
+                <div class="col">
+                    <a class="nav-link  text-center" href="/encuestas"><i class="fas text-white fa-2x fa-book"></i></a>
+                </div>
+                <div class="col">
+                    <a class="nav-link  text-center" href="/profe/show"><i class="fas text-white fa-2x fa-user"></i></a>
+                </div>
+            <%}%>
+            
+            
         </div>
     </div>
 </nav>

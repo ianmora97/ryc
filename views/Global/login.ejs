@@ -1,50 +1,142 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;">
-
+<html lang="en" class="h-100 overflow-hidden">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="/css/nicepage.css">
-    <link rel="stylesheet" href="/css/login.css">
-    <script class="u-script" type="text/javascript" src="/js/jquery.js" defer=""></script>
-    <link id="u-theme-google-font" rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
-
-<body class="u-body">
-    <section class="u-align-center u-clearfix u-section-1" id="sec-9c91">
-        <div class="u-clearfix u-sheet u-sheet-1">
-            <div class="u-container-style u-group u-radius-13 u-shape-round u-white u-group-1">
-                <div class="u-container-layout u-container-layout-1">
-                    <p class="u-text u-text-1">Login</p>
-                    <p class="u-text u-text-default u-text-2">Inicia sesión</p>
-                    <div class="u-form u-form-1">
-                        <form action="/login" method="POST"
-                            class="u-clearfix u-form-spacing-29 u-form-vertical u-inner-form" style="padding: 15px;"
-                            source="custom" name="form">
-                            <div class="u-form-group u-form-username u-form-group-1">
-                                <label for="username-6797" class="u-form-control-hidden u-label">username</label>
-                                <input type="text" placeholder="username" id="username-6797" name="username"
-                                    class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-20"
-                                    required="">
-                            </div>
-                            <div class="u-form-password u-form-group u-form-group-2">
-                                <label for="password-6797" class="u-form-control-hidden u-label">password</label>
-                                <input type="password" placeholder="password" id="password-6797" name="password"
-                                    class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-20"
-                                    required="">
-                            </div>
-                            <div class="u-align-right u-form-group u-form-submit u-form-group-3">
-                                <input type="submit" value="Login"
-                                    class="u-btn u-btn-round u-btn-submit u-button-style u-gradient u-none u-radius-20 u-text-white u-btn-1">
-                            </div>
-                        </form>
+<body class="d-flex flex-column h-100" style="overflow-x: hidden;">
+    <div id="fondoImagen">
+        <img src="/images/yellowBlob.png" class="amarillo">
+        <img src="/images/blueBlob.png" class="azul">
+    </div>
+    <div id="fondoColor"></div>
+    <style>
+        #fondoImagen {
+            filter: blur(50px);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+        }
+        #fondoColor {
+            background: rgb(17, 17, 17);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+        }
+        .rounded-lg{
+            border-radius:20px;
+        }
+        .amarillo{
+            position: absolute;
+            width:40%;
+            bottom: 0;
+            left: 0;
+        }
+        .azul{
+            position: absolute;
+            width:40%;
+            top: 0;
+            right: 0;
+        }
+        #loginBtn{
+            box-shadow: 0px 0px 25px -1px #F2CC39;
+            min-width:110px;
+            font-size: 15px;
+            font-weight:600;
+        }
+        .form-control-cus{
+            background:white;
+            color:black;
+            font-size: 17px;
+            font-weight: 700;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            padding-bottom: 6px;
+            margin-top: -5px;
+        }
+        .form-control-cus:-webkit-autofill,
+        .form-control-cus:-webkit-autofill:hover,
+        .form-control-cus:-webkit-autofill:focus,
+        .form-control-cus:-webkit-autofill:active {
+            transition: background-color 5000s ease-in-out 0s;
+            -webkit-text-fill-color: #000 !important;
+        }
+    </style>
+    <div class="container my-auto" style="z-index: 3;">
+        <div class="w-100 m-auto bg-white shadow rounded-lg px-4 py-5" style="max-width: 500px; min-height: 550px;">
+            <div class="w-100 m-auto my-5" style="max-width: 450px;">
+                <%if(typeof err != "undefined"){%>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Login Failed!</strong> <%= err%>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                </div>
+                <%}%>
+                <h1 class="fw-bolder" style="font-size: 50px;">Login</h1>
+                <h5 class="text-muted mt-3 mb-5">Iniciar Sesion</h5>
+                <form action="/login" method="POST">
+                    <div class="bg-white shadow rounded-lg px-3 pb-2 mb-3">
+                        <div class="d-flex justify-content-start align-items-end">
+                            <div class="pb-1">
+                                <i class="far fa-envelope " style="font-size:23px;"></i>
+                            </div>
+                            <div class="d-flex flex-column ps-2">
+                                <small class="text-muted">Email</small>
+                                <input type="text" id="username" name="username" class="form-control-cus" placeholder="Correo..." required="" autofocus="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white shadow rounded-lg px-3 pb-2 mb-2" >
+                        <div class="d-flex justify-content-start align-items-end">
+                            <div class="pb-1">
+                                <i class="fas fa-unlock-alt" style="font-size:23px;"></i>
+                            </div>
+                            <div class="d-flex flex-column ps-2">
+                                <small class="text-muted">Clave</small>
+                                <input type="password" id="clave" name="clave" class="form-control-cus ps-2" placeholder="Clave..." required="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-end flex-column">
+                        <a href="/registrarse" class="mt-2 text-decoration-none text-secondary fw-bold">Registrarse</a>
+                        <button class="btn btn-sm btn-secondary rounded-lg mt-5 py-2" type="submit" id="loginBtn">Login &nbsp; <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
 </body>
-
 </html>
+<!-- <form action="/login" method="POST"
+    class="u-clearfix u-form-spacing-29 u-form-vertical u-inner-form" style="padding: 15px;"
+    source="custom" name="form">
+    <div class="u-form-group u-form-username u-form-group-1">
+        <label for="username-6797" class="u-form-control-hidden u-label">username</label>
+        <input type="text" placeholder="username" id="username-6797" name="username"
+            class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-20"
+            required="">
+    </div>
+    <div class="u-form-password u-form-group u-form-group-2">
+        <label for="password-6797" class="u-form-control-hidden u-label">password</label>
+        <input type="password" placeholder="password" id="password-6797" name="password"
+            class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-20"
+            required="">
+    </div>
+    <div class="u-align-right u-form-group u-form-submit u-form-group-3">
+        <input type="submit" value="Login"
+            class="u-btn u-btn-round u-btn-submit u-button-style u-gradient u-none u-radius-20 u-text-white u-btn-1">
+    </div>
+</form> -->

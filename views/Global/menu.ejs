@@ -15,11 +15,13 @@
                 <% if(user.rol == 0){%>
                     <h3 class="my-0"><a class="me-4 text-white p-0 lh-lg nav-link" href="/home/show"><i class="fas fa-home"></i> Home</a></h3>
                     <h3 class="my-0"><a class="me-4 text-white p-0 lh-lg nav-link" href="/cursos/show"><i class="fas fa-book"></i> Cursos</a></h3>
+                    <h3 class="my-0"><a class="me-4 text-white p-0 lh-lg nav-link" href="/perfil/show"><i class="fas fa-user"></i> Perfil</a></h3>
                 <%}%>
                 <% if(user.rol == 1){%>
                     <h3 class="my-0"><a class="me-4 text-white p-0 lh-lg nav-link" href="/encuestas"><i class="fas fa-book"></i> Encuestas</a></h3>
+                    <h3 class="my-0"><a class="me-4 text-white p-0 lh-lg nav-link" href="/profe/show"><i class="fas fa-user"></i> Perfil</a></h3>
                 <%}%>
-                <h3 class="my-0"><a class="me-4 text-white p-0 lh-lg nav-link" href="/perfil"><i class="fas fa-user"></i> Perfil</a></h3>
+                
             </div>
         </div>
     </div>
@@ -28,9 +30,9 @@
     <div class="row w-100 mx-0 d-flex pt-3">
         <div class="col-4"></div>
         <div class="col-4 d-flex justify-content-center">
-            <h2 class="text-primary my-0">Feed</h2>
+            <h1 class="text-primary my-0 fw-bold"><%= pag%></h1>
         </div>
-        <div class="col-4">
+        <div class="col-4 d-flex justify-content-center ">
             <div data-bs-toggle="modal" data-bs-target="#buscarModal">
                 <i class="fas fa-search text-primary fa-2x"></i>
             </div>
