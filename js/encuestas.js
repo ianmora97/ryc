@@ -2,6 +2,8 @@ var g_MapCursosProfe = new Map();
 var g_questions = new Map();
 var g_encuestas = new Map();
 
+var clipboard = new ClipboardJS('.btn-to-clip');
+
 function loaded(event){
     events(event);
 }
@@ -39,7 +41,7 @@ function fillEncuestas(data) {
         g_encuestas.set(e.id_encuesta,e);
         $('#encuestasList').append(`
             <div class="col">
-                <div class="card shadow text-center rounded-lg border-0" onclick="verEncuesta('${e.id_encuesta}')" role="button">
+                <div class="card shadow text-center rounded-lg border-0" >
                     <div class="card-header bg-white rounded-lg d-flex flex-column">
                         <div>
                             <h3 class="fw-bolder mt-2">${e.titulo}</h3>
@@ -49,13 +51,22 @@ function fillEncuestas(data) {
                         </div>
                         <img src="/images/Icons/clipboard.png" class="mx-auto" width="100px" style="height:100px;">
                     </div>
-                    <div class="card-body bg-primary rounded-lg-cardbody">
-                    <h5 class="text-white stretched-link">Ver Respuestas</h5>
+                    <div class="card-body bg-primary rounded-lg-cardbody d-flex justify-content-between">
+                        <div style="width:28px;"></div>
+                        <h5 class="text-white" onclick="verEncuesta('${e.id_encuesta}')" role="button">Ver Respuestas</h5>
+                        <div role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Compartir encuesta"
+                         class="btn-to-clip" data-clipboard-text="localhost/survey?token=${e.token}">
+                            <i class="fas fa-share-alt fa-2x text-white"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         `);
     }))
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
 }
 function verEncuesta(id) {
     let encuesta = g_encuestas.get(parseInt(id));
@@ -274,23 +285,56 @@ function deleteAnswer(respuesta) {
 // ! ------------------------------ Agregar encuesta -----------------------------
 
 function agregarEncuesta(){
+    $('#alertaVacio').html('');
     let codigo = $('#cursoCodigoSelected').html();
+    let titulo = $('#tituloEncuesta').val();
     let vec = [];
     g_questions.forEach(e =>{
         vec.push(e);
     })
     let encuesta = JSON.stringify(vec);
-   
-    $.ajax({
-        type: "GET",
-        url: "/insertar/encuesta",
-        data: {codigo, encuesta},
-        contentType: "application/json"
-    }).then((cursos) => {
-        console.log(cursos)
-    }, (error) => {
-        console.log(error)
-    });
+    var Options = $("[id*=textarea-q-]");                  
+    
+    for (let i = 0; i < Options.length; i++) {
+        if ($(Options[i]).val() == '') {
+            $('#alertaVacio').append(`
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/warning_26a0-fe0f.png" width="24">
+                    Las preguntas no pueden estar vacias
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            `);
+            return;
+        }
+    }
+    if(!titulo){
+        $('#alertaVacio').append(`
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/warning_26a0-fe0f.png" width="24">
+                Debe dar un titulo a la encuesta!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `);
+        return;
+    }else{
+        $.ajax({
+            type: "GET",
+            url: "/insertar/encuesta",
+            data: {codigo, encuesta, titulo},
+            contentType: "application/json"
+        }).then((cursos) => {
+            location.href = "/encuestas";
+        }, (error) => {
+            $('#alertaVacio').append(`
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/warning_26a0-fe0f.png" width="24">
+                ${error}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `);
+        });
+    }
+    
 }
 
 

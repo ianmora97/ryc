@@ -176,6 +176,29 @@ router.get('/cursos', (req, res) => {
     });
 });
 
+router.get('/survey', (req, res) => {
+    db.query("call obtener_encuesta_token(?)", [req.query.token], 
+    (error, rows, fields) => {
+        if (!error) {
+            let encuesta = rows[0][0];
+            res.render('Global/ResponderEncuesta',{encuesta});
+        } else {
+            res.send(error)
+        }
+    })
+});
+
+router.get('/agregar/survey', (req, res) => {
+    db.query("call insert_respuesta(?,?,?)", [req.query.correo, req.query.respuesta, req.query.id], 
+    (error, rows, fields) => {
+        if (!error) {
+            res.send(rows)
+        } else {
+            res.send(error)
+        }
+    })
+});
+
 router.get('/encuestas', (req, res) => {
     if(req.session.usuario){
         if(req.session.usuario.rol == 1){
@@ -212,21 +235,24 @@ router.get('/api/encuestas', (req, res) => {
 });
 
 router.get('/insertar/encuesta', (req, res) => {
-    console.log('insertar encuesta',req.query)
     if(req.session.usuario){
         if(req.session.usuario.rol == 1){
-            db.query("call insert_encuesta(?,?)", [req.query.codigo, req.query.encuesta], 
-            (error, rows, fields) => {
-                if (!error) {
-                    res.send({
-                        status: 200
-                    })
-                } else {
-                    res.send({
-                        status: 500
-                    })
-                }
-            })
+            let text = req.query;
+            jwt.sign({text},'secretKeyToken',(err,token)=>{
+                db.query("call insert_encuesta(?,?,?,?)", [req.query.codigo, req.query.encuesta, req.query.titulo, token], 
+                (error, rows, fields) => {
+                    if (!error) {
+                        res.send({
+                            status: 200
+                        })
+                    } else {
+                        console.log(error)
+                        res.send({
+                            status: 500
+                        })
+                    }
+                })
+            });
         }else{
             res.render('Global/login');
         }

@@ -14,10 +14,24 @@
 	tabindex="-1" aria-labelledby="agregarEncuestaLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
         <div class="modal-content bg-light">
-            <div class="modal-header border-bottom-0"> 
+            <div class="modal-header border-bottom-0">
+				<div class="row g-3 align-items-center flex-fill">
+					<div class="col-auto">
+						<h4 class="form-label fw-bold">Titulo de la encuesta</h4>
+					</div>
+					<div class="col-auto w-50">
+						<input type="text" id="tituloEncuesta" class="form-control form-control-sm" aria-describedby="passwordHelpBlock">
+					</div>
+					<div class="col-auto">
+						<div id="passwordHelpBlock" class="form-text">
+							eg. <i>"Evaluaciones del primer parcial"</i>
+						</div>
+					</div>
+				</div>
 				<button type="button" class="btn-cerrar" data-bs-dismiss="modal">x</button>
             </div>
             <div class="modal-body px-1">
+				<div id="alertaVacio"></div>
 				<div class="container-fluid">
 					<div class="d-flex justify-content-between align-items-start">
 						<div class="d-flex justify-content-start" style="width:250px;">
@@ -87,6 +101,7 @@
 		</div>
 	</div>
 	<%- include('../Global/menuBottom')%>
+	<script src="/js/clipboard.min.js"></script>
 	<script src="/js/encuestas.js"></script>
 </body>
 
