@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="h-100 overflow-hidden">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +10,23 @@
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
+
 <body class="d-flex flex-column h-100" style="overflow-x: hidden;">
     <div id="fondoImagen">
-        <img src="/images/yellowBlob.png" class="amarillo">
-        <img src="/images/blueBlob.png" class="azul">
+        <svg id="svg" viewBox="0 0 1000 1000" class="azul">
+            <path id="path1" ></path>           
+        </svg>
+        <svg id="svg" viewBox="0 0 1000 1000" class="amarillo">
+            <path id="path2" ></path>           
+        </svg>
+        <!-- <img src="/images/yellowBlob.png" class="amarillo">
+        <img src="/images/blueBlob.png" class="azul"> -->
     </div>
+    <svg id="svg3" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet">
+  
+        <rect id="svg-background" x="0" y="0" width="100%" height="100%" />
+        <circle id="circle" r="25"></circle>
+    </svg>
     <div id="fondoColor"></div>
     <style>
         #fondoImagen {
@@ -25,6 +38,7 @@
             width: 100%;
             height: 100%;
         }
+
         #fondoColor {
             background: rgb(17, 17, 17);
             position: absolute;
@@ -34,30 +48,35 @@
             width: 100%;
             height: 100%;
         }
-        .rounded-lg{
-            border-radius:20px;
+
+        .rounded-lg {
+            border-radius: 20px;
         }
-        .amarillo{
+
+        .amarillo {
             position: absolute;
-            width:40%;
+            width: 50%;
             bottom: 0;
             left: 0;
         }
-        .azul{
+
+        .azul {
             position: absolute;
-            width:40%;
+            width: 50%;
             top: 0;
             right: 0;
         }
-        #loginBtn{
+
+        #loginBtn {
             box-shadow: 0px 0px 25px -1px #F2CC39;
-            min-width:110px;
+            min-width: 110px;
             font-size: 15px;
-            font-weight:600;
+            font-weight: 600;
         }
-        .form-control-cus{
-            background:white;
-            color:black;
+
+        .form-control-cus {
+            background: white;
+            color: black;
             font-size: 17px;
             font-weight: 700;
             border: none !important;
@@ -66,6 +85,7 @@
             padding-bottom: 6px;
             margin-top: -5px;
         }
+
         .form-control-cus:-webkit-autofill,
         .form-control-cus:-webkit-autofill:hover,
         .form-control-cus:-webkit-autofill:focus,
@@ -73,17 +93,39 @@
             transition: background-color 5000s ease-in-out 0s;
             -webkit-text-fill-color: #000 !important;
         }
+        
+        #path1 {
+            fill: #506AD4;
+        }
+        #path2 {
+            fill: #F2CC39;
+        }
+        #circle {
+            fill: dodgerblue;
+            fill-opacity: 0.5;
+        }
+        #svg3 {
+            position: absolute;
+            width: 100%;
+            height: 100%;  
+            overflow: visible !important;
+            z-index: 2;
+        }
+        #svg-background {
+            fill: rgba(255, 255, 255, 0);
+        }
     </style>
     <div class="container my-auto" style="z-index: 3;">
         <div class="w-100 m-auto bg-white shadow rounded-lg px-4 py-5" style="max-width: 500px; min-height: 550px;">
             <div class="w-100 m-auto my-5" style="max-width: 450px;">
-                <%if(typeof err != "undefined"){%>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Login Failed!</strong> <%= err%>
+                <%if(typeof err !="undefined" ){%>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Login Failed!</strong>
+                    <%= err%>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">&times;</span>
                         </button>
-                    </div>
+                </div>
                 <%}%>
                 <h1 class="fw-bolder" style="font-size: 50px;">Login</h1>
                 <h5 class="text-muted mt-3 mb-5">Iniciar Sesion</h5>
@@ -95,48 +137,178 @@
                             </div>
                             <div class="d-flex flex-column ps-2">
                                 <small class="text-muted">Email</small>
-                                <input type="text" id="username" name="username" class="form-control-cus" placeholder="Correo..." required="" autofocus="">
+                                <input type="text" id="username" name="username" class="form-control-cus"
+                                    placeholder="Correo..." required="" autofocus="">
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white shadow rounded-lg px-3 pb-2 mb-2" >
+                    <div class="bg-white shadow rounded-lg px-3 pb-2 mb-2">
                         <div class="d-flex justify-content-start align-items-end">
                             <div class="pb-1">
                                 <i class="fas fa-unlock-alt" style="font-size:23px;"></i>
                             </div>
                             <div class="d-flex flex-column ps-2">
                                 <small class="text-muted">Clave</small>
-                                <input type="password" id="clave" name="clave" class="form-control-cus ps-2" placeholder="Clave..." required="">
+                                <input type="password" id="clave" name="clave" class="form-control-cus ps-2"
+                                    placeholder="Clave..." required="">
                             </div>
                         </div>
                     </div>
                     <div class="d-flex align-items-end flex-column">
-                        <a href="/registrarse" class="mt-2 text-decoration-none text-secondary fw-bold">Registrarse</a>
-                        <button class="btn btn-sm btn-secondary rounded-lg mt-5 py-2" type="submit" id="loginBtn">Login &nbsp; <i class="fas fa-arrow-right"></i></button>
+                        <a href="/register/show"
+                            class="mt-2 text-decoration-none text-secondary fw-bold">Registrarse</a>
+                        <button class="btn btn-sm btn-secondary rounded-lg mt-5 py-2" type="submit"
+                            id="loginBtn">Login &nbsp; <i class="fas fa-arrow-right"></i></button>
                     </div>
                 </form>
+                
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+    
+    <script>
+        const svg = document.querySelector("#svg3");
+        const circle = document.querySelector("#circle");
+        let moved = true;
+
+        const mouse = svg.createSVGPoint();
+
+        window.addEventListener("mousemove", onMove);
+        gsap.ticker.add(update);
+        update();
+
+        function update() {
+        
+        if (!moved) return;
+        moved = false;
+        
+        const { x, y } = mouse.matrixTransform(svg.getScreenCTM().inverse());
+        
+        gsap.to(circle, {
+            x, y, duration: 0.2
+        });
+        }
+
+        function onMove(event) {    
+            moved = true;
+            mouse.x = event.clientX;
+            mouse.y = event.clientY;
+        }
+
+
+        var blob1 = createBlob({
+            element: document.querySelector("#path1"),
+            numPoints: 10,
+            centerX: 600,
+            centerY: 100,
+            minRadius: 400,
+            maxRadius: 325,
+            minDuration: 1,
+            maxDuration: 2
+        });
+
+        var blob2 = createBlob({
+            element: document.querySelector("#path2"),
+            numPoints: 10,
+            centerX: 400,
+            centerY: 600,
+            minRadius: 300,
+            maxRadius: 225,
+            minDuration: 0.75,
+            maxDuration: 1.75
+        });
+
+
+        function createBlob(options) {
+
+            var points = [];
+            var path = options.element;
+            var slice = (Math.PI * 2) / options.numPoints;
+            var startAngle = random(Math.PI * 2);
+
+            var tl = new TimelineMax({
+                onUpdate: update
+            });
+
+            for (var i = 0; i < options.numPoints; i++) {
+
+                var angle = startAngle + i * slice;
+                var duration = random(options.minDuration, options.maxDuration);
+
+                var point = {
+                    x: options.centerX + Math.cos(angle) * options.minRadius,
+                    y: options.centerY + Math.sin(angle) * options.minRadius
+                };
+
+                var tween = TweenMax.to(point, duration, {
+                    x: options.centerX + Math.cos(angle) * options.maxRadius,
+                    y: options.centerY + Math.sin(angle) * options.maxRadius,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: Sine.easeInOut
+                });
+
+                tl.add(tween, -random(duration));
+                points.push(point);
+            }
+
+            options.tl = tl;
+            options.points = points;
+
+            function update() {
+                path.setAttribute("d", cardinal(points, true, 1));
+            }
+
+            return options;
+        }
+
+        // Cardinal spline - a uniform Catmull-Rom spline with a tension option
+        function cardinal(data, closed, tension) {
+
+            if (data.length < 1) return "M0 0";
+            if (tension == null) tension = 1;
+
+            var size = data.length - (closed ? 0 : 1);
+            var path = "M" + data[0].x + " " + data[0].y + " C";
+
+            for (var i = 0; i < size; i++) {
+
+                var p0, p1, p2, p3;
+
+                if (closed) {
+                    p0 = data[(i - 1 + size) % size];
+                    p1 = data[i];
+                    p2 = data[(i + 1) % size];
+                    p3 = data[(i + 2) % size];
+
+                } else {
+                    p0 = i == 0 ? data[0] : data[i - 1];
+                    p1 = data[i];
+                    p2 = data[i + 1];
+                    p3 = i == size - 1 ? p2 : data[i + 2];
+                }
+
+                var x1 = p1.x + (p2.x - p0.x) / 6 * tension;
+                var y1 = p1.y + (p2.y - p0.y) / 6 * tension;
+
+                var x2 = p2.x - (p3.x - p1.x) / 6 * tension;
+                var y2 = p2.y - (p3.y - p1.y) / 6 * tension;
+
+                path += " " + x1 + " " + y1 + " " + x2 + " " + y2 + " " + p2.x + " " + p2.y;
+            }
+
+            return closed ? path + "z" : path;
+        }
+
+        function random(min, max) {
+            if (max == null) { max = min; min = 0; }
+            if (min > max) { var tmp = min; min = max; max = tmp; }
+            return min + (max - min) * Math.random();
+        }
+
+    </script>
 </body>
+
 </html>
-<!-- <form action="/login" method="POST"
-    class="u-clearfix u-form-spacing-29 u-form-vertical u-inner-form" style="padding: 15px;"
-    source="custom" name="form">
-    <div class="u-form-group u-form-username u-form-group-1">
-        <label for="username-6797" class="u-form-control-hidden u-label">username</label>
-        <input type="text" placeholder="username" id="username-6797" name="username"
-            class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-20"
-            required="">
-    </div>
-    <div class="u-form-password u-form-group u-form-group-2">
-        <label for="password-6797" class="u-form-control-hidden u-label">password</label>
-        <input type="password" placeholder="password" id="password-6797" name="password"
-            class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-20"
-            required="">
-    </div>
-    <div class="u-align-right u-form-group u-form-submit u-form-group-3">
-        <input type="submit" value="Login"
-            class="u-btn u-btn-round u-btn-submit u-button-style u-gradient u-none u-radius-20 u-text-white u-btn-1">
-    </div>
-</form> -->

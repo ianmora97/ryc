@@ -143,6 +143,7 @@ router.get('/home/show', (req, res) => {
                     if (!errorCursos) {
                         cursos = cursosRows[0];
                         res.render('estudiante/home', {
+                            pag:'Feed',
                             opiniones,
                             cursos,
                             user
@@ -234,6 +235,25 @@ router.get('/api/encuestas', (req, res) => {
     }
 });
 
+router.get('/api/encuestas/respuesta', (req, res) => {
+    if(req.session.usuario){
+        if(req.session.usuario.rol == 1){
+            db.query("call obtener_respuestas_encuesta_all()",
+            (error, rows, fields) => {
+                if (!error) {
+                    res.send(rows[0])
+                } else {
+                    res.send(error)
+                }
+            })
+        }else{
+            res.render('Global/login');
+        }
+    }else{
+        res.render('Global/login');
+    }
+});
+
 router.get('/insertar/encuesta', (req, res) => {
     if(req.session.usuario){
         if(req.session.usuario.rol == 1){
@@ -270,6 +290,7 @@ router.get('/perfil', (req, res) => {
                     let perfil = rows[0][0];
                     console.log(perfil)
                     res.render('estudiante/Perfil', {
+                        pag:'Perfil',
                         perfil,
                         user
                     });
@@ -295,7 +316,9 @@ router.get('/buscar', (req, res) => {
 
 router.get('/opinion', (req, res) => {
     let user = req.session.usuario;
-    res.render('Global/buscar', { user });
+    res.render('Global/buscar', { 
+        pag:'Opinion',
+        user });
 });
 
 router.get('/traerCursos', (req, res) => {
@@ -349,6 +372,7 @@ router.get('/misCursos', (req, res) => {
             if (!err) {
                 let cursos = rows[0];
                 res.render('estudiante/cursos', {
+                    pag:'Cursos',
                     cursos
                 });
             } else {
@@ -366,7 +390,9 @@ router.get('/cursos/show', (req, res) => {
     if (req.session.usuario) {
         let user = req.session.usuario;
         console.log(user)
-        res.render('estudiante/cursos', { user });
+        res.render('estudiante/cursos', { 
+            pag:'Cursos',
+            user });
     } else {
         res.render('Global/login');
     }

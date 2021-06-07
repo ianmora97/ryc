@@ -1,6 +1,10 @@
 var g_MapCursosProfe = new Map();
 var g_questions = new Map();
 var g_encuestas = new Map();
+var g_respuestas = [];
+var g_graficos = [];
+
+var g_vecColores = ['#506AD4','#6F8BFC','#384E85','#2349E4','#B8C4F5','#14225A','#666F95','#5B5B5B','#CFCFCF','#272727','#000000'];
 
 var clipboard = new ClipboardJS('.btn-to-clip');
 
@@ -30,18 +34,29 @@ function loadFromDB(){
         data: {id},
         contentType: "application/json"
     }).then((encuestas) => {
-        fillEncuestas(encuestas);
+        $.ajax({
+            type: "GET",
+            url: "/api/encuestas/respuesta",
+            contentType: "application/json"
+        }).then((respuesta) => {
+            g_respuestas = respuesta;
+            fillEncuestas(encuestas);
+        }, (error) => {
+            console.log(error)
+        });
     }, (error) => {
         console.log(error)
     });
+    
 }
 function fillEncuestas(data) {
     $('#encuestasList').html('');
     data.forEach((e => {
-        g_encuestas.set(e.id_encuesta,e);
+        let respuestas = g_respuestas.filter(i => parseInt(i.encuesta) == parseInt(e.id_encuesta));
+        g_encuestas.set(e.id_encuesta,{encuesta:e,res:respuestas});
         $('#encuestasList').append(`
             <div class="col">
-                <div class="card shadow text-center rounded-lg border-0" >
+                <div class="card shadow text-center rounded-lg border-0 animate__animated animate__fadeIn" >
                     <div class="card-header bg-white rounded-lg d-flex flex-column">
                         <div>
                             <h3 class="fw-bolder mt-2">${e.titulo}</h3>
@@ -69,65 +84,96 @@ function fillEncuestas(data) {
     })
 }
 function verEncuesta(id) {
-    let encuesta = g_encuestas.get(parseInt(id));
-    $('#cursoSelectedVer').html(encuesta.titulo);
-    let preguntas = JSON.parse(encuesta.text);
+    let enc = g_encuestas.get(parseInt(id));
+    let respuestas = enc.res;
+    let v_r = [];
+    respuestas.forEach(r => {
+        let print = JSON.parse(r.respuesta);
+        v_r.push(print);
+    })
+    $('#cursoSelectedVer').html(enc.encuesta.titulo);
+    let preguntas = JSON.parse(enc.encuesta.text);
     $('#EncuestaVer').html('');
     preguntas.forEach(e =>{
         if(e.type == 2){
+            let vec_respuestas = []; // filtra las opciones de respuesta
+            v_r.forEach(r =>{
+                vec_respuestas.push(r[e.id]);
+            })
+            let texto = "";
+            vec_respuestas.forEach(t => {
+                texto += `<h5 class="">${t}</h5>
+                <div class="border-bottom mt-2"></div>`;
+            });
             $('#EncuestaVer').append(`
                 <div id="questionContainer-${e.id}">
                     <div class="bg-primary w-100 mt-5 rounded-lg py-1 px-3 text-white" style="min-height:50px; position:relative;">
                         <h4>${e.pregunta}</h4>
                     </div>
-                    <div class="bg-white rounded-lg shadow w-100 p-3 mt-3" style="height:100px;">
-                        
+                    <div class="bg-white rounded-lg shadow w-100 p-3 mt-3" style="min-height:100px;">
+                        ${texto}
                     </div>
                     <div class="border-bottom mt-4"></div>
                 </div>
             `);
         }else{
+            let vec_respuestas = []; // filtra las opciones de respuesta
+            v_r.forEach(r =>{
+                vec_respuestas.push(r[e.id]);
+            })
+            var repetidos = {};
+            vec_respuestas.forEach(function(prof){ // cuenta la cantidad de respuestas por profesor
+                repetidos[prof] = (repetidos[prof] || 0) + 1;
+            });
+            let texto = "";
+            for (const property in repetidos) {
+                texto += `<h4 class="fw-bold d-inline">${property}: <h3 class="text-primary d-inline">${repetidos[property]}</h3></h4>
+                <br>
+                <div class="border-bottom mt-2"></div>`;
+            }
             $('#EncuestaVer').append(`
                 <div id="questionContainer-${e.id}">
                     <div class="bg-primary w-100 mt-5 rounded-lg py-1 px-3 text-white" style="min-height:50px; position:relative;">
                         <h4>${e.pregunta}</h4>
                     </div>
-                    <div class="bg-white rounded-lg shadow w-100 p-3 mt-3" style="height:100px;">
-                        <div class="row py-2 px-3" style="height:400px;">
+                    <div class="bg-white rounded-lg shadow w-100 p-3 mt-3 row" style="min-height:100px;">
+                        <div class="col-8 d-flex justify-content-start" style="min-height:300px;">
                             <canvas id="chart-${e.pregunta}"></canvas>
+                        </div>
+                        <div class="col-4" id="res-q-${e.id}">
+                            <h4 class="mb-2">Respuestas:</h4>
+                            ${texto}
                         </div>
                     </div>
                     <div class="border-bottom mt-4"></div>
                 </div>
             `);
-            // por terminar
+ 
+            let valores = [];
+            let labels = [];
+            let colores = [];
+            e.respuestas.forEach(function(o,i){ // se definen los labels y los valores
+                labels.push(o.val);
+                valores.push(repetidos[o.val]);
+                colores.push(g_vecColores[i])
+            })
+
             let chart1 = document.getElementById(`chart-${e.pregunta}`).getContext("2d");
             let chart1Var = new Chart(chart1, {
                 type: "doughnut",
                 data: {
-                    datasets: [
-                        {                
-                            borderWidth: [2],
-                            backgroundColor: [
-                                '#28a745',
-                                "#4c84ff",
-                                '#ffc107',
-                            ],
-                            borderColor: [
-                                "#28a745",
-                                "#4c84ff",
-                                "#ffc107",
-                            ],
-                            borderWidth: 1,
-                        },
-                    ],
+                    datasets: [{                
+                        data:valores,
+                        backgroundColor:colores
+                    }],
+                    labels: labels
                 },
                 options:{
-                    cutoutPercentage: 70,
                     responsive: true,
                     maintainAspectRatio: false,
                 }
             });
+            g_graficos.push(chart1Var);
         }
         
     })
