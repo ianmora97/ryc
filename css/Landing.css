@@ -1,3 +1,69 @@
+.reaccion-container {
+  width: 160px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1rem;
+  border-radius: 10px;
+  transition: all 0.4s ease-out;
+  padding-bottom: 1rem;
+  cursor: pointer;
+}
+
+.reaccion-container:hover {
+  background-color: #506ad483;
+}
+
+.reaccion-imagen {
+  width: 100%;
+  width: 100%;
+}
+
+.reaccion-coin {
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+
+.reaccion-container:hover .reaccion-coin {
+  animation-name: girar;
+  transition: transform 2s;
+}
+.valor-reaccion{
+  font-weight: 600;
+  color: #40444b;
+}
+
+@keyframes girar {
+  0% {
+    transform: rotate3d(0, 1, 0, 360deg);
+  }
+  8% {
+    transform: rotate3d(0, 1, 0, 40deg);
+  }
+  12% {
+    transform: rotate3d(0, 1, 0, 90deg);
+  }
+  24% {
+    transform: rotate3d(0, 1, 0, 130deg);
+  }
+  40% {
+    transform: rotate3d(0, 1, 0, 180deg);
+  }
+  56% {
+    transform: rotate3d(0, 1, 0, 220deg);
+  }
+  74% {
+    transform: rotate3d(0, 1, 0, 270deg);
+  }
+  88% {
+    transform: rotate3d(0, 1, 0, 320deg);
+  }
+  100% {
+    transform: rotate3d(0, 1, 0, 320deg);
+  }
+}
+
 .container-comentario {
   display: flex;
   margin-left: auto;
@@ -5,6 +71,11 @@
   justify-content: space-between;
   margin-top: 1rem;
   position: relative;
+}
+
+.jump-row {
+  flex: 0 0 auto;
+  width: 23%;
 }
 
 .comentario {
@@ -580,7 +651,6 @@
   .u-section-1 .u-group-4 {
     width: 624px;
     min-height: 330px;
-    margin-bottom: 51px;
   }
   .u-section-1 .u-container-layout-4 {
     padding-bottom: 20px;
@@ -800,9 +870,16 @@
   .u-section-1 .u-text-15 {
     margin-top: -9px;
   }
+  .col-md-100 {
+    width: 100%;
+  }
 }
 
 @media (max-width: 767px) {
+  .comentarios-section {
+    width: 100% !important;
+    margin: 0;
+  }
   .u-section-1 .u-sheet-1 {
     min-height: 702px;
   }
@@ -923,6 +1000,13 @@
 }
 
 @media (max-width: 575px) {
+  .jump-row {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  .padding-none-xs {
+    padding: 0 !important;
+  }
   .full-xs {
     width: 100% !important;
   }
@@ -1008,6 +1092,17 @@
   }
   .u-section-1 .u-text-15 {
     font-size: 1.125rem;
+  }
+  .col-xss-center {
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .btn-xss {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .comments-reactions {
+    margin-bottom: 2rem;
   }
 }
 

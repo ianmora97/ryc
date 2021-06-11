@@ -10,7 +10,6 @@
 <body class="u-body">
 
     <%- include('../Global/menu')%>
-
         <!-- Modal -->
         <div class="modal fade" id="comentarioModal" tabindex="-1" aria-labelledby="comentarioModalLabel"
             aria-hidden="true">
@@ -21,16 +20,18 @@
                         <h5 class="modal-title mx-3 fw-bold" id="comentarioModalLabel" style="font-size: 25px;">
                             Comentarios
                         </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick='closeModal()'></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            onclick='closeModal()'></button>
                     </div>
-                    <div class="modal-body ">
+                    <div class="modal-body padding-none-xs">
                         <div class="container">
-                            <div class="row p-4 rounded">
-                                <div class="col-5 p-3 bg-white   ">
+
+                            <div class="row p-4 rounded padding-none-xs">
+                                <div class="col-5 p-3 bg-white   col-md-100">
                                     <div class="row border-bottom pb-2">
                                         <div class="col-2 p-0 d-flex justify-content-end">
                                             <div class="container-img-coment">
-                                                <img class="img-comentario" id="opinador-imagen-modal"  alt="">
+                                                <img class="img-comentario" id="opinador-imagen-modal" alt="">
                                             </div>
                                         </div>
                                         <div class="col">
@@ -39,7 +40,8 @@
                                             </div>
                                             <div class="row d-flex justify-content-between">
                                                 <span class="col text-muted p-0" id="opinador-fecha-modal">sf </span>
-                                                <span class="col text-end text-muted p-0 fst-italic" id="opinador-hora-modal"></span>
+                                                <span class="col text-end text-muted p-0 fst-italic"
+                                                    id="opinador-hora-modal"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -56,17 +58,17 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-7 bg-white p-0">
+                                <div class="col-7 bg-white p-0 col-md-100">
                                     <div class="comentarios-section">
                                         <div class="container">
                                             <div class="row border-bottom p-3 pb-2">
-                                                <div class="col-2 d-flex justify-content-end">
+                                                <div class="col-2 d-flex justify-content-end p-0">
                                                     <div class="overflow-hidden rounded p-2"
                                                         style="width: 60px; height: 60px; background-color: #f2cc39;">
                                                         <img class="w-100" src="/images/Icons/computer.png" alt="">
                                                     </div>
                                                 </div>
-                                                <div class="col">
+                                                <div class="col" style=" margin-left: 1rem;">
                                                     <div class="row fw-bold text-dark">
                                                         Estructuras de datos
                                                     </div>
@@ -81,7 +83,7 @@
                                             </div>
                                         </div>
                                         <div id="comentarios-wrapper" class="comentarios-wrapper">
-                                            
+
                                         </div>
 
 
@@ -125,15 +127,102 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal para reacciones -->
+        <div class="modal fade" id="modal_reacciones" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Entregar reacción</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row d-flex">
+                            <div class="reaccion-container">
 
+                                <img class="reaccion-imagen" src="/images/Reacciones/wonder.gif" alt="">
 
+                                <div class="valor-reaccion">
+                                    <img class="reaccion-coin" src="/images/Reacciones/dollar.png" alt="">
+                                    100
+                                </div>
+                            </div>
+                            <div class="reaccion-container">
+
+                                <img class="reaccion-imagen" src="/images/Reacciones/love.gif" alt="">
+
+                                <div class="valor-reaccion">
+                                    <img class="reaccion-coin" src="/images/Reacciones/dollar.png" alt="">
+                                    100
+                                </div>
+                            </div>
+                            <div class="reaccion-container">
+
+                                <img class="reaccion-imagen" src="/images/Reacciones/sleep.gif" alt="">
+
+                                <div class="valor-reaccion">
+                                    <img class="reaccion-coin" src="/images/Reacciones/dollar.png" alt="">
+                                    100
+                                </div>
+                            </div>
+                            <div class="reaccion-container">
+                                <img class="reaccion-imagen" src="/images/Reacciones/dino.gif" alt="">
+                                <div class="valor-reaccion">
+                                    <img class="reaccion-coin" src="/images/Reacciones/dollar.png" alt="">
+                                    100
+                                </div>
+                            </div>
+                            <div class="reaccion-container">
+                                <img class="reaccion-imagen" src="/images/Reacciones/angry.gif" alt="">
+                                <div class="valor-reaccion">
+                                    <img class="reaccion-coin" src="/images/Reacciones/dollar.png" alt="">
+                                    100
+                                </div>
+                            </div>
+                            <div class="reaccion-container">
+                                <img class="reaccion-imagen" src="/images/Reacciones/calculating.gif" alt="">
+                                <div class="valor-reaccion">
+                                    <img class="reaccion-coin" src="/images/Reacciones/dollar.png" alt="">
+                                    100
+                                </div>
+                            </div>
+                            <div class="reaccion-container">
+                                <img class="reaccion-imagen" src="/images/Reacciones/whathing.gif" alt="">
+                                <div class="valor-reaccion">
+                                    <img class="reaccion-coin" src="/images/Reacciones/dollar.png" alt="">
+                                    100
+                                </div>
+                            </div>
+                            <div class="reaccion-container">
+                                <img class="reaccion-imagen" src="/images/Reacciones/changing.gif" alt="">
+                                <div class="valor-reaccion">
+                                    <img class="reaccion-coin" src="/images/Reacciones/dollar.png" alt="">
+                                    100
+                                </div>
+                            </div>
+                            <div class="reaccion-container">
+                                <img class="reaccion-imagen" src="/images/Reacciones/desesperate.gif" alt="">
+                                <div class="valor-reaccion">
+                                    <img class="reaccion-coin" src="/images/Reacciones/dollar.png" alt="">
+                                    100
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary">
+                            <i class="fas fa-coins text-secondary"></i>
+                            Comprar monedas</button>
                     </div>
                 </div>
             </div>
@@ -142,6 +231,7 @@
         <section class="u-clearfix u-palette-5-light-3 u-section-1" id="sec-aa93">
             <div class="u-clearfix u-sheet u-sheet-1 justiy-content-between full-xs">
                 <div class="container-opions">
+
                     <% opiniones.forEach(function(opinion){ %>
                         <div id="opinion-card"
                             class="opinion u-container-style u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-radius-4 u-shape-round u-white u-group-4">
@@ -209,14 +299,14 @@
                                     </div>
                                 </div>
                                 <div class="row  h-25 acciones-opinion">
-                                    <div class="col-9 d-flex h-25">
-                                        <button type="button" class="btn btn-sm btn-secondary likes"
+                                    <div class="col d-flex h-25 col-xss-center">
+                                        <button type="button" class="btn btn-sm btn-secondary likes btn-xss"
                                             onclick="like('<%=opinion.id_opinion%>')">
                                             <i class="far fa-thumbs-up"></i> <span id="likes_<%=opinion.id_opinion%>">
                                                 <%=opinion.likesCount%>
                                             </span>
                                         </button>
-                                        <button type="button" class="btn btn-sm btn-secondary dislikes"
+                                        <button type="button" class="btn btn-sm btn-secondary dislikes btn-xss"
                                             onclick="dislike('<%=opinion.id_opinion%>')">
                                             <i class="far fa-thumbs-down"></i><span
                                                 id="dislikes_<%=opinion.id_opinion%>">
@@ -224,8 +314,9 @@
                                             </span>
                                         </button>
                                     </div>
-                                    <div class="col d-flex justify-content-center align-items-center h-25">
-                                        <button type="button" class="btn btn-sm btn-secondary reacciones">
+                                    <div
+                                        class="col d-flex justify-content-end align-items-center h-25 col-xss-center comments-reactions">
+                                        <button type="button" class="btn btn-sm btn-secondary reacciones" data-bs-toggle="modal" data-bs-target="#modal_reacciones">
                                             <i class="fas fa-hand-holding-heart"></i>
                                         </button>
                                         <button type="button" class="btn btn-sm comments-trigger"
@@ -293,9 +384,9 @@
         <script>
             $("#comentarioModal").on("show", function () {
                 alert($("#html"));
-                $("#html").css("overflow","hidden");
+                $("#html").css("overflow", "hidden");
             }).on("hidden", function () {
-                $("#html").css("overflow","hidden");
+                $("#html").css("overflow", "hidden");
             });
         </script>
         <script src="/js/home.js"></script>

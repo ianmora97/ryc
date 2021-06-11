@@ -234,7 +234,7 @@ function crearComentario(comentario, posicion) {
                                         </div>
                                     </div>
                                     <div class="row mt-4">
-                                        <div class="col-2">
+                                        <div class="col mt-1">
                                             <button type="button" onclick="meEnoja(${comentario.id_comentario})"
                                                 class="btn btn-sm btn-secondary reaccion-comentario">
                                                 <i class="angry-image"></i> <span id="enojado_${comentario.id_comentario}" style="color: #f95428;">
@@ -242,7 +242,7 @@ function crearComentario(comentario, posicion) {
                                                 </span>
                                             </button>
                                         </div>
-                                        <div class="col-2">
+                                        <div class="col mt-1">
                                             <button type="button" onclick="mePareceOk(${comentario.id_comentario})"
                                                 class="btn btn-sm btn-secondary reaccion-comentario">
                                                 <i class="ok-image"></i> <span id="ok_${comentario.id_comentario}" style="color: #468ad2;">
@@ -250,7 +250,7 @@ function crearComentario(comentario, posicion) {
                                                 </span>
                                             </button>
                                         </div>
-                                        <div class="col-2">
+                                        <div class="col mt-1 jump-row">
                                             <button type="button" onclick="serio(${comentario.id_comentario})"
                                                 class="btn btn-sm btn-secondary reaccion-comentario">
                                                 <i class="serious-image"></i> <span id="serio_${comentario.id_comentario}" style="color: #f5b139;">
@@ -258,7 +258,7 @@ function crearComentario(comentario, posicion) {
                                                 </span>
                                             </button>
                                         </div>
-                                        <div class="col-2">
+                                        <div class="col mt-1">
                                             <button type="button" onclick="toxico(${comentario.id_comentario})"
                                                 class="btn btn-sm btn-secondary reaccion-comentario">
                                                 <i class="toxic-image"></i> <span id="toxico_${comentario.id_comentario}" style="color: #8ccc41;">
