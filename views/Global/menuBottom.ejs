@@ -8,16 +8,26 @@
                 <div class="col">
                     <a class="nav-link  text-center" href="/home/show"><i class="fas text-white fa-2x fa-home"></i></a>
                 </div>
-                <div class="col">
-                    <a class="nav-link  text-center" href="/perfil"><i class="fas text-white fa-2x fa-user"></i></a>
+                <div class="col dropup">
+                    <a class="nav-link text-center dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas text-white fa-2x fa-user"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/logout">Logout <i class="fas fa-power-off"></i></a></li>
+                    </ul>
                 </div>
             <%}%>
             <% if(user.rol == 1){%>
                 <div class="col">
                     <a class="nav-link  text-center" href="/encuestas"><i class="fas text-white fa-2x fa-book"></i></a>
                 </div>
-                <div class="col">
-                    <a class="nav-link  text-center" href="/profe/show"><i class="fas text-white fa-2x fa-user"></i></a>
+                <div class="col dropup">
+                    <a class="nav-link text-center dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas text-white fa-2x fa-user"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/profe/show">Perfil</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/logout">Logout <i class="fas fa-power-off"></i></a></li>
+                    </ul>
                 </div>
             <%}%>
             

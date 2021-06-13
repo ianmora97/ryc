@@ -1,0 +1,40 @@
+.image-bg-body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #506ad483;
+    background-image: url('/images/Patterns/01.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(5px);
+}
+
+.coins-container img{
+    width: 250px;
+}
+
+.header-tier{
+    width: 100%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.coins-container{
+    border-radius: 35px;
+    box-shadow: 0px 0px 6px 0px #929292;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.coins-container .tier{
+    color: rgb(58, 58, 58);
+    font-weight: 600;
+    font-size: 35px;
+}
+.coins-container .tier-number{
+    color: #506ad4;
+    font-weight: 600;
+    font-size: 45px;
+}

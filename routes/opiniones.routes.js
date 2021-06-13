@@ -86,5 +86,22 @@ router.get('/opiniones/dislike', (req, res) => {
 });
 
 
+router.post('/reaccion/opinion', (req, res) => {
+
+    db.query("call insert_reaccion(?,?,?,?,?)",
+        [req.body.id_usuario, req.body.opinion_id, req.body.id_usuario, req.body.nombre_reaccion, req.body.imagen],
+        (error, rows, fields) => {
+            if (!error) {
+                req.session.usuario.monedero -= 100;
+                console.log(req.session.usuario.monedero)
+                res.send(rows[0]);
+            } else {
+                console.log(error)
+                let error = { status: 404 }
+                res.send({ error });
+            }
+        })
+});
+
 
 module.exports = router;

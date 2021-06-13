@@ -30,7 +30,7 @@ function mostrarCursos(cursos) {
     $('#cursosFiltrados').html('');
     cursos.forEach(curso => {
         $('#cursosFiltrados').append(`
-            <div class="d-flex justify-content-between bg-light shadow rounded-cus mb-4">
+            <div id="card-buscar-curso" class="d-flex justify-content-between bg-light shadow rounded-cus mb-4" onclick="location.href='/curso/detalle?id_curso=${curso.codigo_curso}' " style="cursor:pointer;">
                 <div class="bg-primary rounded-cus-left">
                     <img src="/images/Icons/computer.png" style="width: 80px; height: 80px; margin: 20px 10px;">
                 </div>
@@ -46,5 +46,7 @@ function mostrarCursos(cursos) {
         `);
     });
 }
+
+
 
 document.addEventListener("DOMContentLoaded", loaded);

@@ -9,7 +9,40 @@
 .u-section-1 .u-sheet-1 {
   min-height: 500px;
 }
+#burbuja-opinar i{
+  animation-duration: 0.5s;
+  animation-iteration-count: 3;
+}
 
+#burbuja-opinar:hover i{
+  animation-name: tambaleo;
+  transition: transform 1s;
+}
+
+
+@keyframes tambaleo {
+  0% {
+    transform: rotate(-5deg);
+  }
+  15% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(5deg);
+  }
+  45% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
+}
 .u-section-1 .u-group-1 {
   width: 310px;
   min-height: 219px;

@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-primary" id="menu-cus">
     <div class="container-fluid">
         <div class="row w-100 mx-0">
-            <div class="col-2">
-                <a class="navbar-brand" href="#">
+            <div class="col-1">
+                <a class="navbar-brand" href="/home/show">
                     <img src="/images/logo.png" style="width:50px; height:50px;">
                 </a>
             </div>
@@ -11,20 +11,34 @@
                     <span class="text-muted">Buscar...</span>
                 </div>
             </div>
-            <div class="col-6 d-flex justify-content-end">
-                <div class="monedero d-flex">
-                    <span id="cant-monedero" class=" ms-2 me-1 text-white d-flex justify-content-center align-items-center" style="font-size: 20px; font-weight: 700;">300</span>                </div>
-                    <img class="me-4 mt-1" src="/images/moneyBag.png" alt="" height="40">
+            <div class="col-7 d-flex justify-content-end px-0 flex-fill">
                 <% if(user.rol == 0){%>
+                    <div class="monedero d-flex">
+                        <span id="cant-monedero" class=" ms-2 me-1 text-white d-flex justify-content-center align-items-center" style="font-size: 20px; font-weight: 700;"><%=user.monedero%></span>                
+                        <img class="me-4 mt-1 d-inline" src="/images/moneyBag.png" alt="" height="40">
+                    </div>
                     <h3 class="my-0"><a class="me-4 text-white p-0 lh-lg nav-link" href="/home/show"><i class="fas fa-home"></i> Home</a></h3>
                     <h3 class="my-0"><a class="me-4 text-white p-0 lh-lg nav-link" href="/cursos/show"><i class="fas fa-book"></i> Cursos</a></h3>
-                    <h3 class="my-0"><a class="me-4 text-white p-0 lh-lg nav-link" href="/perfil"><i class="fas fa-user"></i> Perfil</a></h3>
+                    <h3 class="my-0 nav-item dropdown">
+                        <a class="me-4 text-white p-0 lh-lg nav-link dropdown-toggle" href="#"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user"></i> Perfil</a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/logout">Logout <i class="fas fa-power-off"></i></a></li>
+                        </ul>
+                    </h3>
                 <%}%>
                 <% if(user.rol == 1){%>
                     <h3 class="my-0"><a class="me-4 text-white p-0 lh-lg nav-link" href="/encuestas"><i class="fas fa-book"></i> Encuestas</a></h3>
-                    <h3 class="my-0"><a class="me-4 text-white p-0 lh-lg nav-link" href="/profe/show"><i class="fas fa-user"></i> Perfil</a></h3>
+                    <h3 class="my-0 nav-item dropdown">
+                        <a class="me-4 text-white p-0 lh-lg nav-link dropdown-toggle" href="#"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user"></i> Perfil</a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/profe/show">Perfil</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/logout">Logout <i class="fas fa-power-off"></i></a></li>
+                        </ul>
+                    </h3>
                 <%}%>
-                
             </div>
         </div>
     </div>
@@ -33,7 +47,7 @@
     <div class="row w-100 mx-0 d-flex pt-3">
         <div class="col-4"></div>
         <div class="col-4 d-flex justify-content-center">
-            <h1 class="text-primary my-0 fw-bold"><%= pag%></h1>
+            <h1 class="text-primary my-0 fw-bold"></h1>
         </div>
         <div class="col-4 d-flex justify-content-center ">
             <div data-bs-toggle="modal" data-bs-target="#buscarModal">

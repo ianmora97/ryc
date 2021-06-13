@@ -1,5 +1,4 @@
 
-
 function loaded(event) {
     comentarioAnonimo();
     OPINIONESGLOBALES = JSON.parse(OPINIONESGLOBALES);
@@ -18,7 +17,6 @@ function getComentarioInArray(id_opinion) {
 }
 
 function comentarioAnonimo() {
-
     $('#anonimo_check').change(function () {
         $("#comentario_anonimo").val("false");
         if (this.checked) {
@@ -277,5 +275,43 @@ function crearComentario(comentario, posicion) {
 function actualizarLikes(id_opinion, cantLikes, prefix) {
     $("#" + prefix + id_opinion).html(cantLikes);
 }
+let id_opinion_reaccion = null;
+
+function setIdOpinion(id){
+    id_opinion_reaccion = id
+}
+
+function comprarReaccion(evt, nombre_reaccion,imagen, id_comprador,monedero) {
+    reaccion = {
+        id_usuario: id_comprador,
+        nombre_reaccion: nombre_reaccion,
+        imagen: imagen,
+        opinion_id: id_opinion_reaccion
+    }
+    if(monedero>=100){
+        $.ajax({
+            type: "POST",
+            url: "/reaccion/opinion",
+            contentType: "application/json",
+            data: JSON.stringify(reaccion),
+        }).then((response) => {
+            actualizarMonedero(100)
+            $("#cerrar-modal-reacciones").trigger("click")
+            Swal.fire(
+                '¡HAS DADO UNA REACCIÓN!',
+                '¡Muchas gracias!',
+                'success'
+            );
+        }, (error) => {
+    
+        });
+    }
+
+}
+function actualizarMonedero(cant){
+    monedas = parseInt($("#cant-monedero").html()) - cant
+    $("#cant-monedero").html(monedas)
+}
+
 
 document.addEventListener("DOMContentLoaded", loaded);

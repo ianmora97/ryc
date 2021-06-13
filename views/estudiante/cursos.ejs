@@ -15,21 +15,38 @@
         <div class="modal-content bg-light">
           <div class="modal-header border-bottom-0">
             <h5 class="modal-title" id="modalOpinarLabel"></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close btn-cerrar me-4" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body ">
             <div class="container bg-white mt-3 py-5">
-              <div class="row mx-0 ">
-                <div class="col-3 d-flex justify-content-lg-end justify-content-md-start ps-0">
-                  
+              <div class="row mb-2  d-flex justify-content-center">
+                <div class="col-7 d-flex justify-content-start  p-0">
                   <img class="imagenPerfil" src="/images/Perfil/<%= user.imagen_perfil%>" style="width: 50px; height:50px;">
+                  <div class="ms-3 d-flex align-items-center fw-bold">
+                  <%=user.nombre%>
+                  </div>
                 </div>
-                <div class="col-9 row mx-0 d-flex justify-content-start">
-                  <input id="opinion" type="text" placeholder="Ingrese su opinión">
+                <div class="col-2 d-flex justify-content-end">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox"
+                        value="" id="anonimo_check">
+                    <label class="form-check-label"
+                        for="anonimo_check">
+                        Anónimo
+                    </label>
+                </div>
+                </div>
+
+              </div>
+              <div class="row mx-0 d-flex justify-content-center">
+                <div class="col-9 p-2 row mx-0 d-flex justify-content-start">
+                  <textarea rows="4" class="form-control" id="opinion" type="text" placeholder="Ingrese su opinión"></textarea>
                 </div>
               </div>
-              <div class="row pb-2 border-bottom ">
-                <button type="submit" onclick="guardarOpinion()" >Enviar</button>
+              <div class="row pb-2 border-bottom d-flex justify-content-center">
+                <div class="col-7 my-4">
+                  <button class="btn btn-secondary w-100 text-white fw-bold" type="submit" onclick="guardarOpinion()" >Enviar</button>
+                </div>
               </div>
             </div>
           </div>

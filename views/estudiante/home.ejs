@@ -5,10 +5,10 @@
     <title>Home</title>
     <%- include("../Global/headers") %>
         <link rel="stylesheet" href="/css/Landing.css" media="screen">
+        <link rel="stylesheet" href="/css/ejemplo.css">
 </head>
 
 <body class="u-body">
-
     <%- include('../Global/menu')%>
         <!-- Modal -->
         <div class="modal fade" id="comentarioModal" tabindex="-1" aria-labelledby="comentarioModalLabel"
@@ -144,73 +144,77 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Entregar reacción</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button id="cerrar-modal-reacciones" type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="row d-flex">
-                            <div class="reaccion-container">
-
+                            <div class="reaccion-container"
+                                onclick="comprarReaccion(this,'sorprendido','wonder.gif','<%=user.id_usuario%>', '<%=user.monedero%>')">
                                 <img class="reaccion-imagen" src="/images/Reacciones/wonder.gif" alt="">
-
                                 <div class="valor-reaccion">
                                     <img class="reaccion-coin" src="/images/Reacciones/dollar.png" alt="">
                                     100
                                 </div>
                             </div>
-                            <div class="reaccion-container">
-
+                            <div class="reaccion-container"
+                                onclick="comprarReaccion(this,'enamorado','love.gif','<%=user.id_usuario%>', '<%=user.monedero%>')">
                                 <img class="reaccion-imagen" src="/images/Reacciones/love.gif" alt="">
-
                                 <div class="valor-reaccion">
                                     <img class="reaccion-coin" src="/images/Reacciones/dollar.png" alt="">
                                     100
                                 </div>
                             </div>
-                            <div class="reaccion-container">
-
+                            <div class="reaccion-container"
+                                onclick="comprarReaccion(this,'aburrido','sleep.gif','<%=user.id_usuario%>', '<%=user.monedero%>')">
                                 <img class="reaccion-imagen" src="/images/Reacciones/sleep.gif" alt="">
-
                                 <div class="valor-reaccion">
                                     <img class="reaccion-coin" src="/images/Reacciones/dollar.png" alt="">
                                     100
                                 </div>
                             </div>
-                            <div class="reaccion-container">
+                            <div class="reaccion-container"
+                                onclick="comprarReaccion(this,'random dino','dino.gif','<%=user.id_usuario%>', '<%=user.monedero%>')">
                                 <img class="reaccion-imagen" src="/images/Reacciones/dino.gif" alt="">
                                 <div class="valor-reaccion">
                                     <img class="reaccion-coin" src="/images/Reacciones/dollar.png" alt="">
                                     100
                                 </div>
                             </div>
-                            <div class="reaccion-container">
+                            <div class="reaccion-container"
+                                onclick="comprarReaccion(this,'enojado','angry.gif','<%=user.id_usuario%>', '<%=user.monedero%>')">
                                 <img class="reaccion-imagen" src="/images/Reacciones/angry.gif" alt="">
                                 <div class="valor-reaccion">
                                     <img class="reaccion-coin" src="/images/Reacciones/dollar.png" alt="">
                                     100
                                 </div>
                             </div>
-                            <div class="reaccion-container">
+                            <div class="reaccion-container"
+                                onclick="comprarReaccion(this,'calculando','calculating.gif','<%=user.id_usuario%>', '<%=user.monedero%>')">
                                 <img class="reaccion-imagen" src="/images/Reacciones/calculating.gif" alt="">
                                 <div class="valor-reaccion">
                                     <img class="reaccion-coin" src="/images/Reacciones/dollar.png" alt="">
                                     100
                                 </div>
                             </div>
-                            <div class="reaccion-container">
+                            <div class="reaccion-container"
+                                onclick="comprarReaccion(this,'enjache','whathing.gif','<%=user.id_usuario%>', '<%=user.monedero%>')">
                                 <img class="reaccion-imagen" src="/images/Reacciones/whathing.gif" alt="">
                                 <div class="valor-reaccion">
                                     <img class="reaccion-coin" src="/images/Reacciones/dollar.png" alt="">
                                     100
                                 </div>
                             </div>
-                            <div class="reaccion-container">
+                            <div class="reaccion-container"
+                                onclick="comprarReaccion(this,'aplaudir','changing.gif','<%=user.id_usuario%>', '<%=user.monedero%>')">
                                 <img class="reaccion-imagen" src="/images/Reacciones/changing.gif" alt="">
                                 <div class="valor-reaccion">
                                     <img class="reaccion-coin" src="/images/Reacciones/dollar.png" alt="">
                                     100
                                 </div>
                             </div>
-                            <div class="reaccion-container">
+                            <div class="reaccion-container"
+                                onclick="comprarReaccion(this,'desesperado','desesperate.gif','<%=user.id_usuario%>', '<%=user.monedero%>')">
                                 <img class="reaccion-imagen" src="/images/Reacciones/desesperate.gif" alt="">
                                 <div class="valor-reaccion">
                                     <img class="reaccion-coin" src="/images/Reacciones/dollar.png" alt="">
@@ -316,7 +320,9 @@
                                     </div>
                                     <div
                                         class="col d-flex justify-content-end align-items-center h-25 col-xss-center comments-reactions">
-                                        <button type="button" class="btn btn-sm btn-secondary reacciones" data-bs-toggle="modal" data-bs-target="#modal_reacciones">
+                                        <button type="button" class="btn btn-sm btn-secondary reacciones"
+                                            data-bs-toggle="modal" data-bs-target="#modal_reacciones"
+                                            onclick="setIdOpinion('<%=opinion.id%>')">
                                             <i class="fas fa-hand-holding-heart"></i>
                                         </button>
                                         <button type="button" class="btn btn-sm comments-trigger"
@@ -389,7 +395,9 @@
                 $("#html").css("overflow", "hidden");
             });
         </script>
+
         <script src="/js/home.js"></script>
+        <script src="/node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
 
         <body>
 
