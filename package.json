@@ -27,11 +27,13 @@
     "express-session": "^1.17.1",
     "jsonwebtoken": "^8.5.1",
     "magic.css": "^1.4.6",
+    "multer": "^1.4.2",
     "mysql": "^2.18.1",
     "node-sass": "^6.0.0",
     "path": "^0.12.7",
     "session": "^0.1.0",
-    "sweetalert2": "^11.0.17"
+    "sweetalert2": "^11.0.17",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "gulp": "^4.0.2",

@@ -3,183 +3,197 @@
 
 <head>
   <%- include("../Global/headers") %>
-    <title>Información del curso</title>
-    <link rel="stylesheet" href="/css/cursoDetalle.css" media="screen">
+  <title>Información del curso</title>
+  <link rel="stylesheet" href="/css/cursoDetalle.css" media="screen">
 </head>
 
 <body class="u-body">
   <%- include('../Global/menu')%>
-
-    <section class="u-align-left u-clearfix u-custom-color-1 u-section-1" id="sec-31be" style="min-height: 100vh;">
-      <div class="u-clearfix u-sheet u-sheet-1 container-principal">
-        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1 border-bottom mb-3">
-          <div class="u-layout">
-            <div class="u-layout-col">
-              <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-1">
-                <div class="u-container-layout u-container-layout-1"><span
-                    class="u-custom-color-2 u-icon u-icon-circle u-spacing-12 u-icon-1"><svg class="u-svg-link"
-                      preserveAspectRatio="xMidYMin slice" viewBox="0 0 511.895 511.895" style="">
-                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-d416"></use>
-                    </svg><svg class="u-svg-content" viewBox="0 0 511.895 511.895" x="0px" y="0px" id="svg-d416"
-                      style="enable-background:new 0 0 511.895 511.895;">
+  <div class="modal fade" id="grupoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Grupos disponibles</h5>
+				<button type="button" class="btn-close btn-cerrar me-5" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body" id="gruposPorCurso" >
+				
+			</div>
+		</div>
+    </div>
+  </div>
+  <section class="u-align-left u-clearfix u-custom-color-1 u-section-1" id="sec-31be" style="min-height: 100vh;">
+    <div class="u-clearfix u-sheet u-sheet-1 container-principal">
+      <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1 border-bottom mb-3">
+        <div class="u-layout">
+          <div class="u-layout-col">
+            <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-1">
+              <div class="u-container-layout u-container-layout-1"><span
+                  class="u-custom-color-2 u-icon u-icon-circle u-spacing-12 u-icon-1"><svg class="u-svg-link"
+                    preserveAspectRatio="xMidYMin slice" viewBox="0 0 511.895 511.895" style="">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-d416"></use>
+                  </svg><svg class="u-svg-content" viewBox="0 0 511.895 511.895" x="0px" y="0px" id="svg-d416"
+                    style="enable-background:new 0 0 511.895 511.895;">
+                    <g>
+                      <path style="fill:#DADCDA;"
+                        d="M484.972,398.01l-26.707,15.429h-0.277l-169.652,97.557l-1.522,0.899   c-0.316-0.028-0.622-0.122-0.899-0.277L29.568,363.623c-1.548-0.99-2.526-2.663-2.629-4.497v-24.977   c-0.096-0.709,0.264-1.401,0.899-1.73v-0.069l170.205-98.179V26.257c-0.269-3.374,0.973-6.694,3.39-9.064l2.076-1.245   l24.631-14.184l1.799-1.107l0.208-0.138h0.069c3.356-1.049,7.009-0.487,9.894,1.522l229.501,132.497   c9.018,5.902,14.694,15.738,15.291,26.499v208.259L484.972,398.01z">
+                      </path>
+                      <path style="fill:#A5B4B4;"
+                        d="M288.544,485.119v24.977c0.005,0.312-0.066,0.621-0.208,0.899l-1.522,0.899   c-0.316-0.028-0.622-0.122-0.899-0.277L29.568,363.623c-1.548-0.99-2.526-2.663-2.629-4.497v-24.977   c-0.096-0.709,0.264-1.401,0.899-1.73c0.574-0.232,1.227-0.154,1.73,0.208l106.067,61.232c0.935,3.627,3.177,6.781,6.296,8.856   l36.117,20.826c2.906,1.661,5.397,0.899,6.365-1.522l101.501,58.603c0.828,0.496,1.499,1.216,1.937,2.076   C288.271,483.439,288.508,484.269,288.544,485.119z">
+                      </path>
+                      <path style="fill:#919D9E;"
+                        d="M484.972,398.01l-26.707,15.429h-0.277l-169.652,97.557c0.142-0.278,0.213-0.587,0.208-0.899   v-24.977c-0.035-0.851-0.272-1.681-0.692-2.422l170.413-97.972V176.466c-0.621-10.753-6.325-20.567-15.36-26.43L213.404,17.469   c-2.9-1.973-6.535-2.532-9.894-1.522l24.631-14.184l1.799-1.107l0.208-0.138h0.069c3.356-1.049,7.009-0.487,9.894,1.522   l229.501,132.497c9.018,5.902,14.694,15.738,15.291,26.499v208.259L484.972,398.01z">
+                      </path>
+                      <polygon style="fill:#4F6F7F;"
+                        points="440.638,355.376 215.634,225.473 215.634,37.963 440.638,167.866  "></polygon>
+                      <path style="fill:#B4B4B3;"
+                        d="M458.264,384.726l-170.413,97.972c-0.438-0.86-1.109-1.579-1.937-2.076l-101.501-58.603   c-0.969,2.422-3.459,3.183-6.365,1.522l-36.117-20.826c-3.119-2.075-5.361-5.229-6.296-8.856L29.569,332.626   c-0.503-0.362-1.156-0.44-1.73-0.208v-0.069l170.205-98.179v0.277L458.264,384.726z">
+                      </path>
                       <g>
-                        <path style="fill:#DADCDA;"
-                          d="M484.972,398.01l-26.707,15.429h-0.277l-169.652,97.557l-1.522,0.899   c-0.316-0.028-0.622-0.122-0.899-0.277L29.568,363.623c-1.548-0.99-2.526-2.663-2.629-4.497v-24.977   c-0.096-0.709,0.264-1.401,0.899-1.73v-0.069l170.205-98.179V26.257c-0.269-3.374,0.973-6.694,3.39-9.064l2.076-1.245   l24.631-14.184l1.799-1.107l0.208-0.138h0.069c3.356-1.049,7.009-0.487,9.894,1.522l229.501,132.497   c9.018,5.902,14.694,15.738,15.291,26.499v208.259L484.972,398.01z">
-                        </path>
-                        <path style="fill:#A5B4B4;"
-                          d="M288.544,485.119v24.977c0.005,0.312-0.066,0.621-0.208,0.899l-1.522,0.899   c-0.316-0.028-0.622-0.122-0.899-0.277L29.568,363.623c-1.548-0.99-2.526-2.663-2.629-4.497v-24.977   c-0.096-0.709,0.264-1.401,0.899-1.73c0.574-0.232,1.227-0.154,1.73,0.208l106.067,61.232c0.935,3.627,3.177,6.781,6.296,8.856   l36.117,20.826c2.906,1.661,5.397,0.899,6.365-1.522l101.501,58.603c0.828,0.496,1.499,1.216,1.937,2.076   C288.271,483.439,288.508,484.269,288.544,485.119z">
-                        </path>
-                        <path style="fill:#919D9E;"
-                          d="M484.972,398.01l-26.707,15.429h-0.277l-169.652,97.557c0.142-0.278,0.213-0.587,0.208-0.899   v-24.977c-0.035-0.851-0.272-1.681-0.692-2.422l170.413-97.972V176.466c-0.621-10.753-6.325-20.567-15.36-26.43L213.404,17.469   c-2.9-1.973-6.535-2.532-9.894-1.522l24.631-14.184l1.799-1.107l0.208-0.138h0.069c3.356-1.049,7.009-0.487,9.894,1.522   l229.501,132.497c9.018,5.902,14.694,15.738,15.291,26.499v208.259L484.972,398.01z">
-                        </path>
-                        <polygon style="fill:#4F6F7F;"
-                          points="440.638,355.376 215.634,225.473 215.634,37.963 440.638,167.866  "></polygon>
-                        <path style="fill:#B4B4B3;"
-                          d="M458.264,384.726l-170.413,97.972c-0.438-0.86-1.109-1.579-1.937-2.076l-101.501-58.603   c-0.969,2.422-3.459,3.183-6.365,1.522l-36.117-20.826c-3.119-2.075-5.361-5.229-6.296-8.856L29.569,332.626   c-0.503-0.362-1.156-0.44-1.73-0.208v-0.069l170.205-98.179v0.277L458.264,384.726z">
-                        </path>
-                        <g>
-                          <polygon style="fill:#DADCDA;"
-                            points="133.029,307.926 337.207,426.44 407.129,384.484 202.952,265.969   "></polygon>
-                          <polygon style="fill:#DADCDA;"
-                            points="140.592,368.445 227.265,418.753 256.947,400.944 170.274,350.629   "></polygon>
-                        </g>
-                        <g>
-                          <path style="fill:#95C2D5;"
-                            d="M240.091,112.434c-1.57,0.001-2.944-1.056-3.345-2.575c-0.401-1.518,0.27-3.116,1.636-3.892    l19.568-11.145c1.074-0.611,2.393-0.602,3.459,0.023c1.066,0.625,1.718,1.771,1.709,3.007c-0.008,1.236-0.675,2.373-1.749,2.984    l-19.568,11.145C241.28,112.279,240.691,112.435,240.091,112.434z">
-                          </path>
-                          <path style="fill:#95C2D5;"
-                            d="M240.091,140.488c-1.57,0.001-2.944-1.057-3.345-2.575s0.27-3.116,1.636-3.892l9.784-5.574    c1.074-0.611,2.393-0.602,3.459,0.023c1.066,0.625,1.718,1.771,1.709,3.007c-0.008,1.236-0.675,2.373-1.749,2.984l-9.784,5.574    C241.28,140.333,240.691,140.489,240.091,140.488z">
-                          </path>
-                          <path style="fill:#95C2D5;"
-                            d="M269.443,123.769c-1.57,0.001-2.944-1.056-3.345-2.575c-0.401-1.518,0.27-3.116,1.636-3.892    l14.676-8.358c1.074-0.611,2.393-0.602,3.459,0.023c1.066,0.625,1.718,1.771,1.709,3.007c-0.008,1.236-0.675,2.373-1.749,2.984    l-14.676,8.358C270.631,123.613,270.042,123.769,269.443,123.769z">
-                          </path>
-                          <path style="fill:#95C2D5;"
-                            d="M240.091,168.539c-1.57,0.001-2.944-1.056-3.345-2.575c-0.401-1.518,0.27-3.116,1.636-3.892    l44.027-25.078c1.074-0.611,2.393-0.602,3.459,0.023c1.066,0.625,1.718,1.771,1.709,3.007c-0.008,1.236-0.675,2.373-1.749,2.984    l-44.027,25.078C241.28,168.383,240.691,168.539,240.091,168.539z">
-                          </path>
-                          <path style="fill:#95C2D5;"
-                            d="M303.679,132.316c-1.57,0.001-2.944-1.057-3.345-2.575c-0.401-1.518,0.27-3.116,1.636-3.892    l4.892-2.787c1.661-0.944,3.772-0.363,4.716,1.297c0.944,1.661,0.363,3.772-1.297,4.716l-4.892,2.787    C304.868,132.16,304.278,132.316,303.679,132.316z">
-                          </path>
-                        </g>
+                        <polygon style="fill:#DADCDA;"
+                          points="133.029,307.926 337.207,426.44 407.129,384.484 202.952,265.969   "></polygon>
+                        <polygon style="fill:#DADCDA;"
+                          points="140.592,368.445 227.265,418.753 256.947,400.944 170.274,350.629   "></polygon>
                       </g>
-                    </svg></span>
+                      <g>
+                        <path style="fill:#95C2D5;"
+                          d="M240.091,112.434c-1.57,0.001-2.944-1.056-3.345-2.575c-0.401-1.518,0.27-3.116,1.636-3.892    l19.568-11.145c1.074-0.611,2.393-0.602,3.459,0.023c1.066,0.625,1.718,1.771,1.709,3.007c-0.008,1.236-0.675,2.373-1.749,2.984    l-19.568,11.145C241.28,112.279,240.691,112.435,240.091,112.434z">
+                        </path>
+                        <path style="fill:#95C2D5;"
+                          d="M240.091,140.488c-1.57,0.001-2.944-1.057-3.345-2.575s0.27-3.116,1.636-3.892l9.784-5.574    c1.074-0.611,2.393-0.602,3.459,0.023c1.066,0.625,1.718,1.771,1.709,3.007c-0.008,1.236-0.675,2.373-1.749,2.984l-9.784,5.574    C241.28,140.333,240.691,140.489,240.091,140.488z">
+                        </path>
+                        <path style="fill:#95C2D5;"
+                          d="M269.443,123.769c-1.57,0.001-2.944-1.056-3.345-2.575c-0.401-1.518,0.27-3.116,1.636-3.892    l14.676-8.358c1.074-0.611,2.393-0.602,3.459,0.023c1.066,0.625,1.718,1.771,1.709,3.007c-0.008,1.236-0.675,2.373-1.749,2.984    l-14.676,8.358C270.631,123.613,270.042,123.769,269.443,123.769z">
+                        </path>
+                        <path style="fill:#95C2D5;"
+                          d="M240.091,168.539c-1.57,0.001-2.944-1.056-3.345-2.575c-0.401-1.518,0.27-3.116,1.636-3.892    l44.027-25.078c1.074-0.611,2.393-0.602,3.459,0.023c1.066,0.625,1.718,1.771,1.709,3.007c-0.008,1.236-0.675,2.373-1.749,2.984    l-44.027,25.078C241.28,168.383,240.691,168.539,240.091,168.539z">
+                        </path>
+                        <path style="fill:#95C2D5;"
+                          d="M303.679,132.316c-1.57,0.001-2.944-1.057-3.345-2.575c-0.401-1.518,0.27-3.116,1.636-3.892    l4.892-2.787c1.661-0.944,3.772-0.363,4.716,1.297c0.944,1.661,0.363,3.772-1.297,4.716l-4.892,2.787    C304.868,132.16,304.278,132.316,303.679,132.316z">
+                        </path>
+                      </g>
+                    </g>
+                  </svg></span>
 
-                  <h1 class="u-text u-text-custom-color-4 u-text-1">
-                    <%=curso.nombre_curso%>
-                  </h1>
-                  <p class="u-text u-text-default-lg u-text-default-xl u-text-2">
-                    <%=curso.nombre_carrera%>&nbsp;
-                  </p>
-                  <p class="u-text u-text-3">
-                    <%=curso.creditos%> créditos&nbsp; &nbsp;-&nbsp; <%=curso.codigo_curso%>
-                  </p>
-                  <a href="https://nicepage.com/k/card-html-templates"
-                    class="u-btn u-btn-round u-button-style u-hover-custom-color-3 u-palette-3-base u-radius-10 u-text-body-alt-color u-text-hover-white u-btn-1">
-                    Carta al estudiante</a>
-                  <a href="https://nicepage.com/k/card-html-templates"
-                    class="u-btn u-btn-round u-button-style u-hover-custom-color-3 u-palette-3-base u-radius-10 u-text-body-alt-color u-text-hover-white u-btn-2">Seguir</a>
-                  <p class="u-text u-text-4">
-                    <%=curso.descripcion%>
-                  </p>
-                </div>
+                <h1 class="u-text u-text-custom-color-4 u-text-1">
+                  <%=curso.nombre_curso%>
+                </h1>
+                <p class="u-text u-text-default-lg u-text-default-xl u-text-2">
+                  <%=curso.nombre_carrera%>&nbsp;
+                </p>
+                <p class="u-text u-text-3">
+                  <%=curso.creditos%> créditos&nbsp; &nbsp;-&nbsp; <%=curso.codigo_curso%>
+                </p>
+                <span class="sr-only" id="idGrupo"></span>
+                <span class="sr-only" id="codCurso"><%=curso.codigo_curso%></span>
+                <span class="sr-only" id="idUsuario"><%=user.id_usuario%></span>
+                <button type="button" id="carta" class="btn btn-secondary"  style="display: flex; margin: 0 0 0 auto;"> Carta al estudiante</button>
+                <button type="button" id="seguirCurso" data-bs-toggle="modal" data-bs-target="#grupoModal" class="btn btn-secondary" style="display: flex; margin: 0 0 0 auto; width: 166px; justify-content: center;">Seguir</button>
+                <p class="u-text u-text-4">
+                  <%=curso.descripcion%>
+                </p>
               </div>
             </div>
           </div>
         </div>
-        <div class="container">
-          <div class="row d-flex justify-content-center">
-            <% opiniones.forEach(function(opinion){%>
-              <div class="col-8 col-mds-12 mb-3">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row border-bottom pb-3 mx-1">
-                      <div class="col-2 d-flex justify-content-end px-0">
-                        <div class="image-comentario-container">
-                          <% if(opinion.imagen_perfil==null){ %>
-                            <img class="image-comentario" src="/images/Perfil/anonimo.png" alt="">
-                            <% } else { %>
-                              <img class="image-comentario" src="/images/Perfil/<%= opinion.imagen_perfil %>" alt="">
-                              <% } %>
-                        </div>
-                      </div>
-                      <div class="col-7 d-flex flex-column justiy-content-around">
-                        <span class="nombre-comentario">
-                          <%if(opinion.nombre_opinador !==null){ %>
-                            <%=opinion.nombre_opinador%>
-                              <%}else{%>
-                                <i>Anonimo</i>
-                                <%}%>
+      </div>
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <% opiniones.forEach(function(opinion){%>
+          <div class="col-8 col-mds-12 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="row border-bottom pb-3 mx-1">
+                  <div class="col-2 d-flex justify-content-end px-0">
+                    <div class="image-comentario-container">
+                      <% if(opinion.imagen_perfil==null){ %>
+                      <img class="image-comentario" src="/images/Perfil/anonimo.png" alt="">
+                      <% } else { %>
+                      <img class="image-comentario" src="/images/Perfil/<%= opinion.imagen_perfil %>" alt="">
+                      <% } %>
+                    </div>
+                  </div>
+                  <div class="col-7 d-flex flex-column justiy-content-around">
+                    <span class="nombre-comentario">
+                      <%if(opinion.nombre_opinador !==null){ %>
+                      <%=opinion.nombre_opinador%>
+                      <%}else{%>
+                      <i>Anonimo</i>
+                      <%}%>
                         </span>
                         <span class="fecha-comentario">
-                          <%=opinion.fecha.split(" ")[0]%> <i class="fw-normal"> <%=opinion.fecha.split(" ")[1].substring(0,5) %> </i>
-                        </span>
-                      </div>
-                      <div class="col-3 px-0 d-flex flex-column align-items-end">
-                        <span class="ciclo-comentario fw-bold text-muted mt-auto">
-                          <%if(opinion.ciclo !==null){ %>
-                            I
-                            <%}else{%>
-                              II
-                            <%}%>
+                          <%=opinion.fecha.split(" ")[0]%> <i class="fw-normal">
+                        <%=opinion.fecha.split(" ")[1].substring(0,5) %> </i>
+                    </span>
+                  </div>
+                  <div class="col-3 px-0 d-flex flex-column align-items-end">
+                    <span class="ciclo-comentario fw-bold text-muted mt-auto">
+                      <%if(opinion.ciclo !==null){ %>
+                      I
+                      <%}else{%>
+                      II
+                      <%}%>
                           CICLO <%=opinion.annio%></span>
-                      </div>
-                    </div>
-                    <div class="row pb-3 mx-1 mt-3">
-                      <div class="col-12 comentario">
-                        <%=opinion.comentario%>
-                      </div>
-                    </div>
+                  </div>
+                </div>
+                <div class="row pb-3 mx-1 mt-3">
+                  <div class="col-12 comentario">
+                    <%=opinion.comentario%>
                   </div>
                 </div>
               </div>
-              <%}); %>
+            </div>
           </div>
+          <%}); %>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="u-clearfix u-custom-color-4 u-hidden-lg u-hidden-xl u-section-2" id="sec-cc03">
-      <div class="u-clearfix u-sheet u-sheet-1">
-        <a href="https://nicepage.com/c/architecture-building-website-templates"
-          class="u-align-center u-btn u-button-style u-custom-font u-font-lato u-none u-text-white u-btn-1"> &nbsp;</a>
-        <a href="https://nicepage.com/c/architecture-building-website-templates"
-          class="u-align-center u-btn u-button-style u-custom-font u-font-lato u-none u-text-white u-btn-2"><span
-            class="u-icon u-icon-1"><svg class="u-svg-content" viewBox="-42 0 512 512.002"
-              style="width: 1em; height: 1em;">
-              <path
-                d="m210.351562 246.632812c33.882813 0 63.222657-12.152343 87.195313-36.128906 23.972656-23.972656 36.125-53.304687 36.125-87.191406 0-33.875-12.152344-63.210938-36.128906-87.191406-23.976563-23.96875-53.3125-36.121094-87.191407-36.121094-33.886718 0-63.21875 12.152344-87.191406 36.125s-36.128906 53.308594-36.128906 87.1875c0 33.886719 12.15625 63.222656 36.132812 87.195312 23.976563 23.96875 53.3125 36.125 87.1875 36.125zm0 0">
-              </path>
-              <path
-                d="m426.128906 393.703125c-.691406-9.976563-2.089844-20.859375-4.148437-32.351563-2.078125-11.578124-4.753907-22.523437-7.957031-32.527343-3.308594-10.339844-7.808594-20.550781-13.371094-30.335938-5.773438-10.15625-12.554688-19-20.164063-26.277343-7.957031-7.613282-17.699219-13.734376-28.964843-18.199219-11.226563-4.441407-23.667969-6.691407-36.976563-6.691407-5.226563 0-10.28125 2.144532-20.042969 8.5-6.007812 3.917969-13.035156 8.449219-20.878906 13.460938-6.707031 4.273438-15.792969 8.277344-27.015625 11.902344-10.949219 3.542968-22.066406 5.339844-33.039063 5.339844-10.972656 0-22.085937-1.796876-33.046874-5.339844-11.210938-3.621094-20.296876-7.625-26.996094-11.898438-7.769532-4.964844-14.800782-9.496094-20.898438-13.46875-9.75-6.355468-14.808594-8.5-20.035156-8.5-13.3125 0-25.75 2.253906-36.972656 6.699219-11.257813 4.457031-21.003906 10.578125-28.96875 18.199219-7.605469 7.28125-14.390625 16.121094-20.15625 26.273437-5.558594 9.785157-10.058594 19.992188-13.371094 30.339844-3.199219 10.003906-5.875 20.945313-7.953125 32.523437-2.058594 11.476563-3.457031 22.363282-4.148437 32.363282-.679688 9.796875-1.023438 19.964844-1.023438 30.234375 0 26.726562 8.496094 48.363281 25.25 64.320312 16.546875 15.746094 38.441406 23.734375 65.066406 23.734375h246.53125c26.625 0 48.511719-7.984375 65.0625-23.734375 16.757813-15.945312 25.253906-37.585937 25.253906-64.324219-.003906-10.316406-.351562-20.492187-1.035156-30.242187zm0 0">
-              </path>
-            </svg><img></span>&nbsp;
-        </a>
-        <a href="https://nicepage.com/c/architecture-building-website-templates"
-          class="u-align-center u-btn u-button-style u-custom-font u-font-lato u-none u-text-white u-btn-3"><span
-            class="u-icon u-icon-2"><svg class="u-svg-content" viewBox="0 0 422.912 422.912" x="0px" y="0px"
-              style="width: 1em; height: 1em;">
+  <section class="u-clearfix u-custom-color-4 u-hidden-lg u-hidden-xl u-section-2" id="sec-cc03">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <a href="https://nicepage.com/c/architecture-building-website-templates"
+        class="u-align-center u-btn u-button-style u-custom-font u-font-lato u-none u-text-white u-btn-1"> &nbsp;</a>
+      <a href="https://nicepage.com/c/architecture-building-website-templates"
+        class="u-align-center u-btn u-button-style u-custom-font u-font-lato u-none u-text-white u-btn-2"><span
+          class="u-icon u-icon-1"><svg class="u-svg-content" viewBox="-42 0 512 512.002"
+            style="width: 1em; height: 1em;">
+            <path
+              d="m210.351562 246.632812c33.882813 0 63.222657-12.152343 87.195313-36.128906 23.972656-23.972656 36.125-53.304687 36.125-87.191406 0-33.875-12.152344-63.210938-36.128906-87.191406-23.976563-23.96875-53.3125-36.121094-87.191407-36.121094-33.886718 0-63.21875 12.152344-87.191406 36.125s-36.128906 53.308594-36.128906 87.1875c0 33.886719 12.15625 63.222656 36.132812 87.195312 23.976563 23.96875 53.3125 36.125 87.1875 36.125zm0 0">
+            </path>
+            <path
+              d="m426.128906 393.703125c-.691406-9.976563-2.089844-20.859375-4.148437-32.351563-2.078125-11.578124-4.753907-22.523437-7.957031-32.527343-3.308594-10.339844-7.808594-20.550781-13.371094-30.335938-5.773438-10.15625-12.554688-19-20.164063-26.277343-7.957031-7.613282-17.699219-13.734376-28.964843-18.199219-11.226563-4.441407-23.667969-6.691407-36.976563-6.691407-5.226563 0-10.28125 2.144532-20.042969 8.5-6.007812 3.917969-13.035156 8.449219-20.878906 13.460938-6.707031 4.273438-15.792969 8.277344-27.015625 11.902344-10.949219 3.542968-22.066406 5.339844-33.039063 5.339844-10.972656 0-22.085937-1.796876-33.046874-5.339844-11.210938-3.621094-20.296876-7.625-26.996094-11.898438-7.769532-4.964844-14.800782-9.496094-20.898438-13.46875-9.75-6.355468-14.808594-8.5-20.035156-8.5-13.3125 0-25.75 2.253906-36.972656 6.699219-11.257813 4.457031-21.003906 10.578125-28.96875 18.199219-7.605469 7.28125-14.390625 16.121094-20.15625 26.273437-5.558594 9.785157-10.058594 19.992188-13.371094 30.339844-3.199219 10.003906-5.875 20.945313-7.953125 32.523437-2.058594 11.476563-3.457031 22.363282-4.148437 32.363282-.679688 9.796875-1.023438 19.964844-1.023438 30.234375 0 26.726562 8.496094 48.363281 25.25 64.320312 16.546875 15.746094 38.441406 23.734375 65.066406 23.734375h246.53125c26.625 0 48.511719-7.984375 65.0625-23.734375 16.757813-15.945312 25.253906-37.585937 25.253906-64.324219-.003906-10.316406-.351562-20.492187-1.035156-30.242187zm0 0">
+            </path>
+          </svg><img></span>&nbsp;
+      </a>
+      <a href="https://nicepage.com/c/architecture-building-website-templates"
+        class="u-align-center u-btn u-button-style u-custom-font u-font-lato u-none u-text-white u-btn-3"><span
+          class="u-icon u-icon-2"><svg class="u-svg-content" viewBox="0 0 422.912 422.912" x="0px" y="0px"
+            style="width: 1em; height: 1em;">
+            <g>
               <g>
-                <g>
-                  <path
-                    d="M370.176,67.584h-25.6V15.36c-0.266-8.37-6.99-15.094-15.36-15.36H86.528C59.382,0,37.376,22.006,37.376,49.152V373.76    c0,27.146,22.006,49.152,49.152,49.152h283.648c8.483,0,15.36-6.877,15.36-15.36V82.944    C385.536,74.461,378.659,67.584,370.176,67.584z M215.552,230.912l-36.864-30.208c-5.039-3.037-11.345-3.037-16.384,0    l-36.864,30.208V98.304h90.112V230.912z M313.856,67.584H86.528c-10.18,0-18.432-8.252-18.432-18.432    c0-10.18,8.252-18.432,18.432-18.432h227.328V67.584z">
-                  </path>
-                </g>
+                <path
+                  d="M370.176,67.584h-25.6V15.36c-0.266-8.37-6.99-15.094-15.36-15.36H86.528C59.382,0,37.376,22.006,37.376,49.152V373.76    c0,27.146,22.006,49.152,49.152,49.152h283.648c8.483,0,15.36-6.877,15.36-15.36V82.944    C385.536,74.461,378.659,67.584,370.176,67.584z M215.552,230.912l-36.864-30.208c-5.039-3.037-11.345-3.037-16.384,0    l-36.864,30.208V98.304h90.112V230.912z M313.856,67.584H86.528c-10.18,0-18.432-8.252-18.432-18.432    c0-10.18,8.252-18.432,18.432-18.432h227.328V67.584z">
+                </path>
               </g>
-            </svg><img></span>
-        </a>
-        <a href="https://nicepage.com/c/architecture-building-website-templates"
-          class="u-align-center u-btn u-button-style u-custom-font u-font-lato u-none u-text-white u-btn-4"><span
-            class="u-icon u-icon-3" data-animation-name="rubberBand" data-animation-duration="1000"
-            data-animation-delay="0" data-animation-direction=""><svg class="u-svg-content" viewBox="0 0 24 24"
-              style="width: 1em; height: 1em;">
-              <path
-                d="m23.619 10.849-11.1-10.64c-.29-.278-.748-.278-1.038 0l-11.111 10.651c-.235.235-.37.559-.37.89 0 .689.561 1.25 1.25 1.25h1.75v9.5c0 .828.672 1.5 1.5 1.5h4.25c.414 0 .75-.336.75-.75v-6.5c0-.137.112-.25.25-.25h4.5c.137 0 .25.113.25.25v6.5c0 .414.336.75.75.75h4.25c.828 0 1.5-.672 1.5-1.5v-9.5h1.75c.689 0 1.25-.561 1.25-1.25 0-.331-.135-.655-.381-.901z">
-              </path>
-            </svg><img></span>
-        </a>
-      </div>
-    </section>
-    <%- include('../Global/menuBottom')%>
-
+            </g>
+          </svg><img></span>
+      </a>
+      <a href="https://nicepage.com/c/architecture-building-website-templates"
+        class="u-align-center u-btn u-button-style u-custom-font u-font-lato u-none u-text-white u-btn-4"><span
+          class="u-icon u-icon-3" data-animation-name="rubberBand" data-animation-duration="1000"
+          data-animation-delay="0" data-animation-direction=""><svg class="u-svg-content" viewBox="0 0 24 24"
+            style="width: 1em; height: 1em;">
+            <path
+              d="m23.619 10.849-11.1-10.64c-.29-.278-.748-.278-1.038 0l-11.111 10.651c-.235.235-.37.559-.37.89 0 .689.561 1.25 1.25 1.25h1.75v9.5c0 .828.672 1.5 1.5 1.5h4.25c.414 0 .75-.336.75-.75v-6.5c0-.137.112-.25.25-.25h4.5c.137 0 .25.113.25.25v6.5c0 .414.336.75.75.75h4.25c.828 0 1.5-.672 1.5-1.5v-9.5h1.75c.689 0 1.25-.561 1.25-1.25 0-.331-.135-.655-.381-.901z">
+            </path>
+          </svg><img></span>
+      </a>
+    </div>
+  </section>
+  <%- include('../Global/menuBottom')%>
+  <script src="/js/grupos.js"></script>
+  <script src="/node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
 </body>
 
 </html>

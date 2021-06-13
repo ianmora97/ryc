@@ -1,59 +1,90 @@
 <!DOCTYPE html>
 <html id="html">
-
 <head>
     <title>Home</title>
     <%- include("../Global/headers") %>
-        <link rel="stylesheet" href="/css/paquetes.css" media="screen">
-        <link rel="stylesheet" href="/css/ejemplo.css">
+    <link rel="stylesheet" href="/css/paquetes.css" media="screen">
+    <link rel="stylesheet" href="/css/ejemplo.css">
 </head>
-
-<body class="u-body">
+<body>
     <%- include('../Global/menu')%>
-    <div class="image-bg-body">
-
-    </div>
-        <script src="/node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
-        <div class="container-fluid px-5 pt-5 mt-5">
-            <div class="row px-5">
-                <div class="col ">
-                    <div class="card coins-container">
-                        <div class="header-tier">
-                            <span class="tier">Tier</span>
-                            <span class="tier-number">1</span>
-                        </div>
-                        <div class="card-body border-top">
+    <div class="image-bg-body"></div>
+    <script src="/node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
+    <div class="container-fluid px-5 pt-5 mt-5 allcontainer mb-5 pb-5">
+        <div class="row mx-0">
+            <div class="col-lg mb-5">
+                <div class="card coins-container pt-5 px-4">
+                    <div class="header-tier">
+                        <h2 class="align-bottom fw-bold my-0">Tier&nbsp;</h2>
+                        <h1 class="align-bottom text-primary fw-bold my-0">1</h1>
+                    </div>
+                    <div class="border-bottom"></div>
+                    <div class="card-body">
+                        <img src="/images/Icons/tier1.png"  class="mx-auto d-block my-3">
+                        <div class="text-center">
+                            <h2 class="text-primary fw-bold">500 Tokens</h2>
+                            <h4 class="text-gray mb-4">$1.99</h4>
+                            <button type="button" class="btn btn-primary rounded-lg botonComprar mb-3">Comprar</button>
                         </div>
                     </div>
                 </div>
-                <div class="col ">
-                    <div class="card coins-container">
-
-                        <div class="card-body">
-
+            </div>
+            <div class="col-lg mb-5">
+                <div class="card coins-container pt-5 px-4">
+                    <div class="bolita bg-secondary align-bottom">15%</div>
+                    <div class="header-tier">
+                        <h2 class="align-bottom fw-bold my-0">Tier&nbsp;</h2>
+                        <h1 class="align-bottom text-primary fw-bold my-0">2</h1>
+                    </div>
+                    <div class="border-bottom"></div>
+                    <div class="card-body">
+                        <img src="/images/Icons/tier2.png"  class="mx-auto d-block my-3">
+                        <div class="text-center">
+                            <h2 class="text-primary fw-bold">1500 Tokens</h2>
+                            <h4 class="text-gray mb-4">$4.99</h4>
+                            <button type="button" class="btn btn-primary rounded-lg botonComprar mb-3">Comprar</button>
                         </div>
                     </div>
                 </div>
-                <div class="col ">
-
-                    <div class="card coins-container">
-
-                        <div class="card-body">
-
+            </div>
+            <div class="col-lg mb-5">
+                <div class="card coins-container pt-5 px-4">
+                    <div class="bolita bg-secondary align-bottom">20%</div>
+                    <div class="header-tier">
+                        <h2 class="align-bottom fw-bold my-0">Tier&nbsp;</h2>
+                        <h1 class="align-bottom text-primary fw-bold my-0">3</h1>
+                    </div>
+                    <div class="border-bottom"></div>
+                    <div class="card-body">
+                        <img src="/images/Icons/tier3.png"  class="mx-auto d-block my-3">
+                        <div class="text-center">
+                            <h2 class="text-primary fw-bold">3000 Tokens</h2>
+                            <h4 class="text-gray mb-4">$9.99</h4>
+                            <button type="button" class="btn btn-primary rounded-lg botonComprar mb-3">Comprar</button>
                         </div>
                     </div>
                 </div>
-                <div class="col ">
-                    <div class="card coins-container">
-                        <div class="card-body">
-
+            </div>
+            <div class="col-lg mb-5">
+                <div class="card coins-container pt-5 px-4">
+                    <div class="bolita bg-secondary align-bottom">50%</div>
+                    <div class="header-tier">
+                        <h2 class="align-bottom fw-bold my-0">Tier&nbsp;</h2>
+                        <h1 class="align-bottom text-primary fw-bold my-0">4</h1>
+                    </div>
+                    <div class="border-bottom"></div>
+                    <div class="card-body">
+                        <img src="/images/Icons/tier4.png"  class="mx-auto d-block my-3">
+                        <div class="text-center">
+                            <h2 class="text-primary fw-bold">7500 Tokens</h2>
+                            <h4 class="text-gray mb-4">$19.99</h4>
+                            <button type="button" class="btn btn-primary rounded-lg botonComprar mb-3">Comprar</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <%- include('../Global/menuBottom')%>
 </body>
-
-<%- include('../Global/menuBottom')%>
-
 </html>

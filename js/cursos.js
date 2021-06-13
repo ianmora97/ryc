@@ -9,20 +9,19 @@ function events(event) {
     onOpenModal();
 }
 
-function onOpenModal(){
+function onOpenModal() {
     $('#detalleCurso').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget)
         var recipient = button.data('id')
         let curso = g_MapCursosEstudiante.get(parseInt(recipient))
-        
         $('#nombreCursoModal').html(curso.nombre);
 
         $('#carreraCursoModal').html(curso.universidad);
         $('#creditosCursoModal').html(curso.creditos + " " + curso.codigo + " " + curso.codigo_curso);
-       
+
         $('#carreraCursoModal1').html(curso.universidad);
         $('#creditosCursoModal1').html("Creditos: " + curso.creditos + " Código:" + curso.codigo + "-" + curso.codigo_curso);
-        
+
         $('#descripcionCursoModal').html(curso.descripcion);
     })
 
@@ -43,7 +42,6 @@ function loadFromDB() {
         data: { id },
         contentType: "application/json"
     }).then((cursos) => {
-        console.log(cursos)
         llenarCursosCard(cursos);
     }, (error) => {
     });
@@ -57,33 +55,52 @@ function llenarCursosCard(data) {
     });
 }
 
-function guardarOpinion(){
+function guardarOpinion() {
     let opinion = $('#opinion').val();
     let id = $('#idUsuario').html();
     let grupo = $('#idGrupo').html();
-    if($("#anonimo_check").is(":checked")){
+
+    if ($("#anonimo_check").is(":checked")) {
         id = null
     }
-    
-    if(opinion.trim().length > 0){
+    payload = {
+        id: id, grupo: grupo, opinion: opinion
+    }
+    if (opinion.trim().length > 0) {
         $.ajax({
-            type: "GET",
+            type: "put",
             url: "/cursos/guardarOpinion",
-            data: {id, grupo, opinion},
+            data: JSON.stringify(payload),
             contentType: "application/json"
         }).then((response) => {
-            console.log("ESTE ES EL RESPONSE")
-        },(error)=>{
+            $("#opinion").val("")
+            $("#close-modal-opinion").trigger("click")
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Opinión publicada",
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }, (error) => {
             console.log("ESTE ES EL ERROR")
         });
-    }else{
-        alert("IAN NECESITO UNA ALERT DE NPM BONITA")
+    } else {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: '¡Escribe algo!',
+            showConfirmButton: false,
+            timer: 1500
+        })
         $('#opinion').trigger("focus");
     }
 }
 
+function setModalNombreCurso(nombre){
+    $("#nombre-curso-opinion").html(nombre);
+}
 function printCursos(curso) {
-
     $('#miscursos').append(`
     <div 
         class="u-container-style u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-white u-group-1" style="border-radius: 20px; box-shadow: 0px 0px 6px 0px #b2b2b2;">
@@ -98,7 +115,7 @@ function printCursos(curso) {
                 </h6>
             </div>
             </div>
-            <div data-id="${curso.id}" role="button" data-bs-toggle="modal" data-bs-target="#modalOpinar">
+            <div data-id="${curso.id}" role="button" data-bs-toggle="modal" data-bs-target="#modalOpinar" onclick="setModalNombreCurso('${curso.curso_nombre}')">
             <div  style="margin-top: 1rem;margin-left: 1rem;"><i class="fa fa-comment fa-2x text-secondary" aria-hidden="true"></i></div>
             <p class="u-text u-text-grey-50 u-text-4" style="font-size: 18px; font-weight: 600;">Opinar</p>
             </div>

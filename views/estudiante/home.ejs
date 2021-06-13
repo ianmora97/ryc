@@ -235,7 +235,15 @@
         <section class="u-clearfix u-palette-5-light-3 u-section-1" id="sec-aa93">
             <div class="u-clearfix u-sheet u-sheet-1 justiy-content-between full-xs">
                 <div class="container-opions">
-
+                    
+                    <!--
+                         opiniones.forEach(function(opinion, index){
+                            if(index%3 == 0){
+                                muestra el anuncio
+                                
+                        }
+                    -->
+                    
                     <% opiniones.forEach(function(opinion){ %>
                         <div id="opinion-card"
                             class="opinion u-container-style u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-radius-4 u-shape-round u-white u-group-4">
@@ -341,7 +349,7 @@
                 </div>
                 <div
                     class="container-info u-container-style u-group u-hidden-md u-hidden-sm u-hidden-xs u-radius-4 u-shape-round u-white ">
-                    <div class="u-container-layout u-container-layout-1">
+                    <div class="u-container-layout u-container-layout-1" style="overflow: auto;">
                         <div alt="" class="u-image " data-image-width="1280" data-image-height="851">
                             <img class="u-image-circle u-image-1" src="/images/Perfil/<%=user.imagen_perfil%>" alt="">
                         </div>
@@ -395,7 +403,6 @@
                 $("#html").css("overflow", "hidden");
             });
         </script>
-
         <script src="/js/home.js"></script>
         <script src="/node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
 

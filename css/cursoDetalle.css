@@ -8,6 +8,14 @@
   width: 55px;
   height: 55px;
 }
+#result_grupo:hover{
+  transition: all ease-in 300ms;
+}
+#result_grupo:hover{
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 
 .image-comentario {
   width: 100%;

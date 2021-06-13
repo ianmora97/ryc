@@ -129,39 +129,77 @@
                 <%}%>
                 <h1 class="fw-bolder" style="font-size: 50px;">Login</h1>
                 <h5 class="text-muted mt-3 mb-5">Iniciar Sesion</h5>
-                <form action="/login" method="POST">
-                    <div class="bg-white shadow rounded-lg px-3 pb-2 mb-3">
-                        <div class="d-flex justify-content-start align-items-end">
-                            <div class="pb-1">
-                                <i class="far fa-envelope " style="font-size:23px;"></i>
+                <%if(typeof register != "undefined" ){%>
+                    <%if(typeof register == "1" ){%>
+                        <form action="/login" method="POST">
+                            <div class="bg-white shadow rounded-lg px-3 pb-2 mb-3">
+                                <div class="d-flex justify-content-start align-items-end">
+                                    <div class="pb-1">
+                                        <i class="far fa-envelope " style="font-size:23px;"></i>
+                                    </div>
+                                    <div class="d-flex flex-column ps-2">
+                                        <small class="text-muted">Email</small>
+                                        <input type="text" id="username" name="username" class="form-control-cus"
+                                            placeholder="Correo..." required="" autofocus="">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="d-flex flex-column ps-2">
-                                <small class="text-muted">Email</small>
-                                <input type="text" id="username" name="username" class="form-control-cus"
-                                    placeholder="Correo..." required="" autofocus="">
+                            <div class="bg-white shadow rounded-lg px-3 pb-2 mb-2">
+                                <div class="d-flex justify-content-start align-items-end">
+                                    <div class="pb-1">
+                                        <i class="fas fa-unlock-alt" style="font-size:23px;"></i>
+                                    </div>
+                                    <div class="d-flex flex-column ps-2">
+                                        <small class="text-muted">Clave</small>
+                                        <input type="password" id="clave" name="clave" class="form-control-cus ps-2"
+                                            placeholder="Clave..." required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-end flex-column">
+                                <a href="/register/show"
+                                    class="mt-2 text-decoration-none text-secondary fw-bold">Registrarse</a>
+                                <button class="btn btn-sm btn-secondary rounded-lg mt-5 py-2" type="submit"
+                                    id="loginBtn">Login &nbsp; <i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </form>
+                    <%}%>
+                    
+                  <%}%>
+                  <%if(typeof register == "undefined" ){%>
+                    <form action="/login" method="POST">
+                        <div class="bg-white shadow rounded-lg px-3 pb-2 mb-3">
+                            <div class="d-flex justify-content-start align-items-end">
+                                <div class="pb-1">
+                                    <i class="far fa-envelope " style="font-size:23px;"></i>
+                                </div>
+                                <div class="d-flex flex-column ps-2">
+                                    <small class="text-muted">Email</small>
+                                    <input type="text" id="username" name="username" class="form-control-cus"
+                                        placeholder="Correo..." required="" autofocus="">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="bg-white shadow rounded-lg px-3 pb-2 mb-2">
-                        <div class="d-flex justify-content-start align-items-end">
-                            <div class="pb-1">
-                                <i class="fas fa-unlock-alt" style="font-size:23px;"></i>
-                            </div>
-                            <div class="d-flex flex-column ps-2">
-                                <small class="text-muted">Clave</small>
-                                <input type="password" id="clave" name="clave" class="form-control-cus ps-2"
-                                    placeholder="Clave..." required="">
+                        <div class="bg-white shadow rounded-lg px-3 pb-2 mb-2">
+                            <div class="d-flex justify-content-start align-items-end">
+                                <div class="pb-1">
+                                    <i class="fas fa-unlock-alt" style="font-size:23px;"></i>
+                                </div>
+                                <div class="d-flex flex-column ps-2">
+                                    <small class="text-muted">Clave</small>
+                                    <input type="password" id="clave" name="clave" class="form-control-cus ps-2"
+                                        placeholder="Clave..." required="">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="d-flex align-items-end flex-column">
-                        <a href="/register/show"
-                            class="mt-2 text-decoration-none text-secondary fw-bold">Registrarse</a>
-                        <button class="btn btn-sm btn-secondary rounded-lg mt-5 py-2" type="submit"
-                            id="loginBtn">Login &nbsp; <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                </form>
-                
+                        <div class="d-flex align-items-end flex-column">
+                            <a href="/register/show"
+                                class="mt-2 text-decoration-none text-secondary fw-bold">Registrarse</a>
+                            <button class="btn btn-sm btn-secondary rounded-lg mt-5 py-2" type="submit"
+                                id="loginBtn">Login &nbsp; <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </form>
+                <%}%>
             </div>
         </div>
     </div>

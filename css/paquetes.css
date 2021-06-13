@@ -1,16 +1,19 @@
 .image-bg-body {
     position: absolute;
+    top: -10px;
     width: 100%;
     height: 100%;
     background-color: #506ad483;
     background-image: url('/images/Patterns/01.png');
-    background-repeat: no-repeat;
     background-size: cover;
-    filter: blur(5px);
+    filter: blur(20px);
+    
 }
-
+.allcontainer{
+    z-index: 5;
+}
 .coins-container img{
-    width: 250px;
+    width: 200px;
 }
 
 .header-tier{
@@ -20,21 +23,33 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-bottom: 1px #e4e4e4 solid;
 }
 .coins-container{
-    border-radius: 35px;
-    box-shadow: 0px 0px 6px 0px #929292;
-    display: flex;
+    border-radius: 20px;
+    border: none !important;
+    box-shadow: 0px 5px 15px 2px #949494;
+    background-color: #f8f8f8 !important;
     justify-content: center;
     align-items: center;
 }
-.coins-container .tier{
-    color: rgb(58, 58, 58);
-    font-weight: 600;
-    font-size: 35px;
+.rounded-lg{
+    border-radius: 20px !important;
 }
-.coins-container .tier-number{
-    color: #506ad4;
-    font-weight: 600;
-    font-size: 45px;
+.botonComprar{
+    width: 80% !important;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+}
+.bolita{
+    position: absolute;
+    top: -20px;
+    right: -10px;
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    color:white;
+    text-align: center;
+    line-height: 2.3;
+    font-size: 24px;
 }

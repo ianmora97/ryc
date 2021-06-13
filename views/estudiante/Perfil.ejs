@@ -7,6 +7,37 @@
   </head>
   <body class="u-body">
     <%- include('../Global/menu')%>
+    <div class="modal fade" id="modalImage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <button type="button" class="btn btn-info" data-bs-dismiss="modal" onclick="openModalCameras()"><i class="fas fa-camera"></i></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-3">
+                        <form action="/cambiarfotoperfil" method="POST" enctype="multipart/form-data">
+                            <div class="alert alert-danger my-2" id="formatoImagenInvalido" role="alert" style="display: none;">
+                                <p class="m-0">Formato de Imagen invalida!</p>
+                            </div>
+                            <span class="sr-only" id="usuario_foto"></span>
+                            <label for="image" role="button" id="profileImageChange" class="d-block">
+                                <div class="avatar-bg center profile-pic mx-auto mt-4 "style="width: 450px;height: 450px;">
+                                </div>
+                            </label>
+                            <input type="text" name="id_usuario" id="id_usuarioModal" hidden>
+                            <input type="file" id="fileFoto" name="image" style="visibility: hidden;">
+                            <div id="sendFileFoto">
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container mt-3 py-2 border-bottom">
 		<div class="modal fade" id="detalleCurso" tabindex="-1" aria-labelledby="detalleCursoLabel" aria-hidden="true">
 			<div class="modal-dialog modal-fullscreen">
@@ -48,7 +79,8 @@
 		</div>
 		<span class="sr-only" id="idUsuario"><%= user.id_usuario%></span>
         <div class="row mx-0 ">
-            <div class="col-3 d-flex justify-content-lg-end justify-content-md-start ps-0">
+            <div class="col-3 d-flex justify-content-lg-end justify-content-md-start ps-0" 
+				onclick="openImageModal('<%= user.id_usuario%>','/images/Perfil/<%=user.imagen_perfil%>')" role="button">
               	<img class="imagenPerfil" src="/images/Perfil/<%=user.imagen_perfil%>">
             </div>
             <div class="col-9 row mx-0 d-flex justify-content-start">

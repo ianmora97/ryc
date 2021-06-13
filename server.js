@@ -2,6 +2,8 @@ const express = require('express');
 const session = require('express-session');
 const chalk = require('chalk');
 const path = require('path');
+const multer = require('multer');
+const uuid = require('uuid');
 const app = express();
 require('dotenv').config();
 
@@ -20,7 +22,29 @@ app.use(session({
     saveUninitialized: false
 }));
 
+const storage = multer.diskStorage({
+    destination: path.join(__dirname,'/images/Perfil'),
+    filename: (req, file, cb) => {
+        cb(null,uuid.v4() + path.extname(file.originalname).toLocaleLowerCase());
+    }   
+});
+
+app.use(multer({
+    storage,
+    dest: path.join(__dirname,'images/Perfil'),
+    fileFilter: (req, file, cb) => {
+        const filetypes = /jpeg|jpg|png|pdf/
+        const mimetype = filetypes.test(file.mimetype);
+        const extname = filetypes.test(path.extname(file.originalname));
+        if(mimetype && extname){
+            return cb(null, true);
+        }
+        cb("Error: Archivo debe ser un formato valido");
+    }
+}).single('image'));
+
 app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname,'/images')));
 
 //Rutas
 app.use(require('./routes/main.routes'));

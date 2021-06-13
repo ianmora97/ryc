@@ -7,6 +7,8 @@ function loaded(event){
 function events(event){
     loadFromDB();
     onOpenModal();
+    changeProfilePhoto();
+    fotoonChange();
 }
 
 function loadFromDB(){
@@ -37,6 +39,60 @@ function onOpenModal(){
         
         $('#descripcionCursoModal').html(curso.curso_descripcion);
     })
+}
+var myModal = new bootstrap.Modal(document.getElementById('modalImage'), {
+    keyboard: false
+})
+function openImageModal(id,foto) {
+    var modalToggle = document.getElementById('modalImage') // relatedTarget
+    myModal.show(modalToggle)
+    console.log(id,foto)
+
+    $('#id_usuarioModal').val(id);
+    $('.avatar-bg').css({
+        'background':'url('+foto+')',
+        'background-size':'cover',
+        'background-position': '50% 50%'
+    });
+}
+function readURL(input) { 
+    if (input.files && input.files[0]) {
+        var reader = new FileReader(); 
+        reader.onload = function (e) {
+            $('.avatar-bg').css({
+                'background':'url('+e.target.result+')',
+                'background-size':'cover',
+                'background-position': '50% 50%'
+            });
+        }; 
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+function changeProfilePhoto() {
+    $("#profileImageChange").click(function(e) {
+        $("#fileFoto").click();
+    });
+}
+function fotoonChange() {
+    $("#fileFoto").change(function(event){
+        let fileInput = event.currentTarget;
+        let archivos = fileInput.files;
+        let nombre = archivos[0].name;
+        let tipo = nombre.split('.')[archivos.length];
+        if(tipo == 'png' || tipo == 'jpg' || tipo == 'jpeg' || tipo == 'PNG' || tipo == 'JPG' || tipo == 'JPEG'){
+            readURL(this);
+            $('#sendFileFoto').html('')
+            $('#sendFileFoto').html(
+                '<button class="btn btn-primary btn-sm d-block mx-auto mb-3" '+
+                'id="btn_cambiar_foto" type="submit" '+
+                'style="display: none;">Cambiar foto</button>'
+            );
+            $('#formatoImagenInvalido').hide();
+        }else{
+            $('#formatoImagenInvalido').show();
+        }
+                    
+    });
 }
 var g_cambioEditar = {
     correo:0,
@@ -123,4 +179,5 @@ function printCursos(curso) {
     </div>
     `);
 }
+
 document.addEventListener("DOMContentLoaded", loaded);
