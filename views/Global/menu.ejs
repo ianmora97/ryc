@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row w-100 mx-0">
             <div class="col-1">
-                <a class="navbar-brand" href="/home/show">
+                <a class="navbar-brand" <% if(user.rol == 0){%>href="/home/show" <%}%>>
                     <img src="/images/logo.png" style="width:50px; height:50px;">
                 </a>
             </div>
@@ -13,10 +13,10 @@
             </div>
             <div class="col-7 d-flex justify-content-end px-0 flex-fill">
                 <% if(user.rol == 0){%>
-                    <div class="monedero d-flex">
+                    <a class="monedero d-flex" href="/paquetes/show" style="text-decoration: none;">
                         <span id="cant-monedero" class=" ms-2 me-1 text-white d-flex justify-content-center align-items-center" style="font-size: 20px; font-weight: 700;"><%=user.monedero%></span>                
                         <img class="me-4 mt-1 d-inline" src="/images/moneyBag.png" alt="" height="40">
-                    </div>
+                    </a>
                     <h3 class="my-0"><a class="me-4 text-white p-0 lh-lg nav-link" href="/home/show"><i class="fas fa-home"></i> Home</a></h3>
                     <h3 class="my-0"><a class="me-4 text-white p-0 lh-lg nav-link" href="/cursos/show"><i class="fas fa-book"></i> Cursos</a></h3>
                     <h3 class="my-0 nav-item dropdown">

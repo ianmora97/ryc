@@ -224,9 +224,9 @@
                         </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
-                        <button type="button" class="btn btn-primary">
+                        <a href="/paquetes/show" class="btn btn-primary">
                             <i class="fas fa-coins text-secondary"></i>
-                            Comprar monedas</button>
+                            Comprar tokens</a>
                     </div>
                 </div>
             </div>
@@ -235,130 +235,164 @@
         <section class="u-clearfix u-palette-5-light-3 u-section-1" id="sec-aa93">
             <div class="u-clearfix u-sheet u-sheet-1 justiy-content-between full-xs">
                 <div class="container-opions">
-                    
-                    <!--
-                         opiniones.forEach(function(opinion, index){
-                            if(index%3 == 0){
-                                muestra el anuncio
-                                
-                        }
-                    -->
-                    
-                    <% opiniones.forEach(function(opinion){ %>
-                        <div id="opinion-card"
-                            class="opinion u-container-style u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-radius-4 u-shape-round u-white u-group-4">
-                            <div class="u-container-layout u-container-layout-4">
-                                <div
-                                    class="u-align-left u-border-1 u-border-palette-5-light-3 u-container-style u-expanded-width-md u-expanded-width-xs u-group u-shape-rectangle u-white u-group-5">
-                                    <div class="u-container-layout u-container-layout-5">
 
-                                        <div class="u-container-style u-group ">
-                                            <% if(opinion.img_perfilOp==null){ %>
-                                                <img class="u-image u-shape-circle u-image-3"
-                                                    src="/images/Perfil/anonimo.png" alt="">
-                                                <% } else { %>
-                                                    <img class="u-image u-shape-circle u-image-3"
-                                                        src="/images/Perfil/<%= opinion.img_perfilOp %>" alt="">
-                                                    <% } %>
-                                                        <div class="u-container-layout u-container-layout-6"></div>
+                    <% opiniones.forEach(function(opinion, index){ %>
+                        <% if(index%3==0 && index!=0){ %>
+                            <% var anuncioRandom = anuncios[Math.floor((Math.random() * anuncios.length) )] %>
+                                <div class="card mb-2">
+                                    <div class="row p-2 d-flex align-items-center">
+                                        <div class="d-flex">
+                                            <div class="imagen-perfil-container">
+                                                <img src="/images/patrocinadores/<%=anuncioRandom.patrocinador_imagen%>"
+                                                    alt="" class="imagen-perfil">
+                                            </div>
+                                            <span class="fw-bold text-dark ms-2 d-flex align-items-center">
+                                                <%= anuncioRandom.patrocinador_nombre %>
+                                            </span>
                                         </div>
-                                        <p class="u-text u-text-palette-5-base u-text-7">
-                                            <%= opinion.fecha.split(" ")[0] %>  &nbsp;</p>
+
+                                    </div>
+                                    <div class="card-body d-flex justify-content-center" style="height: 400px;">
+                                        <img src="/images/Anuncios/<%= anuncioRandom.imagen %>" alt="" class=""
+                                            style="height: 100%;">
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="<%= anuncioRandom.link %>" target="_blank"
+                                            class="btn btn-primary w-100">Ir a <%= anuncioRandom.patrocinador_nombre %>
+                                                </a>
+                                    </div>
+                                </div>
+
+                                <% } %>
+
+                                    <div id="opinion-card"
+                                        class="opinion u-container-style u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-radius-4 u-shape-round u-white u-group-4">
+                                        <div class="u-container-layout u-container-layout-4">
+                                            <div
+                                                class="u-align-left u-border-1 u-border-palette-5-light-3 u-container-style u-expanded-width-md u-expanded-width-xs u-group u-shape-rectangle u-white u-group-5">
+                                                <div class="u-container-layout u-container-layout-5">
+
+                                                    <div class="u-container-style u-group ">
+                                                        <% if(opinion.img_perfilOp==null){ %>
+                                                            <img class="u-image u-shape-circle u-image-3"
+                                                                src="/images/Perfil/anonimo.png" alt="">
+                                                            <% } else { %>
+                                                                <img class="u-image u-shape-circle u-image-3"
+                                                                    src="/images/Perfil/<%= opinion.img_perfilOp %>"
+                                                                    alt="">
+                                                                <% } %>
+                                                                    <div
+                                                                        class="u-container-layout u-container-layout-6">
+                                                                    </div>
+                                                    </div>
+                                                    <p class="u-text u-text-palette-5-base u-text-7">
+                                                        <%= opinion.fecha.split(" ")[0] %>  &nbsp;</p>
                                         <p class=" u-text u-text-palette-5-base u-text-8">
-                                                <% if(opinion.ciclo==1){ %>
-                                                    I <% }else{ %> II <% } %>
-                                                            CICLO
-                                        </p>
-                                        <p class="u-text u-text-palette-5-light-1 u-text-9">
-                                            <%= opinion.fecha.split(" ")[1].substring(0,5) %></p>
+                                                            <% if(opinion.ciclo==1){ %>
+                                                                I <% }else{ %> II <% } %>
+                                                                        CICLO
+                                                    </p>
+                                                    <p class="u-text u-text-palette-5-light-1 u-text-9">
+                                                        <%= opinion.fecha.split(" ")[1].substring(0,5) %></p>
                                         <p class=" u-text u-text-palette-5-dark-2 u-text-10">
-                                                <% if(opinion.id_usuario==null){ %>
-                                                    <i>Anonimo</i>
-                                                    <% }else{%>
-                                                        <%=opinion.nombre_opinador%>
-                                                            <%}%>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="u-container-style u-expanded-width-md u-expanded-width-xs u-group u-shape-rectangle u-white u-group-7">
-                                    <div class="u-container-layout u-container-layout-7">
-                                        <div class="u-container-style u-group u-image u-radius-4 u-shape-round u-image-4"
-                                            data-image-width="2000" data-image-height="1333">
-                                            <div class="u-container-layout u-container-layout-8"></div>
+                                                            <% if(opinion.id_usuario==null){ %>
+                                                                <i>Anonimo</i>
+                                                                <% }else{%>
+                                                                    <%=opinion.nombre_opinador%>
+                                                                        <%}%>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="u-container-style u-expanded-width-md u-expanded-width-xs u-group u-shape-rectangle u-white u-group-7">
+                                                <div class="u-container-layout u-container-layout-7">
+                                                    <div class="u-container-style u-group u-image u-radius-4 u-shape-round u-image-4"
+                                                        data-image-width="2000" data-image-height="1333">
+                                                        <div class="u-container-layout u-container-layout-8"></div>
+                                                    </div>
+                                                    <p class="u-text u-text-palette-5-dark-2 u-text-11">
+                                                        <%=opinion.curso_nombre%>
+                                                    </p>
+                                                    <p
+                                                        class="u-hidden-md u-hidden-sm u-hidden-xs u-text u-text-palette-5-light-1 u-text-12">
+                                                        <%=opinion.creditos%> créditos
+                                                    </p>
+                                                    <p class="u-text u-text-palette-5-light-1 u-text-13">
+                                                        <%=opinion.codigo_curso%>
+                                                    </p>
+                                                    <p class="u-text u-text-palette-5-light-1 u-text-14">
+                                                        <%=opinion.universidad%>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div style="border-top: 1px solid #e1e1e1"
+                                                class=" u-container-style u-expanded-width u-group u-shape-rectangle u-white u-group-9">
+                                                <div class="u-container-layout u-valign-top-lg u-container-layout-9">
+                                                    <p class="u-text u-text-15">
+                                                        <%= opinion.comentario %>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row  h-25 acciones-opinion">
+                                                <div class="col d-flex h-25 col-xss-center">
+                                                    <button type="button" class="btn btn-sm btn-secondary likes btn-xss"
+                                                        onclick="like('<%=opinion.id_opinion%>')">
+                                                        <i class="far fa-thumbs-up"></i> <span
+                                                            id="likes_<%=opinion.id_opinion%>">
+                                                            <%=opinion.likesCount%>
+                                                        </span>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn btn-sm btn-secondary dislikes btn-xss"
+                                                        onclick="dislike('<%=opinion.id_opinion%>')">
+                                                        <i class="far fa-thumbs-down"></i><span
+                                                            id="dislikes_<%=opinion.id_opinion%>">
+                                                            <%=opinion.dislikesCount%>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                                <div
+                                                    class="col d-flex justify-content-end align-items-center h-25 col-xss-center comments-reactions">
+                                                    <button type="button" class="btn btn-sm btn-secondary reacciones"
+                                                        data-bs-toggle="modal" data-bs-target="#modal_reacciones"
+                                                        onclick="setIdOpinion('<%=opinion.id%>')">
+                                                        <i class="fas fa-hand-holding-heart"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-sm comments-trigger"
+                                                        onclick="getComentarios('<%=opinion.id_opinion%>')"
+                                                        data-bs-toggle="modal" data-bs-target="#comentarioModal">
+                                                        <i class="fas fa-comment-dots"></i> <span
+                                                            id="cant_comment_<%=opinion.id_opinion%>">
+                                                            <%=opinion.cant_comentarios%>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <p class="u-text u-text-palette-5-dark-2 u-text-11">
-                                            <%=opinion.curso_nombre%>
-                                        </p>
-                                        <p
-                                            class="u-hidden-md u-hidden-sm u-hidden-xs u-text u-text-palette-5-light-1 u-text-12">
-                                            <%=opinion.creditos%> créditos
-                                        </p>
-                                        <p class="u-text u-text-palette-5-light-1 u-text-13">
-                                            <%=opinion.codigo_curso%>
-                                        </p>
-                                        <p class="u-text u-text-palette-5-light-1 u-text-14">
-                                            <%=opinion.universidad%>
-                                        </p>
                                     </div>
-                                </div>
-                                <div style="border-top: 1px solid #e1e1e1"
-                                    class=" u-container-style u-expanded-width u-group u-shape-rectangle u-white u-group-9">
-                                    <div class="u-container-layout u-valign-top-lg u-container-layout-9">
-                                        <p class="u-text u-text-15">
-                                            <%= opinion.comentario %>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row  h-25 acciones-opinion">
-                                    <div class="col d-flex h-25 col-xss-center">
-                                        <button type="button" class="btn btn-sm btn-secondary likes btn-xss"
-                                            onclick="like('<%=opinion.id_opinion%>')">
-                                            <i class="far fa-thumbs-up"></i> <span id="likes_<%=opinion.id_opinion%>">
-                                                <%=opinion.likesCount%>
-                                            </span>
-                                        </button>
-                                        <button type="button" class="btn btn-sm btn-secondary dislikes btn-xss"
-                                            onclick="dislike('<%=opinion.id_opinion%>')">
-                                            <i class="far fa-thumbs-down"></i><span
-                                                id="dislikes_<%=opinion.id_opinion%>">
-                                                <%=opinion.dislikesCount%>
-                                            </span>
-                                        </button>
-                                    </div>
-                                    <div
-                                        class="col d-flex justify-content-end align-items-center h-25 col-xss-center comments-reactions">
-                                        <button type="button" class="btn btn-sm btn-secondary reacciones"
-                                            data-bs-toggle="modal" data-bs-target="#modal_reacciones"
-                                            onclick="setIdOpinion('<%=opinion.id%>')">
-                                            <i class="fas fa-hand-holding-heart"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-sm comments-trigger"
-                                            onclick="getComentarios('<%=opinion.id_opinion%>')" data-bs-toggle="modal"
-                                            data-bs-target="#comentarioModal">
-                                            <i class="fas fa-comment-dots"></i> <span
-                                                id="cant_comment_<%=opinion.id_opinion%>">
-                                                <%=opinion.cant_comentarios%>
-                                            </span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <% }); %>
+                                    <% }); %>
                 </div>
                 <div
                     class="container-info u-container-style u-group u-hidden-md u-hidden-sm u-hidden-xs u-radius-4 u-shape-round u-white ">
                     <div class="u-container-layout u-container-layout-1" style="overflow: auto;">
-                        <div alt="" class="u-image " data-image-width="1280" data-image-height="851">
-                            <img class="u-image-circle u-image-1" src="/images/Perfil/<%=user.imagen_perfil%>" alt="">
+                        <div class="row pt-2">
+                            <div class="col-2 d-flex justify-content-center align-items-center p-0"
+                                style="height: 50px; width: 50px;">
+                                <div class="imagen-perfil-container">
+                                    <img class="imagen-perfil" src="/images/Perfil/<%=user.imagen_perfil%>" alt="">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p class="fw-bold text-dark m-0">
+                                    <%=user.nombre%>
+                                </p>
+                                <p class="fw-light text-muted m-0" style="font-size: 14px;">
+                                    <%=user.correo%>
+                                </p>
+                            </div>
                         </div>
-                        <p class="u-text u-text-1">
-                            <%=user.nombre%>
-                        </p>
-                        <p class="u-text u-text-2">
-                            <%=user.correo%>
-                        </p>
+
+
                         <p class="u-text u-text-palette-5-dark-1 u-text-3">Tus cursos</p>
                         <% cursos.forEach(function(curso){%>
                             <div

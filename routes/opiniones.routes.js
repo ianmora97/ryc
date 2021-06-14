@@ -96,8 +96,7 @@ router.post('/reaccion/opinion', (req, res) => {
                 console.log(req.session.usuario.monedero)
                 res.send(rows[0]);
             } else {
-                console.log(error)
-                let error = { status: 404 }
+                let error = { status: 500 }
                 res.send({ error });
             }
         })

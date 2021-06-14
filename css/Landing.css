@@ -1,4 +1,15 @@
-
+.imagen-perfil-container{
+  width: 52px;
+  height: 52px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+}
+.imagen-perfil{
+  width: 100%;
+}
 .reaccion-container {
   width: 160px;
   display: flex;
@@ -489,7 +500,7 @@
 
 .u-section-1 .u-image-3 {
   width: 58px;
-  min-height: 57px;
+  height: 57px;
   /* background-image: url("../images/Perfil/Scarlett.jpg"); */
   margin: 11px auto 0 -24px;
 }
@@ -664,7 +675,7 @@
   }
   .u-section-1 .u-image-3 {
     width: 60px;
-    min-height: 60px;
+    height: 60px;
     margin-top: 9px;
     margin-left: -23px;
   }
@@ -805,7 +816,7 @@
   }
   .u-section-1 .u-image-3 {
     width: 57px;
-    min-height: 57px;
+    height: 57px;
     margin-top: 17px;
     margin-left: -22px;
   }

@@ -139,7 +139,6 @@ router.get('/grupo/seguirGrupo', (req, res) => {
     if (req.session.usuario) {
         db.query("call insert_cursoEstudiante(?,?,?)", [req.query.user, req.query.id, 1],
             (error, rows, fields) => {
-                console.log(error)
                 if (!error) {
                     res.send({
                         status: 200
@@ -189,12 +188,24 @@ router.get('/home/show', (req, res) => {
                 db.query("call obtener_cursos_estudiante_actual(?,?)", [user.id_usuario, ciclo], (errorCursos, cursosRows, fields) => {
                     if (!errorCursos) {
                         cursos = cursosRows[0];
-                        res.render('estudiante/home', {
-                            pag: 'Feed',
-                            opiniones,
-                            cursos,
-                            user
-                        });
+                        db.query("call obtener_anuncios()", [],
+                        (error, anunciosRows, fields) => {
+                            if (!error) {
+                                anuncios = anunciosRows[0];
+                                console.log(anuncios)
+                                res.render('estudiante/home', {
+                                    pag: 'Feed',
+                                    opiniones,
+                                    cursos,
+                                    anuncios,
+                                    user
+                                });
+                            } else {
+                                res.send({
+                                    status: 500
+                                })
+                            }
+                        })
                     } else {
                         console.log(errorCursos)
                         res.send({
@@ -499,5 +510,26 @@ router.get('/api/gruposPorCurso', (req, res) => {
         res.render('Global/login');
     }
 });
+
+router.put('/paquetes/compra', (req, res) => {
+    let user = req.session.usuario;
+        if (req.session.usuario) {
+            console.log(req.body.numPaquete)
+        db.query("call insert_tokens(?,?)", [user.id_usuario, req.body.numPaquete],
+            (error, rows, fields) => {
+                if (!error) {
+                    console.log("MONEDEROOOO!! => ", rows[0])
+                    req.session.usuario.monedero = rows[0][0].monedero
+                    res.send({monedero: req.session.usuario.monedero})
+                } else {
+                    res.send(error)
+                }
+            })
+    } else {
+        res.render('Global/login');
+    }
+
+});
+
 
 module.exports = router;

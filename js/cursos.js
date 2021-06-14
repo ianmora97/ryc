@@ -53,6 +53,7 @@ function llenarCursosCard(data) {
         g_MapCursosEstudiante.set(e.id, e);
         printCursos(e);
     });
+
 }
 
 function guardarOpinion() {
@@ -102,8 +103,9 @@ function setModalNombreCurso(nombre){
 }
 function printCursos(curso) {
     $('#miscursos').append(`
+    <div class="col-4 d-flex justify-content-center">
     <div 
-        class="u-container-style u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-white u-group-1" style="border-radius: 20px; box-shadow: 0px 0px 6px 0px #b2b2b2;">
+        class="u-container-style u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-white u-group-1 col-4" style="border-radius: 20px; box-shadow: 0px 0px 6px 0px #b2b2b2;  margin: 40px; max-height: 10px; ">
         <div id="burbuja-opinar" class="u-container-layout u-container-layout-1">
             <div class="u-container-style u-custom-color-4 u-expanded-width u-group u-radius-25 u-shape-round u-group-2">
             <div  class="u-container-layout u-valign-top-md u-valign-top-sm u-valign-top-xs u-container-layout-2" role="button" data-id="${curso.id}"  onclick="location.href='/curso/detalle?id_curso=${curso.codigo_curso}' " style="cursor:pointer;background-color: #506ad4; color:white;">
@@ -120,6 +122,7 @@ function printCursos(curso) {
             <p class="u-text u-text-grey-50 u-text-4" style="font-size: 18px; font-weight: 600;">Opinar</p>
             </div>
         </div>
+    </div>
     </div>
     `);
 }

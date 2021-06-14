@@ -295,19 +295,36 @@ function comprarReaccion(evt, nombre_reaccion,imagen, id_comprador,monedero) {
             contentType: "application/json",
             data: JSON.stringify(reaccion),
         }).then((response) => {
-            actualizarMonedero(100)
-            $("#cerrar-modal-reacciones").trigger("click")
-            Swal.fire(
+            console.log(response)
+            if(!response.error){
+               actualizarMonedero(100)
+               $("#cerrar-modal-reacciones").trigger("click")
+               Swal.fire(
                 '¡HAS DADO UNA REACCIÓN!',
                 '¡Muchas gracias!',
                 'success'
-            );
-        }, (error) => {
-    
-        });
+               );
+            }else{
+                Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "No se pudo realizar la transacción",
+                showConfirmButton: false,
+                timer: 1500
+            })
+            }
+        })
+    }else{
+        Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "No cuenta con las monedas necesarias",
+                showConfirmButton: false,
+                timer: 1500
+        })
     }
-
 }
+
 function actualizarMonedero(cant){
     monedas = parseInt($("#cant-monedero").html()) - cant
     $("#cant-monedero").html(monedas)

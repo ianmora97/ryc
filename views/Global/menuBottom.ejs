@@ -12,7 +12,14 @@
                     <a class="nav-link text-center dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas text-white fa-2x fa-user"></i></a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
+                         <li>
+                            <a class="dropdown-item monedero d-flex align-items-end" href="/paquetes/show" style="text-decoration: none;">
+                            <span id="cant-monedero" class=" d-flex justify-content-center align-items-center" ><%=user.monedero%></span>                
+                            <img class="ms-2 me-4 mt-1 d-inline" src="/images/moneyBag.png" alt="" height="25">
+                             </a>
+                        </li>
                         <li><hr class="dropdown-divider"></li>
+
                         <li><a class="dropdown-item" href="/logout">Logout <i class="fas fa-power-off"></i></a></li>
                     </ul>
                 </div>
@@ -25,6 +32,7 @@
                     <a class="nav-link text-center dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas text-white fa-2x fa-user"></i></a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/profe/show">Perfil</a></li>
+
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/logout">Logout <i class="fas fa-power-off"></i></a></li>
                     </ul>

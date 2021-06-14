@@ -24,7 +24,7 @@
                         <div class="text-center">
                             <h2 class="text-primary fw-bold">500 Tokens</h2>
                             <h4 class="text-gray mb-4">$1.99</h4>
-                            <button type="button" class="btn btn-primary rounded-lg botonComprar mb-3">Comprar</button>
+                            <button type="button" class="btn btn-primary rounded-lg botonComprar mb-3" onclick="comrprarMonedas(1)">Comprar</button>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                         <div class="text-center">
                             <h2 class="text-primary fw-bold">1500 Tokens</h2>
                             <h4 class="text-gray mb-4">$4.99</h4>
-                            <button type="button" class="btn btn-primary rounded-lg botonComprar mb-3">Comprar</button>
+                            <button type="button" class="btn btn-primary rounded-lg botonComprar mb-3" onclick="comrprarMonedas(2)">Comprar</button>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                         <div class="text-center">
                             <h2 class="text-primary fw-bold">3000 Tokens</h2>
                             <h4 class="text-gray mb-4">$9.99</h4>
-                            <button type="button" class="btn btn-primary rounded-lg botonComprar mb-3">Comprar</button>
+                            <button type="button" class="btn btn-primary rounded-lg botonComprar mb-3" onclick="comrprarMonedas(3)">Comprar</button>
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                         <div class="text-center">
                             <h2 class="text-primary fw-bold">7500 Tokens</h2>
                             <h4 class="text-gray mb-4">$19.99</h4>
-                            <button type="button" class="btn btn-primary rounded-lg botonComprar mb-3">Comprar</button>
+                            <button type="button" class="btn btn-primary rounded-lg botonComprar mb-3" onclick="comrprarMonedas(4)">Comprar</button>
                         </div>
                     </div>
                 </div>
@@ -86,5 +86,35 @@
         </div>
     </div>
     <%- include('../Global/menuBottom')%>
+    <script>
+    function comrprarMonedas(numPaquete){
+        $.ajax({
+            type: "put",
+            url: "/paquetes/compra",
+            data: JSON.stringify({numPaquete:numPaquete}),
+            contentType: "application/json"
+        }).then((response) => {
+            monedero = response.monedero
+            console.log(monedero);
+            $("#cant-monedero").html(monedero)
+            $("#close-modal-opinion").trigger("click")
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Transacción exitosa",
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }, (error) => {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "No se pudo realizar la transacción",
+                showConfirmButton: false,
+                timer: 1500
+            })
+        });
+    }
+    </script>
 </body>
 </html>

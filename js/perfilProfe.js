@@ -108,9 +108,10 @@ function printCursos(curso) {
     $('#cursos').append(`
     <div class="col-lg animate__animated animate__fadeIn">
         <h6 class="text-center">${curso.nombre}</h6>
-        <div class="mx-auto d-block" style="width="200px" role="button" data-codigo="${curso.codigo_curso}" data-bs-toggle="modal" data-bs-target="#detalleCurso">
+
+        <a href="/curso/detalle?id_curso=${curso.codigo_curso}"class="mx-auto d-block" style="width="200px" role="button" data-codigo="${curso.codigo_curso}">
             <img src="/images/Icons/clipboard.png" width="150px" style="display:block; margin:0 auto;">
-        </div>
+        </a>
     </div>
 
     `);

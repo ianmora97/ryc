@@ -172,10 +172,10 @@ function printCursos(curso) {
     $('#cursosRestantes').append(`
     <div class="col-lg animate__animated animate__fadeIn">
         <h6 class="text-center">${curso.curso_nombre}</h6>
-        <div class="libroCus mx-auto d-block" role="button" data-id="${curso.id}" data-bs-toggle="modal" data-bs-target="#detalleCurso">
+        <a href="/curso/detalle?id_curso=${curso.id}" class="libroCus mx-auto d-block" >
             <div class="lineBookO1"></div>
             <div class="lineBookO2"></div>
-        </div>
+        </a>
     </div>
     `);
 }

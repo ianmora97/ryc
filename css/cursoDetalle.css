@@ -8,10 +8,12 @@
   width: 55px;
   height: 55px;
 }
-#result_grupo:hover{
+
+#result_grupo:hover {
   transition: all ease-in 300ms;
 }
-#result_grupo:hover{
+
+#result_grupo:hover {
   cursor: pointer;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -20,22 +22,24 @@
 .image-comentario {
   width: 100%;
 }
-.fecha-comentario{
+
+.fecha-comentario {
   font-weight: 600;
   color: #555c66;
   font-size: 14px;
-
 }
-.container-principal{
+
+.container-principal {
   border-radius: 10px;
   background-color: #fff;
   padding: 3rem 10px;
   margin-top: 3rem;
 }
 
-.comentario{
+.comentario {
   font-size: 18px;
 }
+
 .nombre-comentario {
   font-size: 20px;
   font-weight: 600;
@@ -221,7 +225,7 @@
 }
 
 @media (max-width: 991px) {
-  .container-principal{
+  .container-principal {
     margin: 0;
     width: 100%;
   }
@@ -261,7 +265,7 @@
     margin-top: -38px;
     margin-right: 20px;
   }
-  .col-mds-12{
+  .col-mds-12 {
     flex: 0 0 auto;
     width: 100% !important;
   }
@@ -292,12 +296,19 @@
   }
 }
 
-@media (max-width: 767px) {
-  .col-mds-12{
+@media (max-width: 768px) {
+  .col-mds-12 {
     flex: 0 0 auto;
     width: 100% !important;
   }
-
+  #seguirCurso {
+    position: relative!important;
+    right: 34% !important;
+    top: -21px !important;
+  }
+  #carta {
+    position: relative !important;
+  }
   .u-section-1 .u-layout-wrap-1 {
     margin-top: -7px;
   }
@@ -386,7 +397,19 @@
 }
 
 @media (max-width: 575px) {
-  .col-mds-12{
+  #seguirCurso {
+    right: 57% !important;
+    top: -21px !important;
+    padding-left: 10px !important;
+    padding-right: 13px !important;
+}
+  #carta {
+    position: relative !important;
+    padding-left: 10px !important;
+    padding-right: 13px !important;
+  }
+
+  .col-mds-12 {
     flex: 0 0 auto;
     width: 100% !important;
   }
@@ -431,7 +454,7 @@
     padding: 8px 57px 8px 55px;
   }
   .u-section-1 .u-text-4 {
-    margin: 12px  0px;
+    margin: 12px 0px;
   }
   .u-section-1 .u-layout-cell-2 {
     min-height: 295px;
@@ -545,14 +568,12 @@
   }
 }
 
-
 @media (max-width: 767px) {
-  .ciclo-comentario{
+  .ciclo-comentario {
     font-size: 12px;
     text-align: -webkit-right;
     margin-top: 0 !important;
   }
-
   .u-section-2 .u-btn-1 {
     align-self: flex-end;
   }

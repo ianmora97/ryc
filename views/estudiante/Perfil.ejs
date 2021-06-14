@@ -49,8 +49,8 @@
 					<div class="modal-body ">
 						<div class="container bg-white mt-3 py-5">
 							<div class="row mx-0 ">
-								<div class="col-3 d-flex justify-content-lg-end justify-content-md-start ps-0">
-									<img class="imagenPerfil" src="/images/Icons/circleYellow.png">
+								<div class="col-3 d-flex justify-content-lg-end justify-content-md-start ps-0" style="">
+									<img class="imagenPerfil" src="/images/Icons/circleYellow.png" style=" border-radius: 20px; border: 3px solid #506ad4;">
 								</div>
 								<div class="col-9 row mx-0 d-flex justify-content-start">
 									<div class="col-sm-6">
@@ -80,8 +80,8 @@
 		<span class="sr-only" id="idUsuario"><%= user.id_usuario%></span>
         <div class="row mx-0 ">
             <div class="col-3 d-flex justify-content-lg-end justify-content-md-start ps-0" 
-				onclick="openImageModal('<%= user.id_usuario%>','/images/Perfil/<%=user.imagen_perfil%>')" role="button">
-              	<img class="imagenPerfil" src="/images/Perfil/<%=user.imagen_perfil%>">
+				onclick="openImageModal('<%= user.id_usuario%>','/images/Perfil/<%=user.imagen_perfil%>')" role="button" style="overflow: hidden; border-radius: 10px;">
+              	<img class="imagenPerfil" src="/images/Perfil/<%=user.imagen_perfil%>" style=" border-radius: 20px; border: 3px solid #506ad4;">
             </div>
             <div class="col-9 row mx-0 d-flex justify-content-start">
 				<div class="col-sm-6">
