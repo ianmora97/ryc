@@ -168,11 +168,11 @@ function llenarCursosStand(data) {
     });
 }
 function printCursos(curso) {
-    
+    console.log(curso)
     $('#cursosRestantes').append(`
     <div class="col-lg animate__animated animate__fadeIn">
         <h6 class="text-center">${curso.curso_nombre}</h6>
-        <a href="/curso/detalle?id_curso=${curso.id}" class="libroCus mx-auto d-block" >
+        <a href="/curso/detalle?id_curso=${curso.id_curso}" class="libroCus mx-auto d-block" >
             <div class="lineBookO1"></div>
             <div class="lineBookO2"></div>
         </a>

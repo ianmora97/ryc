@@ -104,8 +104,8 @@ router.get('/curso/detalle', (req, res) => {
             (errorCurso, cursoRow, fields) => {
                 console.log(errorCurso)
                 if (!errorCurso) {
+                    console.log(curso)
                     let curso = JSON.parse(JSON.stringify(cursoRow[0][0]))
-                    console.log(user)
                     db.query("call obtener_opiniones_curso(?)", [req.query.id_curso],
                         (errorOpiniones, opinionesRows, fields) => {
                             console.log("opiniones del curso:" + opinionesRows[0])
